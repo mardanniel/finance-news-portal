@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
-    [Authorize(Roles = "Registered")]
+    [Authorize]
     public class NewsArticlesController : Controller
     {
         private readonly IUserRepository _userRepository;

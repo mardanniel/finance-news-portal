@@ -8,17 +8,20 @@ namespace FinanceNewsPortal.Web.Controllers
     [Authorize(Roles = "Administrator")]
     public class AdministratorController: Controller 
     {
+        private readonly IUserRepository _userRepository;
         private readonly IAdminRepository _adminRepository;
 
-        public AdministratorController(IAdminRepository adminRepository)
+        public AdministratorController(IAdminRepository adminRepository, IUserRepository userRepository)
         {
             this._adminRepository = adminRepository;
+            this._userRepository = userRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
-            List<ApplicationUser> users = await _adminRepository.GetAllUsers();
+            ApplicationUser user = await this._userRepository.GetCurrentUser();
+            List<ApplicationUser> users = await _adminRepository.GetAllUsersExcept(Guid.Parse(user.Id));
 
             return View(users);
         }

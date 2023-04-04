@@ -9,20 +9,23 @@ namespace FinanceNewsPortal.Web.Controllers
 
     public class HomeController : Controller
     {
-        private readonly INewsArticlesRepository newsArticlesRepository;
+        private readonly INewsArticlesRepository _newsArticlesRepository;
         private readonly IRatesRepository _ratesRepository;
 
         public HomeController(IRatesRepository ratesRepository, INewsArticlesRepository newsArticlesRepository)
         {
             this._ratesRepository = ratesRepository;
-            this.newsArticlesRepository = newsArticlesRepository;
+            this._newsArticlesRepository = newsArticlesRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            Currency currency = await this._ratesRepository.GetCurrencyExchangeRates();
+            HomepageViewModel homepageViewModel = new HomepageViewModel {
+                Currency = await this._ratesRepository.GetCurrencyExchangeRates(),
+                LatestNews = await this._newsArticlesRepository.GetLatestNewsArticles(4)
+            };
 
-            return View(currency);
+            return View(homepageViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

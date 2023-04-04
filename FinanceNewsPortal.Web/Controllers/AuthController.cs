@@ -119,7 +119,7 @@ namespace FinanceNewsPortal.Web.Controllers
                 }
             }
 
-            List<object> genderList = new List<object> { new { Id = 'M', Name = 'M' }, new { Id = 'F', Name = 'F' }, };
+            List<object> genderList = new List<object> { new { Id = 'M', Name = "Male" }, new { Id = 'F', Name = "Female" }, };
             ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
             return View(registerUser);
         }
@@ -130,6 +130,32 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             await this._signInManager.SignOutAsync();
             return RedirectToAction("Login", "Auth");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateUserInfo()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateUserInfo(UpdateUserInfoViewModel userInfo)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(UpdatePasswordViewModel userPassword)
+        {
+            return View();
         }
     }
 }
