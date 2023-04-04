@@ -80,6 +80,7 @@ namespace FinanceNewsPortal.Web.Controllers
             return View(newsArticle);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(Guid newsArticle)
         {
@@ -102,7 +103,7 @@ namespace FinanceNewsPortal.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
         public async Task<IActionResult> GetAllPending()
         {
@@ -123,18 +124,28 @@ namespace FinanceNewsPortal.Web.Controllers
             return View(newsArticles);
         }
 
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
-        public async Task<IActionResult> ApproveNewsArticle()
+        public async Task<IActionResult> ViewPending(Guid newsArticle)
         {
-            return View();
+            NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
+            return View(news);
         }
 
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
-        public async Task<IActionResult> DeclineNewsArticle()
+        public async Task<IActionResult> ApproveStatus(Guid newsArticleId)
         {
-            return View();
+            await this._newsArticlesRepository.UpdateNewsArticleStatus(newsArticleId, NewsStatus.Approved);
+            return RedirectToAction("GetAllPending");
+        }
+
+        [Authorize(Roles = "Moderator, Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> DeclineStatus(Guid newsArticleId)
+        {
+            await this._newsArticlesRepository.UpdateNewsArticleStatus(newsArticleId, NewsStatus.Rejected);
+            return RedirectToAction("GetAllPending");
         }
     }
 }

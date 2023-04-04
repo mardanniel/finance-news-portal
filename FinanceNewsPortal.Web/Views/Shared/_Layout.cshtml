@@ -15,7 +15,10 @@
 <body>
     <nav class="navbar navbar-expand-lg px-4">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eFinancials</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="~/img/efinancials-logo.png" class="img-fluid navbar-img-logo me-2" alt="eFinancials">
+                eFinancials
+            </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -44,7 +47,7 @@
                                asp-action="GetAllUsers">Users</a>
                                 </li>
                             }
-                            @if (User.IsInRole("Registered"))
+                            @if (User.IsInRole("Registered") || User.IsInRole("Moderator"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllCreated">
@@ -52,7 +55,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (User.IsInRole("Moderator"))
+                            @if (User.IsInRole("Moderator") || User.IsInRole("Administrator"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllPending">
