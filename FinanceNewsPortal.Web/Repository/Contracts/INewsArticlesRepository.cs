@@ -14,6 +14,6 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
         Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel);
         Task DeleteNewsArticle(Guid newsArticleId);
         Task UpdateNewsArticleStatus(Guid newsArticleId, NewsStatus status);
-        Task<List<NewsArticle>> GetLatestNewsArticles();
+        Task<List<NewsArticle>> GetLatestNewsArticles(int count);
     }
 }

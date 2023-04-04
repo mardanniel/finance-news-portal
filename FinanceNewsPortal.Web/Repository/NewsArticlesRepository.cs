@@ -35,7 +35,7 @@ namespace FinanceNewsPortal.Web.Repository
         {
             var news = await this._financeNewsPortalDbcontext.NewsArticle.FindAsync(newsArticleId);
 
-            if(news != null)
+            if (news != null)
             {
                 this._financeNewsPortalDbcontext.NewsArticle.Remove(news);
             }
@@ -43,15 +43,21 @@ namespace FinanceNewsPortal.Web.Repository
             await this._financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
-        public Task<List<NewsArticle>> GetLatestNewsArticles()
+        public async Task<List<NewsArticle>> GetLatestNewsArticles(int count)
         {
-            throw new NotImplementedException();
+            return await this._financeNewsPortalDbcontext.NewsArticle
+                .Include(n => n.Author)
+                .Where(n => n.Status == NewsStatus.Approved)
+                .OrderByDescending(n => n.CreatedAt)
+                .Take(count)
+                .ToListAsync();
         }
 
         public async Task<NewsArticle?> GetNewsArticleById(Guid newsArticleId)
         {
             NewsArticle news = await this._financeNewsPortalDbcontext
                 .NewsArticle
+                .Include(n => n.Author)
                 .FirstOrDefaultAsync(n => n.Id == newsArticleId);
 
             return news;
@@ -74,7 +80,8 @@ namespace FinanceNewsPortal.Web.Repository
                                 .NewsArticle
                                 .Include(n => n.Author)
                                 .Where(news => news.Status == NewsStatus.Approved)
-                                .Select(news => new NewsArticle {
+                                .Select(news => new NewsArticle
+                                {
                                     Id = news.Id,
                                     ApplicationUserId = news.ApplicationUserId,
                                     Title = news.Title,

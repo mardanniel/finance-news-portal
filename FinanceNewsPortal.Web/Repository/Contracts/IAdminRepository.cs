@@ -7,5 +7,6 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
         Task<List<ApplicationUser>> GetAllUsers();
         Task<ApplicationUser> GetUserById(Guid userId);
         Task<bool> ToggleUserAccountStatus(Guid userId);
+        Task<List<ApplicationUser>> GetAllUsersExcept(Guid excludedUserId);
     }
 }

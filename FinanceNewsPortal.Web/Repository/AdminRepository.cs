@@ -21,6 +21,13 @@ namespace FinanceNewsPortal.Web.Repository
             return users;
         }
 
+        public async Task<List<ApplicationUser>> GetAllUsersExcept(Guid excludedUserId)
+        {
+            return await this._userManager.Users
+                .Where(u => u.Id != excludedUserId.ToString())
+                .ToListAsync();
+        }
+
         public async Task<ApplicationUser> GetUserById(Guid userId)
         {
             ApplicationUser user = await this._userManager.Users.FirstOrDefaultAsync(u => u.Id == userId.ToString());
