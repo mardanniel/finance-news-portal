@@ -1,0 +1,158 @@
+﻿using FinanceNewsPortal.Web.Enums;
+using FinanceNewsPortal.Web.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace FinanceNewsPortal.Web.Data
+{
+    public static class FinanceNewsPortalSeed
+    {
+        public static void InvokeIdentityRoleSeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = "705c9705-c8a8-44af-99a3-e33b13856856",
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new IdentityRole
+                {
+                    Id = "1a73053f-78c6-41c2-94fc-d897ccc8b33c",
+                    Name = "Registered",
+                    NormalizedName = "REGISTERED"
+                },
+                new IdentityRole
+                {
+                    Id = "08715f79-2c99-4a8b-935a-7ff2e37d1518",
+                    Name = "Moderator",
+                    NormalizedName = "MODERATOR"
+                }
+            );
+        }
+
+        public static void InvokeUsersSeed(this ModelBuilder modelBuilder)
+        {
+            string defaultPassword = "P@ssword123";
+
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser {
+                    Id = "147c0de8-847c-4466-ad04-1fc7b563e0c4",
+                    FirstName = "Admin",
+                    LastName = "One",
+                    DateOfBirth = DateTime.Now,
+                    Gender = 'M',
+                    Status = true,
+                    UserName = "adminone@email.com",
+                    Email = "adminone@email.com",
+                    NormalizedUserName = "adminone@email.com".ToUpper(),
+                    NormalizedEmail = "adminone@email.com".ToUpper(),
+                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
+                },
+                new ApplicationUser
+                {
+                    Id = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    FirstName = "Registered",
+                    LastName = "One",
+                    DateOfBirth = DateTime.Now,
+                    Gender = 'M',
+                    Status = true,
+                    UserName = "registeredone@email.com",
+                    Email = "registeredone@email.com",
+                    NormalizedUserName = "registeredone@email.com".ToUpper(),
+                    NormalizedEmail = "registeredone@email.com".ToUpper(),
+                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
+                },
+                new ApplicationUser
+                {
+                    Id = "8c0b055f-d24d-43be-b842-4393d0b68d61",
+                    FirstName = "Moderator",
+                    LastName = "One",
+                    DateOfBirth = DateTime.Now,
+                    Gender = 'M',
+                    Status = true,
+                    UserName = "moderatorone@email.com",
+                    Email = "moderatorone@email.com",
+                    NormalizedUserName = "moderatorone@email.com".ToUpper(),
+                    NormalizedEmail = "moderatorone@email.com".ToUpper(),
+                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
+                }
+            );
+        }
+
+        public static void InvokeIdentityUserRoleSeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string> {
+                    RoleId = "705c9705-c8a8-44af-99a3-e33b13856856",
+                    UserId = "147c0de8-847c-4466-ad04-1fc7b563e0c4"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "1a73053f-78c6-41c2-94fc-d897ccc8b33c",
+                    UserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "08715f79-2c99-4a8b-935a-7ff2e37d1518",
+                    UserId = "8c0b055f-d24d-43be-b842-4393d0b68d61"
+                }
+            );
+        }
+
+        public static void InvokeNewsArticleSeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<NewsArticle>().HasData(
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Approved News 1",
+                    Description = "Some Approved Description 1",
+                    Status = NewsStatus.Approved,
+                },
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Approved News 2",
+                    Description = "Some Approved Description 2",
+                    Status = NewsStatus.Approved,
+                },
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Pending News 1",
+                    Description = "Some Pending Description 1",
+                    Status = NewsStatus.Pending,
+                },
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Pending News 2",
+                    Description = "Some Pending Description 2",
+                    Status = NewsStatus.Pending,
+                },
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Rejected News 1",
+                    Description = "Some Rejected Description 1",
+                    Status = NewsStatus.Rejected,
+                },
+                new NewsArticle
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                    Title = "Some Rejected News 2",
+                    Description = "Some Rejected Description 2",
+                    Status = NewsStatus.Rejected,
+                });
+        }
+    }
+}

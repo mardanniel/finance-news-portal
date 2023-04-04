@@ -1,0 +1,47 @@
+@model IEnumerable<FinanceNewsPortal.Web.Models.NewsArticle>
+
+@{
+    ViewData["Title"] = "Created News";
+}
+
+<section>
+    <div class="d-flex">
+        <h3 class="fw-bolder">Created News</h3>
+        <hr class="flex-grow-1 mx-4">
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <a asp-controller="NewsArticles" asp-action="Create" class="mb-4 custom-button-link p-2 rounded">
+            <img src="~/img/add-news.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
+            <div class="text-center">Create</div>
+        </a>
+    </div>
+    <div class="d-flex justify-content-center align-content-center align-items-center flex-wrap">
+        @foreach (var item in Model)
+        {
+            <div class="custom-news-items m-2" style="width: 18rem;">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{@item.Id}">
+                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete" asp-route-newsArticle="@item.Id">Delete</a></li>
+                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit" asp-route-newsArticle="@item.Id">Update</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <img src="~/img/newspaper.png" class="img-fluid" alt="">
+                        <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="Details"
+                       asp-route-newsArticle="@item.Id">
+                            <h4>@item.Title</h4>
+                        </a>
+                        <div class="d-flex align-items-center">
+                            <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
+                            <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

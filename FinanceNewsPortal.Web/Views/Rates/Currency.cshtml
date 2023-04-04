@@ -1,0 +1,41 @@
+﻿@using System.Reflection;
+@model Currency
+
+@{
+    ViewData["Title"] = "Currency Rates";
+}
+
+<main class="d-flex flex-column justify-content-center align-items-start">
+    <div class="d-flex w-100">
+        <h3 class="fw-bolder">Currency</h3>
+        <hr class="flex-grow-1 mx-4">
+    </div>
+    <form method="GET" asp-action="Currency">
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <label for="currencyType" class="control-label fw-bold me-2">Base</label>
+            <select name="currencyType" class="form-control me-2" asp-items="ViewBag.CurrencyList"></select>
+            <input type="submit" value="Change" class="btn btn-primary" />
+        </div>
+    </form>
+    @{
+        Type modelType = Model.Rates.GetType();
+        PropertyInfo[] props = modelType.GetProperties();
+    }
+    <table class="table rounded">
+        <thead>
+            <tr>
+                <th>Currency Type</th>
+                <th>Currency Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PropertyInfo currencyProp in props)
+            {
+                <tr>
+                    <td>@currencyProp.Name</td>
+                    <td>@currencyProp.GetValue(Model.Rates, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

@@ -1,0 +1,43 @@
+﻿@model UpsertNewsArticleViewModel
+
+@{
+    ViewData["Title"] = "Create News";
+}
+
+<h1>Create</h1>
+
+<h4>NewsArticle</h4>
+<hr />
+<main>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" asp-for="Title"></label>
+            <div>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" asp-for="Context"></label>
+            <div>
+                <textarea asp-for="Context" class="form-control"></textarea>
+                <span asp-validation-for="Context" class="text-danger"></span>
+            </div>
+        </div>
+        <input type="Submit" class="btn btn-primary" value="Create" />
+    </form>
+</main>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        tinymce.init({
+            selector: 'textarea#Context'
+        });
+    </script>
+
+}
