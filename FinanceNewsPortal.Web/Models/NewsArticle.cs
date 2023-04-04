@@ -19,6 +19,8 @@ namespace FinanceNewsPortal.Web.Models
 
         public string ApplicationUserId { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [ValidateNever]
