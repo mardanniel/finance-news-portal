@@ -5,6 +5,7 @@
 }
 
 <section>
+    <a asp-action="GetAllCreated" class="btn btn-primary mb-4">Back to your News Articles</a>
     <h1>@Model.Title</h1>
     <p>By @($"{Model.Author.FirstName} {Model.Author.LastName}")</p>
     <p>Created at @Model.CreatedAt</p>

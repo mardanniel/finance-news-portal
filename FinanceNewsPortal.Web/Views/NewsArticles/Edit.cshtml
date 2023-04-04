@@ -4,23 +4,22 @@
     ViewData["Title"] = "Edit News";
 }
 
-<h1>Edit</h1>
-
-<h4>NewsArticle</h4>
-<hr />
-<main>
-    <form asp-action="Edit">
+<section>
+    <div>
+        <a class="btn btn-primary" asp-action="GetAllCreated">Back to your News Articles</a>
+    </div>
+    <form asp-action="Edit" class="my-4">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input asp-for="Id" value="@Model.Id" hidden />
-        <div class="form-outline mb-4">
-            <label class="form-label" asp-for="Title"></label>
+        <div class="form-outline mb-2">
+            <label class="form-label custom-form-label" asp-for="Title">Update Title</label>
             <div>
                 <input asp-for="Title" class="form-control" value="@Model.Title" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
         <div class="form-outline mb-4">
-            <label class="form-label" asp-for="Context"></label>
+            <label class="form-label custom-form-label" asp-for="Context">Update Context</label>
             <div>
                 <textarea asp-for="Context" class="form-control">@Model.Context</textarea>
                 <span asp-validation-for="Context" class="text-danger"></span>
@@ -28,11 +27,7 @@
         </div>
         <input type="Submit" class="btn btn-primary" value="Update" />
     </form>
-</main>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

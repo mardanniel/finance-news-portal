@@ -6,7 +6,7 @@
 
 <section>
     <div class="d-flex">
-        <h3 class="fw-bolder">Created News</h3>
+        <h3 class="fw-bolder">My News Articles</h3>
         <hr class="flex-grow-1 mx-4">
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center">
@@ -20,21 +20,24 @@
         {
             <div class="custom-news-items m-2 rounded-3" style="width: 18rem;">
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}" data-bs-toggle="dropdown" aria-expanded="false">
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{@item.Id}">
-                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete" asp-route-newsArticle="@item.Id">Delete</a></li>
-                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit" asp-route-newsArticle="@item.Id">Update</a></li>
+                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
+                            asp-route-newsArticle="@item.Id">Delete</a></li>
+                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit"
+                            asp-route-newsArticle="@item.Id">Update</a></li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <img src="~/img/newspaper.png" class="img-fluid" alt="">
                         <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="Details"
-                       asp-route-newsArticle="@item.Id">
+                        asp-route-newsArticle="@item.Id">
                             <h4>@item.Title</h4>
                         </a>
+                        <span
+                            class='badge mb-4 @(item.Status == NewsStatus.Approved ? "bg-success" : item.Status == NewsStatus.Pending ? "bg-warning" : "bg-danger")'>@item.Status</span>
                         <div class="d-flex align-items-center">
                             <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
                             <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>

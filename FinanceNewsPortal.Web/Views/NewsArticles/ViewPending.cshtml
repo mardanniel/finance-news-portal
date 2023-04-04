@@ -1,0 +1,20 @@
+@model FinanceNewsPortal.Web.Models.NewsArticle
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section>
+    <a asp-action="GetAllPending" class="btn btn-primary mb-4">Back to your News Articles</a>
+    <h1>@Model.Title</h1>
+    <p>By @($"{Model.Author.FirstName} {Model.Author.LastName}")</p>
+    <p>Created at @Model.CreatedAt</p>
+    <hr />
+    <div class="container my-4">
+        @Html.Raw(Model.Description)
+    </div>
+    <div class="text-center">
+        <a asp-controller="NewsArticles" asp-action="ApproveStatus" asp-route-newsArticleId="@Model.Id" class="btn btn-success mb-4">Approve</a>
+        <a asp-controller="NewsArticles" asp-action="DeclineStatus" asp-route-newsArticleId="@Model.Id" class="btn btn-danger mb-4">Decline</a>
+    </div>
+</section>
