@@ -1,4 +1,4 @@
-﻿@model Currency
+﻿@model HomepageViewModel
 
 @{
     ViewData["Title"] = "Home";
@@ -21,23 +21,23 @@
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>EUR</dd>
-                <dt>@Model.Rates.EUR</dt>
+                <dt>@Model.Currency.Rates.EUR</dt>
             </div>
         </div>
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>JPY</dd>
-                <dt>@Model.Rates.JPY</dt>
+                <dt>@Model.Currency.Rates.JPY</dt>
             </div>
         </div>
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>USD</dd>
-                <dt>@Model.Rates.USD</dt>
+                <dt>@Model.Currency.Rates.USD</dt>
             </div>
         </div>
     </div>
-    <a class="text-center custom-link" href="">View Currency</a>
+    <a class="text-center custom-link" asp-controller="Rates" asp-action="Currency">View Currency</a>
 </section>
 <section class="mt-5 mb-4">
     <div class="d-flex">
@@ -48,70 +48,43 @@
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>EUR</dd>
-                <dt>@Model.Rates.EUR</dt>
+                <dt>@Model.Currency.Rates.EUR</dt>
             </div>
         </div>
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>JPY</dd>
-                <dt>@Model.Rates.JPY</dt>
+                <dt>@Model.Currency.Rates.JPY</dt>
             </div>
         </div>
         <div class="flex-fill card ms-2">
             <div class="card-body">
                 <dd>USD</dd>
-                <dt>@Model.Rates.USD</dt>
+                <dt>@Model.Currency.Rates.USD</dt>
             </div>
         </div>
     </div>
-    <a class="text-center custom-link" href="">View Stocks</a>
+    <a class="text-center custom-link" asp-controller="Rates" asp-action="Stocks">View Stocks</a>
 </section>
 <section class="mt-5 mb-4">
     <div class="d-flex">
         <h3 class="fw-bolder">Latest Finance News</h3>
         <hr class="flex-grow-1 mx-4">
     </div>
-    <div class="d-flex justify-content-center align-content-center align-items-center flex-wrap my-4">
-        <a href="#" class="card m-2 custom-component-link" style="width: 18rem;">
-            <div class="card-body">
-                <img src="~/img/newspaper.png" class="img-fluid" alt="">
-                <h4>Some Long Title One Two Three</h4>
-                <div class="d-flex align-items-center">
-                    <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
-                    <div class="ms-2">By Author Name</div>
+    <div class="d-flex justify-content-center align-content-start align-items-start flex-wrap my-4">
+        @foreach (var news in Model.LatestNews)
+        {
+            <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@news.Id" class="flex-fill card m-2 custom-component-link" style="width: 18rem;">
+                <div class="card-body">
+                    <img src="~/img/newspaper.png" class="img-fluid" alt="">
+                    <h4>@news.Title</h4>
+                    <div class="d-flex align-items-center">
+                        <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
+                        <div class="ms-2">By @($"{news.Author.FirstName} {news.Author.LastName}")</div>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a href="#" class="card m-2 custom-component-link" style="width: 18rem;">
-            <div class="card-body">
-                <img src="~/img/newspaper.png" class="img-fluid" alt="">
-                <h4>Some Long Title One Two Three</h4>
-                <div class="d-flex align-items-center">
-                    <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
-                    <div class="ms-2">By Author Name</div>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="card m-2 custom-component-link" style="width: 18rem;">
-            <div class="card-body">
-                <img src="~/img/newspaper.png" class="img-fluid" alt="">
-                <h4>Some Long Title One Two Three</h4>
-                <div class="d-flex align-items-center">
-                    <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
-                    <div class="ms-2">By Author Name</div>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="card m-2 custom-component-link" style="width: 18rem;">
-            <div class="card-body">
-                <img src="~/img/newspaper.png" class="img-fluid" alt="">
-                <h4>Some Long Title One Two Three</h4>
-                <div class="d-flex align-items-center">
-                    <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
-                    <div class="ms-2">By Author Name</div>
-                </div>
-            </div>
-        </a>
+            </a>
+        }
     </div>
-    <a class="text-center custom-link" href="">View News</a>
+    <a class="text-center custom-link" asp-controller="NewsArticles" asp-action="Index">View News</a>
 </section>

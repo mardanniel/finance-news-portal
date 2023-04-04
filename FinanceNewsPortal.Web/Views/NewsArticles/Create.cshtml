@@ -4,13 +4,13 @@
     ViewData["Title"] = "Create News";
 }
 
-<h1>Create</h1>
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
 
-<h4>NewsArticle</h4>
-<hr />
-<main>
+<section>
     <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-outline mb-4">
             <label class="form-label" asp-for="Title"></label>
             <div>
@@ -27,10 +27,7 @@
         </div>
         <input type="Submit" class="btn btn-primary" value="Create" />
     </form>
-</main>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -39,5 +36,4 @@
             selector: 'textarea#Context'
         });
     </script>
-
 }
