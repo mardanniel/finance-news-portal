@@ -80,6 +80,7 @@ namespace FinanceNewsPortal.Web.Repository
                                 .NewsArticle
                                 .Include(n => n.Author)
                                 .Where(news => news.Status == NewsStatus.Approved)
+                                .OrderByDescending(n => n.CreatedAt)
                                 .Select(news => new NewsArticle
                                 {
                                     Id = news.Id,
