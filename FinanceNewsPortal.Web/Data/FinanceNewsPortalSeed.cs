@@ -104,55 +104,45 @@ namespace FinanceNewsPortal.Web.Data
 
         public static void InvokeNewsArticleSeed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<NewsArticle>().HasData(
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Approved News 1",
-                    Description = "Some Approved Description 1",
-                    Status = NewsStatus.Approved,
-                },
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Approved News 2",
-                    Description = "Some Approved Description 2",
-                    Status = NewsStatus.Approved,
-                },
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Pending News 1",
-                    Description = "Some Pending Description 1",
-                    Status = NewsStatus.Pending,
-                },
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Pending News 2",
-                    Description = "Some Pending Description 2",
-                    Status = NewsStatus.Pending,
-                },
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Rejected News 1",
-                    Description = "Some Rejected Description 1",
-                    Status = NewsStatus.Rejected,
-                },
-                new NewsArticle
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    Title = "Some Rejected News 2",
-                    Description = "Some Rejected Description 2",
-                    Status = NewsStatus.Rejected,
-                });
+            List<NewsArticle> articles = new List<NewsArticle>();
+
+            for(int i = 1; i <= 10; i++)
+            {
+                articles.Add(
+                    new NewsArticle
+                    {
+                        Id = Guid.NewGuid(),
+                        ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                        Title = $"Some Approved News {i}",
+                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                        Status = NewsStatus.Approved,
+                    });
+
+                articles.Add(
+                    new NewsArticle
+                    {
+                        Id = Guid.NewGuid(),
+                        ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                        Title = $"Some Rejected News {i}",
+                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                        Status = NewsStatus.Rejected,
+                    });
+
+                articles.Add(
+                    new NewsArticle
+                    {
+                        Id = Guid.NewGuid(),
+                        ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                        Title = $"Some Pending News {i}",
+                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                        Status = NewsStatus.Pending,
+                    });
+            }
+
+            foreach(var article in articles)
+            {
+                modelBuilder.Entity<NewsArticle>().HasData( article );
+            }
         }
     }
 }
