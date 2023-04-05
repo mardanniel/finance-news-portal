@@ -37,5 +37,12 @@ namespace FinanceNewsPortal.Web.Controllers
 
             return View(currency);
         }
+
+        public async Task<IActionResult> Stocks()
+        {
+            Stock stocks = await this._ratesRepository.GetStockExchangeRates();
+
+            return View(stocks);
+        }
     }
 }

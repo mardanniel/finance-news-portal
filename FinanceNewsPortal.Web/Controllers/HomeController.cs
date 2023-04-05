@@ -22,7 +22,8 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             HomepageViewModel homepageViewModel = new HomepageViewModel {
                 Currency = await this._ratesRepository.GetCurrencyExchangeRates(),
-                LatestNews = await this._newsArticlesRepository.GetLatestNewsArticles(4)
+                LatestNews = await this._newsArticlesRepository.GetLatestNewsArticles(4),
+                Stock = await this._ratesRepository.GetStockExchangeRates(),
             };
 
             return View(homepageViewModel);
