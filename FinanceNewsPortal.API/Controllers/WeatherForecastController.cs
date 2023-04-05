@@ -1,3 +1,4 @@
+using FinanceNewsPortal.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceNewsPortal.API.Controllers
