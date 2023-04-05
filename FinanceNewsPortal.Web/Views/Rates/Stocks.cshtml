@@ -1,0 +1,32 @@
+﻿@using System.Reflection;
+@model Stock
+
+@{
+    ViewData["Title"] = "Stocks";
+}
+
+<section class="d-flex flex-column justify-content-center align-items-start">
+    <div class="d-flex w-100">
+        <h3 class="fw-bolder">Stocks</h3>
+        <hr class="flex-grow-1 mx-4">
+    </div>
+    <table class="table rounded">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stockVal in Model.StockValues)
+            {
+                <tr>
+                    <td>@stockVal.Name</td>
+                    <td>@stockVal.Value</td>
+                    <td>@stockVal.Percentage</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

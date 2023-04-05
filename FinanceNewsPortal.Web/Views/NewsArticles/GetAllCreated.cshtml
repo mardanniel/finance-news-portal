@@ -19,16 +19,23 @@
         @foreach (var item in Model)
         {
             <div class="custom-news-items m-2 rounded-3" style="width: 18rem;">
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}" data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{@item.Id}">
-                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
-                            asp-route-newsArticle="@item.Id">Delete</a></li>
-                        <li><a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit"
-                            asp-route-newsArticle="@item.Id">Update</a></li>
-                    </ul>
-                </div>
+                @if(item.Status != NewsStatus.Approved)
+                {
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{@item.Id}">
+                            <li>
+                                <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
+                           asp-route-newsArticle="@item.Id">Delete</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit"
+                           asp-route-newsArticle="@item.Id">Update</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
                 <div class="card">
                     <div class="card-body">
                         <img src="~/img/newspaper.png" class="img-fluid" alt="">

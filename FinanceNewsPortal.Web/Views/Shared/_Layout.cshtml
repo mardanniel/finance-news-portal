@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinanceNewsPortal.Web/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Rates" asp-action="Currency">Currency</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Stocks</a>
+                            <a class="nav-link" asp-area="" asp-controller="Rates" asp-action="Stocks">Stocks</a>
                         </li>
                     </ul>
                     @if (_signInManager.IsSignedIn(User))
