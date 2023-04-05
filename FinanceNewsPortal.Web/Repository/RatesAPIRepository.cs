@@ -33,5 +33,25 @@ namespace FinanceNewsPortal.Web.Repository
                 Rates = new ExchangeRates()
             };
         }
+
+        public async Task<Stock> GetStockExchangeRates()
+        {
+            // Dummy data, not final
+
+            Stock stock = new Stock
+            {
+                StockValues = new List<StockValue>
+                {
+                    new StockValue { Name = "S&P 500", Value = 4100.60, Percentage = -0.58 },
+                    new StockValue { Name = "Nasdaq", Value = 12126.33, Percentage = -0.52 },
+                    new StockValue { Name = "Crude Oil", Value = 81.00, Percentage = 0.36 },
+                    new StockValue { Name = "US 10 Yr3", Value = 3.34, Percentage = -0.05 },
+                    new StockValue { Name = "Euro", Value = 1.10, Percentage = 0.11 },
+                }
+            };
+
+            return stock;
+
+        }
     }
 }
