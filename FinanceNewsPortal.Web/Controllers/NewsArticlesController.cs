@@ -45,7 +45,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
                 await this._newsArticlesRepository.CreateNewsArticle(newsArticle);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("GetAllCreated");
             }
 
             return View(newsArticle);
@@ -74,7 +74,7 @@ namespace FinanceNewsPortal.Web.Controllers
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
                 newsArticle.Author = Guid.Parse(user.Id);
                 await this._newsArticlesRepository.UpdateNewsArticle((Guid)newsArticle.Id, newsArticle);
-                return RedirectToAction("Index");
+                return RedirectToAction("GetAllCreated");
             }
 
             return View(newsArticle);
