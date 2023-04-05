@@ -7,5 +7,7 @@ namespace FinanceNewsPortal.Web.ViewModels
         public Currency Currency { get; set; }
         
         public List<NewsArticle> LatestNews { get; set; }
+
+        public Stock Stock { get; set; }
     }
 }
