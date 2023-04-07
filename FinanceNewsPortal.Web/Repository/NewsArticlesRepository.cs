@@ -89,6 +89,7 @@ namespace FinanceNewsPortal.Web.Repository
                     ApplicationUserId = news.ApplicationUserId,
                     Title = news.Title,
                     Author = news.Author,
+                    ImageFilePath = news.ImageFilePath
                 })
                 .ToListAsync();
         }

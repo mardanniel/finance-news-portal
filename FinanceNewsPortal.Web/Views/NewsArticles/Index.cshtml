@@ -12,7 +12,8 @@
     <div class="d-flex justify-content-center align-content-center flex-wrap">
         @foreach (var item in Model)
         {
-            <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@item.Id" class="flex-grow card m-2 custom-component-link" style="width: 18rem;">
+            <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@item.Id"
+                class="flex-grow card m-2 custom-component-link" style="width: 18rem;">
                 <div class="card-body">
                     <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
                         class="img-fluid" alt="">
