@@ -6,10 +6,10 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
 {
     public interface INewsArticlesRepository
     {
-        Task<List<NewsArticle>> GetNewsArticles();
+        Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize);
         Task<NewsArticle> GetNewsArticleById(Guid newsArticleId);
-        Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId);
-        Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus);
+        Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize);
+        Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize);
         Task CreateNewsArticle(NewsArticle newsArticle);
         Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel);
         Task DeleteNewsArticle(Guid newsArticleId);
