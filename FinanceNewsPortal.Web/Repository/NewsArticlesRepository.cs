@@ -3,6 +3,7 @@ using FinanceNewsPortal.Web.Enums;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
 using FinanceNewsPortal.Web.ViewModels;
+using FinanceNewsPortal.Web.Helper;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceNewsPortal.Web.Repository
@@ -55,14 +56,13 @@ namespace FinanceNewsPortal.Web.Repository
             return news;
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus)
+        public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize)
         {
-            List<NewsArticle> newsArticles = await this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
-                .Where(n => n.Status == newsStatus && n.ApplicationUserId != excludeUserId.ToString())
-                .ToListAsync();
+                .Where(n => n.Status == newsStatus && n.ApplicationUserId != excludeUserId.ToString());
 
-            return newsArticles;
+            return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
 
         public async Task<NewsArticle> GetNewsArticleImageFilePathById(Guid newsArticleId, Guid userId)
@@ -77,9 +77,9 @@ namespace FinanceNewsPortal.Web.Repository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticles()
+        public async Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize)
         {
-            return await this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Where(news => news.Status == NewsStatus.Approved)
                 .OrderByDescending(n => n.CreatedAt)
@@ -90,13 +90,14 @@ namespace FinanceNewsPortal.Web.Repository
                     Title = news.Title,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath
-                })
-                .ToListAsync();
+                });
+
+            return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId)
+        public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize)
         {
-            return await this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Where(news => news.ApplicationUserId == userId.ToString())
                 .Select(news => new NewsArticle
@@ -107,8 +108,9 @@ namespace FinanceNewsPortal.Web.Repository
                     Status = news.Status,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath,
-                })
-                .ToListAsync();
+                });
+
+            return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
 
         public async Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel)
@@ -121,7 +123,7 @@ namespace FinanceNewsPortal.Web.Repository
                 {
                     newsArticleToBeUpdated.ImageFilePath = newsArticleViewModel.ImageFilePath;
                 }
-                
+
                 newsArticleToBeUpdated.Title = newsArticleViewModel.Title;
                 newsArticleToBeUpdated.Description = newsArticleViewModel.Context;
 

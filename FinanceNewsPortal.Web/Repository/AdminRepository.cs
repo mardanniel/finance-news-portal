@@ -1,5 +1,7 @@
-﻿using FinanceNewsPortal.Web.Models;
+﻿using FinanceNewsPortal.Web.Helper;
+using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
+using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,11 +23,25 @@ namespace FinanceNewsPortal.Web.Repository
             return users;
         }
 
-        public async Task<List<ApplicationUser>> GetAllUsersExcept(Guid excludedUserId)
+        public async Task<List<UserWithRoleViewModel>> GetAllUsersExcept(Guid excludedUserId, int pageNumber, int pageSize)
         {
-            return await this._userManager.Users
-                .Where(u => u.Id != excludedUserId.ToString())
-                .ToListAsync();
+            // TODO: Change implementation, still causes error
+            // https://go.microsoft.com/fwlink/?linkid=2097913
+
+            var usersQuery = this._userManager.Users
+                .Select(u => new UserWithRoleViewModel
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    Gender = u.Gender,
+                    Status = u.Status,
+                    Role = string.Join(",", this._userManager.GetRolesAsync(u).Result.ToList())
+                })
+                .Where(u => u.Id != excludedUserId.ToString());
+
+            return await PaginatedList<UserWithRoleViewModel>.CreateAsync(usersQuery, pageNumber, pageSize);
         }
 
         public async Task<ApplicationUser> GetUserById(Guid userId)
