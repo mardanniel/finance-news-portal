@@ -14,8 +14,10 @@ namespace FinanceNewsPortal.Web.Models
 
         [Required]
         public string Description { get; set; }
-        
+
         public NewsStatus Status { get; set; }
+
+        public string? ImageFilePath { get; set; }
 
         public string ApplicationUserId { get; set; }
 
