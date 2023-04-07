@@ -16,17 +16,9 @@ namespace FinanceNewsPortal.Web.Repository
             this._financeNewsPortalDbcontext = financeNewsPortalDbContext;
         }
 
-        public async Task CreateNewsArticle(UpsertNewsArticleViewModel newsArticleViewModel)
+        public async Task CreateNewsArticle(NewsArticle newsArticle)
         {
-            NewsArticle news = new NewsArticle
-            {
-                ApplicationUserId = newsArticleViewModel.Author.ToString(),
-                Title = newsArticleViewModel.Title,
-                Description = newsArticleViewModel.Context,
-                Status = NewsStatus.Pending,
-            };
-
-            await this._financeNewsPortalDbcontext.AddAsync<NewsArticle>(news);
+            await this._financeNewsPortalDbcontext.AddAsync<NewsArticle>(newsArticle);
 
             await this._financeNewsPortalDbcontext.SaveChangesAsync();
         }
@@ -65,8 +57,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus)
         {
-            List<NewsArticle> newsArticles = await this._financeNewsPortalDbcontext
-                .NewsArticle
+            List<NewsArticle> newsArticles = await this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Where(n => n.Status == newsStatus && n.ApplicationUserId != excludeUserId.ToString())
                 .ToListAsync();
@@ -74,38 +65,49 @@ namespace FinanceNewsPortal.Web.Repository
             return newsArticles;
         }
 
+        public async Task<NewsArticle> GetNewsArticleImageFilePathById(Guid newsArticleId, Guid userId)
+        {
+            return await this._financeNewsPortalDbcontext.NewsArticle
+                .Where(n => n.Id == newsArticleId)
+                .Select(n => new NewsArticle
+                {
+                    Id = n.Id,
+                    ImageFilePath = n.ImageFilePath
+                })
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<List<NewsArticle>> GetNewsArticles()
         {
-            return await this._financeNewsPortalDbcontext
-                                .NewsArticle
-                                .Include(n => n.Author)
-                                .Where(news => news.Status == NewsStatus.Approved)
-                                .OrderByDescending(n => n.CreatedAt)
-                                .Select(news => new NewsArticle
-                                {
-                                    Id = news.Id,
-                                    ApplicationUserId = news.ApplicationUserId,
-                                    Title = news.Title,
-                                    Author = news.Author,
-                                })
-                                .ToListAsync();
+            return await this._financeNewsPortalDbcontext.NewsArticle
+                .Include(n => n.Author)
+                .Where(news => news.Status == NewsStatus.Approved)
+                .OrderByDescending(n => n.CreatedAt)
+                .Select(news => new NewsArticle
+                {
+                    Id = news.Id,
+                    ApplicationUserId = news.ApplicationUserId,
+                    Title = news.Title,
+                    Author = news.Author,
+                })
+                .ToListAsync();
         }
 
         public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId)
         {
-            return await this._financeNewsPortalDbcontext
-                                .NewsArticle
-                                .Include(n => n.Author)
-                                .Where(news => news.ApplicationUserId == userId.ToString())
-                                .Select(news => new NewsArticle
-                                {
-                                    Id = news.Id,
-                                    ApplicationUserId = news.ApplicationUserId,
-                                    Title = news.Title,
-                                    Status = news.Status,
-                                    Author = news.Author
-                                })
-                                .ToListAsync();
+            return await this._financeNewsPortalDbcontext.NewsArticle
+                .Include(n => n.Author)
+                .Where(news => news.ApplicationUserId == userId.ToString())
+                .Select(news => new NewsArticle
+                {
+                    Id = news.Id,
+                    ApplicationUserId = news.ApplicationUserId,
+                    Title = news.Title,
+                    Status = news.Status,
+                    Author = news.Author,
+                    ImageFilePath = news.ImageFilePath,
+                })
+                .ToListAsync();
         }
 
         public async Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel)
@@ -114,6 +116,11 @@ namespace FinanceNewsPortal.Web.Repository
 
             if (newsArticleToBeUpdated != null)
             {
+                if (newsArticleViewModel.ImageFilePath != null)
+                {
+                    newsArticleToBeUpdated.ImageFilePath = newsArticleViewModel.ImageFilePath;
+                }
+                
                 newsArticleToBeUpdated.Title = newsArticleViewModel.Title;
                 newsArticleToBeUpdated.Description = newsArticleViewModel.Context;
 
