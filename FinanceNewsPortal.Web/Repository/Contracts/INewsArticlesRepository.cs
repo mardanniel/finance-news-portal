@@ -10,10 +10,11 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
         Task<NewsArticle> GetNewsArticleById(Guid newsArticleId);
         Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId);
         Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus);
-        Task CreateNewsArticle(UpsertNewsArticleViewModel newsArticleViewModel);
+        Task CreateNewsArticle(NewsArticle newsArticle);
         Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel);
         Task DeleteNewsArticle(Guid newsArticleId);
         Task UpdateNewsArticleStatus(Guid newsArticleId, NewsStatus status);
         Task<List<NewsArticle>> GetLatestNewsArticles(int count);
+        Task<NewsArticle> GetNewsArticleImageFilePathById(Guid newsArticleId, Guid userId);
     }
 }

@@ -1,4 +1,5 @@
 using FinanceNewsPortal.Web.Data;
+using FinanceNewsPortal.Web.Helper;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository;
 using FinanceNewsPortal.Web.Repository.Contracts;
@@ -16,6 +17,7 @@ builder.Services.AddScoped<INewsArticlesRepository, NewsArticlesRepository>();
 builder.Services.AddScoped<IRatesRepository, RatesAPIRepository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<FileUpload>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<FinanceNewsPortalDbContext>();

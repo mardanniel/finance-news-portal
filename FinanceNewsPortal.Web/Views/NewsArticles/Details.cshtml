@@ -10,6 +10,8 @@
     <p>By @($"{Model.Author.FirstName} {Model.Author.LastName}")</p>
     <p>Created at @Model.CreatedAt</p>
     <hr />
+    <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
+        class="img-fluid" alt="">
     <div class="container my-4">
         @Html.Raw(Model.Description)
     </div>
