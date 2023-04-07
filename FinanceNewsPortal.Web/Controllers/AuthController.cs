@@ -1,4 +1,5 @@
 ﻿using FinanceNewsPortal.Web.Enums;
+using FinanceNewsPortal.Web.Helper;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -14,14 +15,17 @@ namespace FinanceNewsPortal.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly FileUpload _fileUpload;
 
         public AuthController(UserManager<ApplicationUser> userManager,
                                 SignInManager<ApplicationUser> signInManager,
-                                RoleManager<IdentityRole> roleManager)
+                                RoleManager<IdentityRole> roleManager,
+                                FileUpload fileUpload)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._roleManager = roleManager;
+            this._fileUpload = fileUpload;
         }
 
         [HttpGet]
@@ -38,7 +42,7 @@ namespace FinanceNewsPortal.Web.Controllers
             {
                 ApplicationUser user = await this._userManager.Users.FirstOrDefaultAsync(u => u.Email == loginUser.Username);
 
-                if(user != null)
+                if (user != null)
                 {
                     if (user.Status == Convert.ToBoolean(UserAccountStatus.Disabled))
                     {
@@ -133,29 +137,100 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateUserInfo()
+        public async Task<IActionResult> EditUserInfo()
         {
-            return View();
+            ApplicationUser user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
+
+            UpdateUserInfoViewModel userInfo = new UpdateUserInfoViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                ImageFilePath = user.ImageFilePath
+            };
+
+            return View(userInfo);
         }
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateUserInfo(UpdateUserInfoViewModel userInfo)
+        public async Task<IActionResult> EditUserInfo(UpdateUserInfoViewModel userInfo)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(userInfo);
+            }
+
+            ApplicationUser user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            user.FirstName = userInfo.FirstName;
+            user.LastName = userInfo.LastName;
+
+            if (userInfo.Image != null)
+            {
+                // Delete image file
+                this._fileUpload.DeleteFile(user.ImageFilePath, "profile-image");
+
+                // Upload file and take generated filename
+                user.ImageFilePath = this._fileUpload.UploadFile(userInfo.Image, user.Id, "profile-image");
+            }
+
+            var changeUserInfoResult = await this._userManager.UpdateAsync(user);
+
+            if (!changeUserInfoResult.Succeeded)
+            {
+                foreach (var error in changeUserInfoResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return View(userInfo);
+            }
+
+            return RedirectToAction("Profile", "User");
         }
 
         [HttpGet]
-        public async Task<IActionResult> ChangePassword()
+        public async Task<IActionResult> EditPassword()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePassword(UpdatePasswordViewModel userPassword)
+        public async Task<IActionResult> EditPassword(UpdatePasswordViewModel userPassword)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            ApplicationUser user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            var changePasswordResult = await this._userManager.ChangePasswordAsync(user, userPassword.CurrentPassword, userPassword.NewPassword);
+
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return View();
+            }
+
+            await this._signInManager.RefreshSignInAsync(user);
+
+            return RedirectToAction("Profile", "User");
         }
     }
 }
