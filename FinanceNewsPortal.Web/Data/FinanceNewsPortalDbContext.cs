@@ -25,7 +25,7 @@ namespace FinanceNewsPortal.Web.Data
             //var password = _appConfig.GetConnectionString("Password");
             //string connectionString = $"Server={server};Database={db};User Id={userName};Password={password};MultipleActiveResultSets=true";
 
-            string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=FinanceDBTest;Integrated Security=True";
+            string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=FinanceDBTest;Integrated Security=True;MultipleActiveResultSets=true;";
             optionsBuilder
                 .UseSqlServer(connectionString)
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
