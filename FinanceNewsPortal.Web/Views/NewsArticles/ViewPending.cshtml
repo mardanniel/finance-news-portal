@@ -10,11 +10,15 @@
     <p>By @($"{Model.Author.FirstName} {Model.Author.LastName}")</p>
     <p>Created at @Model.CreatedAt</p>
     <hr />
+    <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
+        class="img-fluid" alt="">
     <div class="container my-4">
         @Html.Raw(Model.Description)
     </div>
     <div class="text-center">
-        <a asp-controller="NewsArticles" asp-action="ApproveStatus" asp-route-newsArticleId="@Model.Id" class="btn btn-success mb-4">Approve</a>
-        <a asp-controller="NewsArticles" asp-action="DeclineStatus" asp-route-newsArticleId="@Model.Id" class="btn btn-danger mb-4">Decline</a>
+        <a asp-controller="NewsArticles" asp-action="ApproveStatus" asp-route-newsArticleId="@Model.Id"
+            class="btn btn-success mb-4">Approve</a>
+        <a asp-controller="NewsArticles" asp-action="DeclineStatus" asp-route-newsArticleId="@Model.Id"
+            class="btn btn-danger mb-4">Decline</a>
     </div>
 </section>

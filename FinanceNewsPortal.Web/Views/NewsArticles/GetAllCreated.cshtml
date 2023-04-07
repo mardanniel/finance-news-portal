@@ -38,7 +38,7 @@
                 }
                 <div class="card">
                     <div class="card-body">
-                        <img src="~/img/newspaper.png" class="img-fluid" alt="">
+                        <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")' class="img-fluid" alt="">
                         <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="Details"
                         asp-route-newsArticle="@item.Id">
                             <h4>@item.Title</h4>

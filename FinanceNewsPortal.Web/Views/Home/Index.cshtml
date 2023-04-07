@@ -67,7 +67,7 @@
         {
             <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@news.Id" class="flex-fill card m-2 custom-component-link" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="~/img/newspaper.png" class="img-fluid" alt="">
+                    <img src='~/@(news.ImageFilePath != null ? $"uploads/news-image/{news.ImageFilePath}" : "img/newspaper.png")' class="img-fluid" alt="">
                     <h4>@news.Title</h4>
                     <div class="d-flex align-items-center">
                         <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
