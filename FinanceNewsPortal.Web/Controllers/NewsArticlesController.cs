@@ -4,6 +4,7 @@ using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.ViewModels;
 using FinanceNewsPortal.Web.Enums;
 using Microsoft.AspNetCore.Authorization;
+using FinanceNewsPortal.Web.Helper;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
@@ -12,11 +13,15 @@ namespace FinanceNewsPortal.Web.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly INewsArticlesRepository _newsArticlesRepository;
+        private readonly FileUpload _fileUpload;
 
-        public NewsArticlesController(IUserRepository userRepository, INewsArticlesRepository newsArticlesRepository)
+        public NewsArticlesController(IUserRepository userRepository,
+                                        INewsArticlesRepository newsArticlesRepository,
+                                        FileUpload fileUpload)
         {
             this._newsArticlesRepository = newsArticlesRepository;
             this._userRepository = userRepository;
+            this._fileUpload = fileUpload;
         }
 
         [AllowAnonymous]
@@ -41,9 +46,18 @@ namespace FinanceNewsPortal.Web.Controllers
             {
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
 
-                newsArticle.Author = Guid.Parse(user.Id);
+                string imageName = this._fileUpload.UploadFile(newsArticle.Image, user.Id, "news-image");
 
-                await this._newsArticlesRepository.CreateNewsArticle(newsArticle);
+                NewsArticle news = new NewsArticle
+                {
+                    ApplicationUserId = user.Id,
+                    Title = newsArticle.Title,
+                    Description = newsArticle.Context,
+                    Status = NewsStatus.Pending,
+                    ImageFilePath = imageName
+                };
+
+                await this._newsArticlesRepository.CreateNewsArticle(news);
 
                 return RedirectToAction("GetAllCreated");
             }
@@ -60,7 +74,8 @@ namespace FinanceNewsPortal.Web.Controllers
             {
                 Id = news.Id,
                 Title = news.Title,
-                Context = news.Description
+                Context = news.Description,
+                ImageFilePath = news.ImageFilePath,
             };
 
             return View(newsArticleVM);
@@ -72,6 +87,20 @@ namespace FinanceNewsPortal.Web.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
+
+                if (newsArticle.Image != null)
+                {
+                    // Find the news article with the image file path
+                    NewsArticle newsArticleWithImageFilePath = await this._newsArticlesRepository
+                        .GetNewsArticleImageFilePathById((Guid)newsArticle.Id, Guid.Parse(user.Id));
+
+                    // Delete image file
+                    this._fileUpload.DeleteFile(newsArticleWithImageFilePath.ImageFilePath, "news-image");
+
+                    // Upload file and take generated filename
+                    newsArticle.ImageFilePath = this._fileUpload.UploadFile(newsArticle.Image, user.Id, "news-image");
+                }
+
                 newsArticle.Author = Guid.Parse(user.Id);
                 await this._newsArticlesRepository.UpdateNewsArticle((Guid)newsArticle.Id, newsArticle);
                 return RedirectToAction("GetAllCreated");
@@ -100,7 +129,7 @@ namespace FinanceNewsPortal.Web.Controllers
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             await this._newsArticlesRepository.DeleteNewsArticle(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllCreated");
         }
 
         [Authorize(Roles = "Moderator, Administrator")]

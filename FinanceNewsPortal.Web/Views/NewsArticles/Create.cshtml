@@ -8,8 +8,18 @@
     <div>
         <a class="btn btn-primary" asp-action="GetAllCreated">Back to your News Articles</a>
     </div>
-    <form asp-action="Create" class="my-4">
+    <form enctype="multipart/form-data" asp-action="Create" class="my-4">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3 d-flex flex-column align-items-center border rounded">
+            <div class="my-2">Selected image will show up here</div>
+            <img class="my-2 img-thumbnail custom-image-thumbnail" id="output" src="~/img/newspaper.png" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Image" class="form-label custom-form-label">Add Image</label>
+            <input class="form-control" asp-for="Image" onchange="loadFile(event)"
+                accept="image/png, image/jpg, image/jpeg">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
         <div class="form-outline mb-2">
             <label class="form-label custom-form-label" asp-for="Title">Add Title</label>
             <div>
@@ -37,4 +47,5 @@
             selector: 'textarea#Context'
         } );
     </script>
+    <script src="~/js/imageLoader.js"></script>
 }
