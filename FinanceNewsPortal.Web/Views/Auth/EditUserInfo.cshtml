@@ -1,0 +1,35 @@
+@model UpdateUserInfoViewModel
+
+@{
+    ViewData["Title"] = "Edit User Information";
+}
+
+<section class="form-section">
+    <a asp-controller="User" asp-action="Profile" class="btn btn-primary mb-4">Back to Profile</a>
+    <form enctype="multipart/form-data" asp-controller="Auth" asp-action="EditUserInfo">
+        <h1 class="h3 mb-3 fw-normal">Edit User Information</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
+        <div class="mb-3 d-flex flex-column align-items-center">
+            <div class="my-2">Selected profile image will show up here</div>
+            <img class="my-2 img-thumbnail custom-image-thumbnail" id="output" src="~/img/user.png" />
+        </div>
+        <div class="mb-3">
+            <input class="form-control" asp-for="Image" onchange="loadFile(event)"
+                accept="image/png, image/jpg, image/jpeg">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" asp-for="FirstName">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" asp-for="LastName">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+    </form>
+</section>
+
+@section Scripts {
+    <script src="~/js/imageLoader.js"></script>
+}

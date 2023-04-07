@@ -5,12 +5,20 @@ namespace FinanceNewsPortal.Web.ViewModels
 {
     public class UpdatePasswordViewModel
     {
-        [DisplayName("First Name")]
+        [DisplayName("Current Password")]
         [Required]
-        public string FirstName { get; set; }
+        [DataType(DataType.Password)]
+        public string CurrentPassword { get; set; }
 
-        [DisplayName("Last Name")]
+        [DisplayName("New Password")]
         [Required]
-        public string LastName { get; set; }
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [DisplayName("Confirm New Password")]
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("NewPassword")]
+        public string ConfirmNewPassword { get; set; }
     }
 }
