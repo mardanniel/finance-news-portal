@@ -1,43 +1,76 @@
-﻿@model List<ApplicationUser>
+﻿@model PaginatedList<UserWithRoleViewModel>
 
 @{
     ViewData["Title"] = "All Users";
 }
 
-<table class="table rounded-3">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Account Status</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
+<section class="d-flex flex-column align-items-center">
+    <table class="table rounded-3">
+        <thead>
             <tr>
-                <th scope="row">@user.Id</th>
-                <td>@user.FirstName</td>
-                <td>@user.LastName</td>
-                <td>@user.Email</td>
-                <td>@user.Gender</td>
-                <td>@(user.Status ? "Activated" : "Disabled") </td>
-                <td>
-                    <a asp-controller="Administrator" asp-action="Details" asp-route-userId="@user.Id" class="btn btn-primary">View</a>
-                    @if (@user.Status)
-                    {
-                        <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id" class="btn btn-danger">Disable</a>
-                    }
-                    else
-                    {
-                        <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id" class="btn btn-success">Enable</a>
-                    }
-                </td>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Account Status</th>
+                <th scope="col">User Role</th>
+                <th scope="col">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@(user.Gender == 'M' ? "Male" : "Female")</td>
+                    <td>@(user.Status ? "Activated" : "Disabled") </td>
+                    <td>@user.Role</td>
+                    <td>
+                        <a asp-controller="Administrator" asp-action="Details" asp-route-userId="@user.Id"
+                            class="btn btn-primary">View</a>
+                        @if (@user.Status)
+                        {
+                            <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id"
+                                class="btn btn-danger">Disable</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id"
+                                class="btn btn-success">Enable</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="my-4">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link btn @prevDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                </li>
+                @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
+                {
+                    <li class="page-item">
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="Administrator"
+                    asp-action="GetAllUsers" asp-route-pageNumber="@pageNum">@pageNum</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link btn @nextDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</section>

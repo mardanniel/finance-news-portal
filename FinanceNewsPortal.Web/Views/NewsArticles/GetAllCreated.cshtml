@@ -1,11 +1,11 @@
-@model IEnumerable<FinanceNewsPortal.Web.Models.NewsArticle>
+@model PaginatedList<NewsArticle>
 
 @{
     ViewData["Title"] = "Created News";
 }
 
-<section>
-    <div class="d-flex">
+<section class="d-flex flex-column align-items-center">
+    <div class="align-self-start d-flex">
         <h3 class="fw-bolder">My News Articles</h3>
         <hr class="flex-grow-1 mx-4">
     </div>
@@ -19,26 +19,32 @@
         @foreach (var item in Model)
         {
             <div class="custom-news-items m-2 rounded-3" style="width: 18rem;">
-                @if(item.Status != NewsStatus.Approved)
+                @if (item.Status != NewsStatus.Approved)
                 {
                     <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{@item.Id}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{
+                    @item.Id
+}"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{@item.Id}">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{
+                    @item.Id
+}">
                             <li>
                                 <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
-                           asp-route-newsArticle="@item.Id">Delete</a>
+                            asp-route-newsArticle="@item.Id">Delete</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Edit"
-                           asp-route-newsArticle="@item.Id">Update</a>
+                            asp-route-newsArticle="@item.Id">Update</a>
                             </li>
                         </ul>
                     </div>
                 }
                 <div class="card">
                     <div class="card-body">
-                        <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")' class="img-fluid" alt="">
+                        <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
+                            class="img-fluid" alt="">
                         <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="Details"
                         asp-route-newsArticle="@item.Id">
                             <h4>@item.Title</h4>
@@ -54,4 +60,32 @@
             </div>
         }
     </div>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="my-4">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
+                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                </li>
+                @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
+                {
+                    <li class="page-item">
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles" asp-action="GetAllCreated"
+                    asp-route-pageNumber="@pageNum">@pageNum</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
+                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
 </section>
