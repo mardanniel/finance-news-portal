@@ -17,6 +17,8 @@ namespace FinanceNewsPortal.Web.Models
 
         public char Gender { get; set; }
 
+        public string? ImageFilePath { get; set; }
+
         [DisplayName("Account Status")]
         public bool Status { get; set; }
 
