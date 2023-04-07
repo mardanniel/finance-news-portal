@@ -139,3 +139,8 @@ body {
     font-weight: 500;
     font-size: 1.5rem;
 }
+
+.custom-image-thumbnail {
+    width: auto;
+    height: 250px;
+}
