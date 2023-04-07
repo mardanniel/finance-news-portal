@@ -26,9 +26,11 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles();
+            int pageSize = 10;
+
+            List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize);
 
             return View(newsArticles);
         }
@@ -134,21 +136,25 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
-        public async Task<IActionResult> GetAllPending()
+        public async Task<IActionResult> GetAllPending(int? pageNumber)
         {
+            int pageSize = 10;
+
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> pendingNewsArticles = await this._newsArticlesRepository
-                .GetNewsArticleByStatus(Guid.Parse(user.Id), NewsStatus.Pending);
+                .GetNewsArticleByStatus(Guid.Parse(user.Id), NewsStatus.Pending, pageNumber ?? 1, pageSize);
 
             return View(pendingNewsArticles);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCreated()
+        public async Task<IActionResult> GetAllCreated(int? pageNumber)
         {
+            int pageSize = 10;
+
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> newsArticles = await this._newsArticlesRepository
-                .GetNewsArticlesByUserId(Guid.Parse(user.Id));
+                .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize);
 
             return View(newsArticles);
         }

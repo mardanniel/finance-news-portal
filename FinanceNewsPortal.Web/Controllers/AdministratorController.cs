@@ -1,12 +1,13 @@
 ﻿using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
+using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    public class AdministratorController: Controller 
+    public class AdministratorController : Controller
     {
         private readonly IUserRepository _userRepository;
         private readonly IAdminRepository _adminRepository;
@@ -18,10 +19,12 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers(int? pageNumber)
         {
+            int pageSize = 10;
+
             ApplicationUser user = await this._userRepository.GetCurrentUser();
-            List<ApplicationUser> users = await _adminRepository.GetAllUsersExcept(Guid.Parse(user.Id));
+            List<UserWithRoleViewModel> users = await _adminRepository.GetAllUsersExcept(Guid.Parse(user.Id), pageNumber ?? 1, pageSize);
 
             return View(users);
         }
@@ -35,7 +38,7 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ToggleAccountStatus(Guid userId) 
+        public async Task<IActionResult> ToggleAccountStatus(Guid userId)
         {
             await this._adminRepository.ToggleUserAccountStatus(userId);
 
