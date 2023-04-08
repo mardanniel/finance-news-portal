@@ -39,18 +39,18 @@
         <nav class="my-4">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
+                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="GetAllPending"
                     asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
                         <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles"
-                    asp-action="GetAllCreated" asp-route-pageNumber="@pageNum">@pageNum</a>
+                    asp-action="GetAllPending" asp-route-pageNumber="@pageNum">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
-                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
+                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="GetAllPending"
                     asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
                 </li>
             </ul>

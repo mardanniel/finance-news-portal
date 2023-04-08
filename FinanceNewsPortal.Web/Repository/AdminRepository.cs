@@ -36,8 +36,7 @@ namespace FinanceNewsPortal.Web.Repository
                     LastName = u.LastName,
                     Email = u.Email,
                     Gender = u.Gender,
-                    Status = u.Status,
-                    Role = string.Join(",", this._userManager.GetRolesAsync(u).Result.ToList())
+                    Status = u.Status
                 })
                 .Where(u => u.Id != excludedUserId.ToString());
 
