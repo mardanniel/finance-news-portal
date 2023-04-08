@@ -2,7 +2,9 @@
 using FinanceNewsPortal.Web.Repository.Contracts;
 using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
@@ -11,11 +13,21 @@ namespace FinanceNewsPortal.Web.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IAdminRepository _adminRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AdministratorController(IAdminRepository adminRepository, IUserRepository userRepository)
+        public AdministratorController(IAdminRepository adminRepository, 
+                                        IUserRepository userRepository,
+                                        UserManager<ApplicationUser> userManager,
+                                        SignInManager<ApplicationUser> signInManager,
+                                        RoleManager<IdentityRole> roleManager)
         {
             this._adminRepository = adminRepository;
             this._userRepository = userRepository;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._roleManager = roleManager;
         }
 
         [HttpGet]
@@ -43,6 +55,64 @@ namespace FinanceNewsPortal.Web.Controllers
             await this._adminRepository.ToggleUserAccountStatus(userId);
 
             return RedirectToAction("GetAllUsers");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateModerator()
+        {
+            List<object> genderList = new List<object> { new { Id = 'M', Name = "Male" }, new { Id = 'F', Name = "Female" }, };
+
+            ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateModerator(RegisterUserViewModel moderatorUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var userModel = new ApplicationUser
+                {
+                    UserName = moderatorUser.Email,
+                    Email = moderatorUser.Email,
+                    FirstName = moderatorUser.FirstName,
+                    LastName = moderatorUser.LastName,
+                    Gender = moderatorUser.Gender,
+                    Status = true
+                };
+
+                var result = await this._userManager.CreateAsync(userModel, moderatorUser.Password);
+
+                if (result.Succeeded)
+                {
+                    bool roleExist = await this._roleManager.RoleExistsAsync(UserRole.Moderator);
+
+                    if (!roleExist)
+                    {
+                        await this._roleManager.CreateAsync(new IdentityRole(UserRole.Moderator));
+                    }
+
+                    var roleResult = await this._userManager.AddToRoleAsync(userModel, UserRole.Moderator);
+
+                    if (!roleResult.Succeeded)
+                    {
+                        ModelState.AddModelError(String.Empty, "User Role cannot be assigned.");
+                    }
+
+                    return RedirectToAction("GetAllUsers", "Administrator");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(String.Empty, error.Description);
+                }
+            }
+
+            List<object> genderList = new List<object> { new { Id = 'M', Name = "Male" }, new { Id = 'F', Name = "Female" }, };
+            ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
+            return View(moderatorUser);
         }
     }
 }
