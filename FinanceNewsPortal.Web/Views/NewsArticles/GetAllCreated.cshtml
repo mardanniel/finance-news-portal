@@ -7,8 +7,15 @@
 <section class="d-flex flex-column align-items-center">
     <div class="align-self-start d-flex">
         <h3 class="fw-bolder">My News Articles</h3>
-        <hr class="flex-grow-1 mx-4">
     </div>
+    <form class="align-self-end" method="GET" asp-action="GetAllCreated" asp-controller="NewsArticles">
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <label for="newsArticleStatus" class="control-label fw-bold me-2">Status</label>
+            <select name="newsArticleStatus" class="form-control me-2"
+                asp-items="ViewBag.NewsArticleStatusList"></select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
+    </form>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <a asp-controller="NewsArticles" asp-action="Create" class="mb-4 custom-button-link p-2 rounded">
             <img src="~/img/add-news.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
@@ -23,12 +30,11 @@
                 {
                     <div class="dropdown">
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{
-                    @item.Id
-}"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            @item.Id
+}" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{
-                    @item.Id
+                            @item.Id
 }">
                             <li>
                                 <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
@@ -72,18 +78,21 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
-                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                    asp-route-pageNumber="@(Model.PageIndex - 1)"
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
-                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles" asp-action="GetAllCreated"
-                    asp-route-pageNumber="@pageNum">@pageNum</a>
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles"
+                    asp-action="GetAllCreated" asp-route-pageNumber="@pageNum"
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
                     <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
-                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                    asp-route-pageNumber="@(Model.PageIndex + 1)"
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">Next</a>
                 </li>
             </ul>
         </nav>

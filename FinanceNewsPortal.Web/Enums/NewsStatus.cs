@@ -2,7 +2,8 @@
 {
     public enum NewsStatus
     {
-        Pending = 101,
+        NoStatus = 100,
+        Pending,
         Rejected,
         Approved
     }
