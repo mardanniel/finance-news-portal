@@ -95,11 +95,10 @@ namespace FinanceNewsPortal.Web.Repository
             return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize)
+        public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus)
         {
             var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
-                .Where(news => news.ApplicationUserId == userId.ToString())
                 .Select(news => new NewsArticle
                 {
                     Id = news.Id,
@@ -108,7 +107,13 @@ namespace FinanceNewsPortal.Web.Repository
                     Status = news.Status,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath,
-                });
+                })
+                .Where(news => news.ApplicationUserId == userId.ToString());
+
+                if(newsArticleStatus != NewsStatus.NoStatus)
+                {
+                    newsArticleQuery = newsArticleQuery.Where(news => news.Status == newsArticleStatus);
+                }
 
             return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }

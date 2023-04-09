@@ -5,6 +5,7 @@ using FinanceNewsPortal.Web.ViewModels;
 using FinanceNewsPortal.Web.Enums;
 using Microsoft.AspNetCore.Authorization;
 using FinanceNewsPortal.Web.Helper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
@@ -148,13 +149,29 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCreated(int? pageNumber)
+        public async Task<IActionResult> GetAllCreated(int? pageNumber, NewsStatus newsArticleStatus = NewsStatus.NoStatus)
         {
             int pageSize = 10;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> newsArticles = await this._newsArticlesRepository
-                .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize);
+                .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize, newsArticleStatus);
+
+            List<SelectListItem> newsArticleStatusList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "100", Text = "All" },
+                new SelectListItem { Value = "101", Text = "Pending" },
+                new SelectListItem { Value = "102", Text = "Rejected" },
+                new SelectListItem { Value = "103", Text = "Approved" },
+            };
+
+            ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList, 
+                                                            "Value", 
+                                                            "Text",
+                                                            (int)newsArticleStatus);
+
+            ViewData["SelectedNewsArticleStatus"] = newsArticleStatus;
+                                                        
 
             return View(newsArticles);
         }
