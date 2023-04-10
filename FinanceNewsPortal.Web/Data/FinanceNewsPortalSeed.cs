@@ -38,7 +38,8 @@ namespace FinanceNewsPortal.Web.Data
             var passwordHasher = new PasswordHasher<ApplicationUser>();
 
             modelBuilder.Entity<ApplicationUser>().HasData(
-                new ApplicationUser {
+                new ApplicationUser
+                {
                     Id = "147c0de8-847c-4466-ad04-1fc7b563e0c4",
                     FirstName = "Admin",
                     LastName = "One",
@@ -87,17 +88,17 @@ namespace FinanceNewsPortal.Web.Data
             modelBuilder.Entity<NewsArticleTag>().HasData(
                 new NewsArticleTag
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b"),
                     TagName = "Finance"
                 },
                 new NewsArticleTag
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593"),
                     TagName = "Stock"
                 },
                 new NewsArticleTag
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30"),
                     TagName = "Banking"
                 }
             );
@@ -106,7 +107,8 @@ namespace FinanceNewsPortal.Web.Data
         public static void InvokeIdentityUserRoleSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
-                new IdentityUserRole<string> {
+                new IdentityUserRole<string>
+                {
                     RoleId = "705c9705-c8a8-44af-99a3-e33b13856856",
                     UserId = "147c0de8-847c-4466-ad04-1fc7b563e0c4"
                 },
@@ -127,42 +129,108 @@ namespace FinanceNewsPortal.Web.Data
         {
             List<NewsArticle> articles = new List<NewsArticle>();
 
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
+                Guid approvedGuid = Guid.NewGuid();
+
                 articles.Add(
                     new NewsArticle
                     {
-                        Id = Guid.NewGuid(),
+                        Id = approvedGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
                         Title = $"Some Approved News {i}",
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-                        Status = NewsStatus.Approved,
+                        Status = NewsStatus.Approved
                     });
+
+                modelBuilder.Entity<NewsArticleType>().HasData(
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = approvedGuid,
+                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = approvedGuid,
+                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = approvedGuid,
+                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+                    });
+
+                Guid rejectedGuid = Guid.NewGuid();
 
                 articles.Add(
                     new NewsArticle
                     {
-                        Id = Guid.NewGuid(),
+                        Id = rejectedGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
                         Title = $"Some Rejected News {i}",
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-                        Status = NewsStatus.Rejected,
+                        Status = NewsStatus.Rejected
                     });
+
+                modelBuilder.Entity<NewsArticleType>().HasData(
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = rejectedGuid,
+                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = rejectedGuid,
+                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = rejectedGuid,
+                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+                    });
+
+                Guid pendingGuid = Guid.NewGuid();
 
                 articles.Add(
                     new NewsArticle
                     {
-                        Id = Guid.NewGuid(),
+                        Id = pendingGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
                         Title = $"Some Pending News {i}",
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-                        Status = NewsStatus.Pending,
+                        Status = NewsStatus.Pending
+                    });
+
+                modelBuilder.Entity<NewsArticleType>().HasData(
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = pendingGuid,
+                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = pendingGuid,
+                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                    },
+                    new NewsArticleType
+                    {
+                        Id = Guid.NewGuid(),
+                        NewsArticleId = pendingGuid,
+                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                     });
             }
 
-            foreach(var article in articles)
+            foreach (var article in articles)
             {
-                modelBuilder.Entity<NewsArticle>().HasData( article );
+                modelBuilder.Entity<NewsArticle>().HasData(article);
             }
         }
     }
