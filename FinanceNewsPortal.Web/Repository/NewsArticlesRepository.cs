@@ -49,8 +49,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<NewsArticle?> GetNewsArticleById(Guid newsArticleId)
         {
-            NewsArticle news = await this._financeNewsPortalDbcontext
-                .NewsArticle
+            NewsArticle news = await this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .FirstOrDefaultAsync(n => n.Id == newsArticleId);
@@ -142,6 +141,11 @@ namespace FinanceNewsPortal.Web.Repository
 
                 if (newsArticleViewModel.Tags != null)
                 {
+                    List<NewsArticleType> newsArticleTypesToRemove = await this._financeNewsPortalDbcontext.NewsArticleTypes
+                        .Where(n => n.NewsArticleId == newsArticleToBeUpdated.Id).ToListAsync();
+
+                    this._financeNewsPortalDbcontext.NewsArticleTypes.RemoveRange(newsArticleTypesToRemove);
+
                     List<NewsArticleType> newsArticleTypes = new List<NewsArticleType>();
 
                     foreach (var tag in newsArticleViewModel.Tags)
