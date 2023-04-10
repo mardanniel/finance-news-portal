@@ -10,22 +10,32 @@
         <hr class="flex-grow-1 mx-4">
     </div>
     <div class="d-flex justify-content-center align-content-center flex-wrap">
-        @foreach (var item in Model)
+        @if(Model.Any())
         {
-            <div class="card m-2" style="width: 18rem;">
-                <div class="card-body">
-                    <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
-                        class="img-fluid" alt="">
-                    <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="ViewPending"
-                    asp-route-newsArticle="@item.Id">
-                        <h4>@item.Title</h4>
-                    </a>
-                    <div class="d-flex align-items-center">
-                        <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
-                        <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
+            @foreach (var item in Model)
+            {
+                <div class="card m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
+                             class="img-fluid" alt="">
+                        <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="ViewPending"
+                   asp-route-newsArticle="@item.Id">
+                            <h4>@item.Title</h4>
+                        </a>
+                        <div class="d-flex align-items-center">
+                            <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
+                            <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+        }
+        else
+        {
+        <div class="m-4 d-flex flex-column justify-content-center align-items-center">
+            <p>Empty...</p>
+            <img src='~/img/empty-box.png' class="img-fluid" style="width: 150px; height: 150px;" alt="">
+        </div>
         }
     </div>
 
