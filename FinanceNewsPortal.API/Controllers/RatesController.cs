@@ -17,7 +17,7 @@ namespace FinanceNewsPortal.API.Controllers
             this._ratesRepository = ratesRepository;
         }
 
-        [HttpGet("currency/{currencyType}")]
+        [HttpGet("Currency/{currencyType}")]
         public async Task<IActionResult> Currency([FromRoute] string currencyType = "EUR")
         {
             Currency currency = await this._ratesRepository.GetCurrencyExchangeRates(currencyType);
@@ -25,7 +25,7 @@ namespace FinanceNewsPortal.API.Controllers
             return Ok(currency);
         }
 
-        [HttpGet("stocks")]
+        [HttpGet("Stocks")]
         public async Task<IActionResult> Stocks()
         {
             Stock stocks = await this._ratesRepository.GetStockExchangeRates();
