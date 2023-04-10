@@ -22,6 +22,16 @@
                         <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
                         <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
                     </div>
+                    @if (item.NewsArticleTypes != null)
+                    {
+                        <div class="mt-4">
+                            @foreach (var tag in item.NewsArticleTypes)
+                            {
+                                <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+                            }
+                        </div>
+
+                    }
                 </div>
             </a>
         }
@@ -43,8 +53,8 @@
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
-                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles" asp-action="Index"
-                    asp-route-pageNumber="@pageNum">@pageNum</a>
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles"
+                    asp-action="Index" asp-route-pageNumber="@pageNum">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">

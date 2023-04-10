@@ -6,11 +6,11 @@ namespace FinanceNewsPortal.Web.Data
 {
     public class FinanceNewsPortalDbContext : IdentityDbContext<ApplicationUser>
     {
-        private ILogger _logger { get;  }
+        private ILogger _logger { get; }
         private IConfiguration _appConfig { get; }
 
         public FinanceNewsPortalDbContext(
-            ILogger<FinanceNewsPortalDbContext> logger, 
+            ILogger<FinanceNewsPortalDbContext> logger,
             IConfiguration appConfig)
         {
             this._logger = logger;
@@ -43,6 +43,7 @@ namespace FinanceNewsPortal.Web.Data
 
             builder.InvokeIdentityRoleSeed();
             builder.InvokeUsersSeed();
+            builder.InvokeNewsArticleTags();
             builder.InvokeIdentityUserRoleSeed();
             builder.InvokeNewsArticleSeed();
 
@@ -52,5 +53,6 @@ namespace FinanceNewsPortal.Web.Data
         public DbSet<NewsArticle> NewsArticle { get; set; }
         public DbSet<NewsArticleType> NewsArticleTypes { get; set; }
         public DbSet<NewsArticleRating> NewsArticleRatings { get; set; }
+        public DbSet<NewsArticleTag> NewsArticleTags { get; set; }
     }
 }

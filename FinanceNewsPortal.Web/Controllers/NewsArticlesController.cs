@@ -39,6 +39,8 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            ViewData["NewsArticleTags"] = newsArticleTags;
             return View();
         }
 
@@ -60,6 +62,22 @@ namespace FinanceNewsPortal.Web.Controllers
                     ImageFilePath = imageName
                 };
 
+                if (newsArticle.Tags != null)
+                {
+                    List<NewsArticleType> newsArticleTypes = new List<NewsArticleType>();
+
+                    foreach (var tag in newsArticle.Tags)
+                    {
+                        newsArticleTypes.Add(
+                            new NewsArticleType
+                            {
+                                NewsArticleTagId = tag
+                            });
+                    }
+
+                    news.NewsArticleTypes = newsArticleTypes;
+                }
+
                 await this._newsArticlesRepository.CreateNewsArticle(news);
 
                 return RedirectToAction("GetAllCreated");
@@ -73,13 +91,28 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
 
+            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            ViewData["NewsArticleTags"] = newsArticleTags;
+
             UpsertNewsArticleViewModel newsArticleVM = new UpsertNewsArticleViewModel
             {
                 Id = news.Id,
                 Title = news.Title,
                 Context = news.Description,
-                ImageFilePath = news.ImageFilePath,
+                ImageFilePath = news.ImageFilePath
             };
+
+            if (news.NewsArticleTypes != null)
+            {
+                List<Guid> selectedTagsId = new List<Guid>();
+
+                foreach (var tagsId in news.NewsArticleTypes)
+                {
+                    selectedTagsId.Add(tagsId.NewsArticleTagId);
+                }
+
+                newsArticleVM.SelectedTagsOnEdit = selectedTagsId;
+            }
 
             return View(newsArticleVM);
         }
@@ -165,13 +198,13 @@ namespace FinanceNewsPortal.Web.Controllers
                 new SelectListItem { Value = "103", Text = "Approved" },
             };
 
-            ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList, 
-                                                            "Value", 
+            ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
+                                                            "Value",
                                                             "Text",
                                                             (int)newsArticleStatus);
 
             ViewData["SelectedNewsArticleStatus"] = newsArticleStatus;
-                                                        
+
 
             return View(newsArticles);
         }

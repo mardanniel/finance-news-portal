@@ -6,7 +6,10 @@ namespace FinanceNewsPortal.Web.Models
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; }
+        public Guid NewsArticleTagId { get; set; }
+
+        [ValidateNever]
+        public NewsArticleTag NewsArticleTag { get; set; }
 
         public Guid NewsArticleId { get; set; }
 

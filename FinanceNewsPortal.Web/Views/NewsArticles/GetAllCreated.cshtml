@@ -30,11 +30,11 @@
                 {
                     <div class="dropdown">
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton@{
-                            @item.Id
+                                    @item.Id
 }" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton@{
-                            @item.Id
+                                    @item.Id
 }">
                             <li>
                                 <a class="dropdown-item" asp-controller="NewsArticles" asp-action="Delete"
@@ -61,6 +61,16 @@
                             <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
                             <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
                         </div>
+                        @if (item.NewsArticleTypes != null)
+                        {
+                            <div class="mt-4">
+                                @foreach (var tag in item.NewsArticleTypes)
+                                {
+                                    <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+                                }
+                            </div>
+
+                        }
                     </div>
                 </div>
             </div>

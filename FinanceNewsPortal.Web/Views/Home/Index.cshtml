@@ -45,7 +45,7 @@
         <hr class="flex-grow-1 mx-4">
     </div>
     <div class="d-flex justify-content-center my-4">
-        @foreach(var stockVal in Model.Stock.StockValues)
+        @foreach (var stockVal in Model.Stock.StockValues)
         {
             <div class="flex-fill card ms-2">
                 <div class="card-body">
@@ -65,14 +65,26 @@
     <div class="d-flex justify-content-center align-content-start align-items-start flex-wrap my-4">
         @foreach (var news in Model.LatestNews)
         {
-            <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@news.Id" class="flex-fill card m-2 custom-component-link" style="width: 18rem;">
+            <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@news.Id"
+                class="flex-fill card m-2 custom-component-link" style="width: 18rem;">
                 <div class="card-body">
-                    <img src='~/@(news.ImageFilePath != null ? $"uploads/news-image/{news.ImageFilePath}" : "img/newspaper.png")' class="img-fluid" alt="">
+                    <img src='~/@(news.ImageFilePath != null ? $"uploads/news-image/{news.ImageFilePath}" : "img/newspaper.png")'
+                        class="img-fluid" alt="">
                     <h4>@news.Title</h4>
                     <div class="d-flex align-items-center">
                         <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
                         <div class="ms-2">By @($"{news.Author.FirstName} {news.Author.LastName}")</div>
                     </div>
+                    @if (news.NewsArticleTypes != null)
+                    {
+                        <div class="mt-4">
+                            @foreach (var tag in news.NewsArticleTypes)
+                            {
+                                <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+                            }
+                        </div>
+
+                    }
                 </div>
             </a>
         }

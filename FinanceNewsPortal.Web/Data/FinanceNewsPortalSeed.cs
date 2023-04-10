@@ -82,6 +82,27 @@ namespace FinanceNewsPortal.Web.Data
             );
         }
 
+        public static void InvokeNewsArticleTags(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<NewsArticleTag>().HasData(
+                new NewsArticleTag
+                {
+                    Id = Guid.NewGuid(),
+                    TagName = "Finance"
+                },
+                new NewsArticleTag
+                {
+                    Id = Guid.NewGuid(),
+                    TagName = "Stock"
+                },
+                new NewsArticleTag
+                {
+                    Id = Guid.NewGuid(),
+                    TagName = "Banking"
+                }
+            );
+        }
+
         public static void InvokeIdentityUserRoleSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
