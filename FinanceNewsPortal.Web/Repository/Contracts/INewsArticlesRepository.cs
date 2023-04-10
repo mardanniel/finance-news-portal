@@ -16,5 +16,6 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
         Task UpdateNewsArticleStatus(Guid newsArticleId, NewsStatus status);
         Task<List<NewsArticle>> GetLatestNewsArticles(int count);
         Task<NewsArticle> GetNewsArticleImageFilePathById(Guid newsArticleId, Guid userId);
+        Task<List<NewsArticleTag>> GetNewsArticleTags();
     }
 }

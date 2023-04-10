@@ -27,6 +27,17 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
+        <div class="form-outline mb-2">
+            <label class="form-label custom-form-label">Add Tags</label>
+            <br>
+            <div class="btn-group" role="group">
+                @foreach (var tag in ViewBag.NewsArticleTags)
+                {
+                    <input type="checkbox" value="@tag.Id" name="Tags" class="btn-check" id="@tag.TagName" autocomplete="off">
+                    <label class="btn btn-outline-light" for="@tag.TagName">@tag.TagName</label>
+                }
+            </div>
+        </div>
         <div class="form-outline mb-4">
             <label class="form-label custom-form-label" asp-for="Context">Add Context</label>
             <div>
