@@ -13,6 +13,9 @@
             <label for="newsArticleStatus" class="control-label fw-bold me-2">Status</label>
             <select name="newsArticleStatus" class="form-control me-2"
                 asp-items="ViewBag.NewsArticleStatusList"></select>
+            <label for="newsArticleTagId" class="control-label fw-bold me-2">Status</label>
+            <select name="newsArticleTagId" class="form-control me-2"
+                    asp-items="ViewBag.NewsArticleTagsList"></select>
             <input type="submit" value="Filter" class="btn btn-primary" />
         </div>
     </form>
@@ -93,20 +96,23 @@
                 <li class="page-item">
                     <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
                     asp-route-pageNumber="@(Model.PageIndex - 1)"
-                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">Previous</a>
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus"
+                    asp-route-newsArticleTagId="@ViewBag.SelectedNewsArticleTag">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
                         <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles"
                     asp-action="GetAllCreated" asp-route-pageNumber="@pageNum"
-                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">@pageNum</a>
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus"
+                    asp-route-newsArticleTagId="@ViewBag.SelectedNewsArticleTag">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
                     <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="GetAllCreated"
                     asp-route-pageNumber="@(Model.PageIndex + 1)"
-                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus">Next</a>
+                    asp-route-newsArticleStatus="@ViewBag.SelectedNewsArticleStatus"
+                    asp-route-newsArticleTagId="@ViewBag.SelectedNewsArticleTag">Next</a>
                 </li>
             </ul>
         </nav>

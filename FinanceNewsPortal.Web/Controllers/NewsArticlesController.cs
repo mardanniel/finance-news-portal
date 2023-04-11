@@ -182,13 +182,13 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCreated(int? pageNumber, NewsStatus newsArticleStatus = NewsStatus.NoStatus)
+        public async Task<IActionResult> GetAllCreated(int? pageNumber, Guid? newsArticleTagId, NewsStatus newsArticleStatus = NewsStatus.NoStatus)
         {
             int pageSize = 10;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> newsArticles = await this._newsArticlesRepository
-                .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize, newsArticleStatus);
+                .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize, newsArticleStatus, newsArticleTagId);
 
             List<SelectListItem> newsArticleStatusList = new List<SelectListItem>
             {
@@ -198,12 +198,24 @@ namespace FinanceNewsPortal.Web.Controllers
                 new SelectListItem { Value = "103", Text = "Approved" },
             };
 
+            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+
             ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
                                                             "Value",
                                                             "Text",
                                                             (int)newsArticleStatus);
 
+            ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
+                                                            "Id",
+                                                            "TagName",
+                                                            newsArticleStatus);
+
             ViewData["SelectedNewsArticleStatus"] = newsArticleStatus;
+
+            if(newsArticleTagId != null)
+            {
+                ViewData["SelectedNewsArticleTag"] = newsArticleTagId;
+            }
 
 
             return View(newsArticles);
