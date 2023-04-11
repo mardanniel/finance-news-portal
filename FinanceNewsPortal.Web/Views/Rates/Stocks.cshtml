@@ -1,5 +1,4 @@
-﻿@using System.Reflection;
-@model Stock
+﻿@model Stock
 
 @{
     ViewData["Title"] = "Stocks";
@@ -13,18 +12,39 @@
     <table class="table rounded">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Value</th>
-                <th>Percentage</th>
+                <th>Symbol</th>
+                <th>V</th>
+                <th>Vw</th>
+                <th>OP</th>
+                <th>CP</th>
+                <th>HP</th>
+                <th>LP</th>
+                <th>UM</th>
+                <th>NT</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var stockVal in Model.StockValues)
+            @if (Model.Results != null)
+            {
+                @foreach (var stockVal in Model.Results)
+                {
+                    <tr>
+                        <td>@stockVal.TradedUnderSymbol</td>
+                        <td>@stockVal.Volume</td>
+                        <td>@stockVal.VolumeWeighted</td>
+                        <td>@stockVal.OpenPrice</td>
+                        <td>@stockVal.ClosePrice</td>
+                        <td>@stockVal.HighestPrice</td>
+                        <td>@stockVal.LowestPrice</td>
+                        <td>@stockVal.UnixMsecTimestamp</td>
+                        <td>@stockVal.NumberOfTransactions</td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@stockVal.Name</td>
-                    <td>@stockVal.Value</td>
-                    <td>@stockVal.Percentage</td>
+                    <td colspan="9" class="text-center">Please try again...</td>
                 </tr>
             }
         </tbody>
