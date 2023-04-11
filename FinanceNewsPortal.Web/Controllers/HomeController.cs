@@ -20,10 +20,22 @@ namespace FinanceNewsPortal.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+            Currency? currency = null;
+            List<NewsArticle>? latestNews = null;
+            Stock? stock = null;
+
+            currency = await this._ratesRepository.GetCurrencyExchangeRates();
+            latestNews = await this._newsArticlesRepository.GetLatestNewsArticles(4);
+            stock = await this._ratesRepository.GetStockExchangeRates();
+            if(stock.Results != null)
+            {
+                stock.Results = stock.Results.Take(4);
+            }
+
             HomepageViewModel homepageViewModel = new HomepageViewModel {
-                Currency = await this._ratesRepository.GetCurrencyExchangeRates(),
-                LatestNews = await this._newsArticlesRepository.GetLatestNewsArticles(4),
-                Stock = await this._ratesRepository.GetStockExchangeRates(),
+                Currency = currency,
+                LatestNews = latestNews,
+                Stock = stock,
             };
 
             return View(homepageViewModel);
