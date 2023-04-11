@@ -8,7 +8,7 @@ namespace FinanceNewsPortal.Web.Repository.Contracts
     {
         Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize);
         Task<NewsArticle> GetNewsArticleById(Guid newsArticleId);
-        Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus);
+        Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus, Guid? newsArticleTagId);
         Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize);
         Task CreateNewsArticle(NewsArticle newsArticle);
         Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel);

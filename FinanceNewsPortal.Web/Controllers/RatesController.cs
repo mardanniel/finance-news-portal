@@ -18,29 +18,39 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Currency(string currencyType)
         {
-            Currency currency = await this._ratesRepository.GetCurrencyExchangeRates(currencyType);
+            Currency? currency = await this._ratesRepository.GetCurrencyExchangeRates(currencyType);
 
-            Type modelType = currency.Rates.GetType();
-            PropertyInfo[] props = modelType.GetProperties();
-            List<SelectListItem> currencyNameList = new List<SelectListItem>();
-            foreach (PropertyInfo currencyProp in props)
+            if(currency.Rates != null)
             {
-                currencyNameList.Add(new SelectListItem
+                Type modelType = currency.Rates.GetType();
+                PropertyInfo[] props = modelType.GetProperties();
+                List<SelectListItem> currencyNameList = new List<SelectListItem>();
+                foreach (PropertyInfo currencyProp in props)
                 {
-                    Text = currencyProp.Name,
-                    Value = currencyProp.Name,
-                    Selected = currencyType == currencyProp.Name,
-                });
-            }
+                    currencyNameList.Add(new SelectListItem
+                    {
+                        Text = currencyProp.Name,
+                        Value = currencyProp.Name,
+                        Selected = currencyType == currencyProp.Name,
+                    });
+                }
 
-            ViewData["CurrencyList"] = currencyNameList;
+                ViewData["CurrencyList"] = currencyNameList;
+            }
 
             return View(currency);
         }
 
         public async Task<IActionResult> Stocks()
         {
-            Stock stocks = await this._ratesRepository.GetStockExchangeRates();
+            Stock? stocks = null;
+
+            stocks = await this._ratesRepository.GetStockExchangeRates();
+
+            if(stocks.Results != null)
+            {
+                stocks.Results = stocks.Results.Take(25);
+            }
 
             return View(stocks);
         }

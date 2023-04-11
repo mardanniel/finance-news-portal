@@ -10,32 +10,46 @@
         <h3 class="fw-bolder">Currency</h3>
         <hr class="flex-grow-1 mx-4">
     </div>
-    <form method="GET" asp-action="Currency">
-        <div class="d-flex justify-content-between align-items-center my-2">
-            <label for="currencyType" class="control-label fw-bold me-2">Base</label>
-            <select name="currencyType" class="form-control me-2" asp-items="ViewBag.CurrencyList"></select>
-            <input type="submit" value="Change" class="btn btn-primary" />
-        </div>
-    </form>
     @{
-        Type modelType = Model.Rates.GetType();
-        PropertyInfo[] props = modelType.GetProperties();
+        Type? modelType = null;
+        PropertyInfo[]? props = null;
+
+        if (Model.Rates != null)
+        {
+            modelType = Model.Rates.GetType();
+            props = modelType.GetProperties();
+        }
     }
-    <table class="table rounded">
-        <thead>
-            <tr>
-                <th>Currency Type</th>
-                <th>Currency Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (PropertyInfo currencyProp in props)
-            {
+    @if (Model.Rates != null)
+    {
+
+        <form method="GET" asp-action="Currency">
+            <div class="d-flex justify-content-between align-items-center my-2">
+                <label for="currencyType" class="control-label fw-bold me-2">Base</label>
+                <select name="currencyType" class="form-control me-2" asp-items="ViewBag.CurrencyList"></select>
+                <input type="submit" value="Change" class="btn btn-primary" />
+            </div>
+        </form>
+        <table class="table rounded">
+            <thead>
                 <tr>
-                    <td>@currencyProp.Name</td>
-                    <td>@currencyProp.GetValue(Model.Rates, null)</td>
+                    <th>Currency Type</th>
+                    <th>Currency Value</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (PropertyInfo currencyProp in props)
+                {
+                    <tr>
+                        <td>@currencyProp.Name</td>
+                        <td>@currencyProp.GetValue(Model.Rates, null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>Please try again later...</div>
+    }
 </section>
