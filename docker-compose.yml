@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  efinancialsapi:
+    image: efinancialsapi
+    build:
+      context: .
+      dockerfile: FinanceNewsPortal.API/Dockerfile
+    ports:
+      - 6001:80
+    environment:
+      - ConnectionStrings__Server=efinancialsdb;
+      - ConnectionStrings__DB=FinanceDB
+      - ConnectionStrings__Username=sa
+      - ConnectionStrings__Password=P@ssword123
+    depends_on:
+      - efinancialsdb
+      - efinancialsweb
+    restart: on-failure
+  efinancialsweb:
+    image: efinancialsweb
+    build:
+      context: .
+      dockerfile: FinanceNewsPortal.Web/Dockerfile
+    ports:
+      - 5001:80
+    environment:
+      - ConnectionStrings__Server=efinancialsdb;
+      - ConnectionStrings__DB=FinanceDB
+      - ConnectionStrings__Username=sa
+      - ConnectionStrings__Password=P@ssword123
+    depends_on:
+      - efinancialsdb
+    restart: on-failure
+  efinancialsdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssword123
