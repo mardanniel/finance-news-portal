@@ -2,11 +2,23 @@
 using FinanceNewsPortal.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace FinanceNewsPortal.Web.Data
 {
     public static class FinanceNewsPortalSeed
     {
+        public static void AutoMigrate(this WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<FinanceNewsPortalDbContext>();
+                {
+                    dbContext.Database.Migrate();
+                }
+            }
+        }
+
         public static void InvokeIdentityRoleSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityRole>().HasData(
