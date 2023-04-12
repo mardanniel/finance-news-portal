@@ -19,13 +19,16 @@ namespace FinanceNewsPortal.Web.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var server = _appConfig.GetConnectionString("Server");
-            //var db = _appConfig.GetConnectionString("DB");
-            //var userName = _appConfig.GetConnectionString("UserName");
-            //var password = _appConfig.GetConnectionString("Password");
-            //string connectionString = $"Server={server};Database={db};User Id={userName};Password={password};MultipleActiveResultSets=true";
+            var developmentConnection = this._appConfig.GetConnectionString("DefaultConnection");
+            var server = this._appConfig.GetConnectionString("Server");
+            var db = this._appConfig.GetConnectionString("DB");
+            var username = this._appConfig.GetConnectionString("UserName");
+            var password = this._appConfig.GetConnectionString("Password");
 
-            string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=FinanceDBTest;Integrated Security=True;MultipleActiveResultSets=true;";
+            string connectionString = developmentConnection != null
+                                    ? developmentConnection 
+                                    : $"Server={server};Database={db};User Id={username};Password={password};MultipleActiveResultSets=true";
+
             optionsBuilder
                 .UseSqlServer(connectionString)
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
