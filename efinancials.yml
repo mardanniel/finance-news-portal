@@ -1,0 +1,147 @@
+# eFinancials - Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: efinancials
+
+# eFinancials - SQL Server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: efinancialsdb
+  namespace: efinancials
+spec:
+  selector:
+    matchLabels:
+      app: efinancialsdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: efinancialsdb
+    spec:
+      containers:
+        - name: efinancialsdb
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              value: "P@ssword123"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efinancialsdb
+  namespace: efinancials
+  labels:
+    app: efinancialsdb
+spec:
+  ports:
+    - name: tcp
+      port: 1433
+      targetPort: 1433
+  selector:
+    app: efinancialsdb
+  type: ClusterIP
+
+# eFinancials - Web API
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: efinancialsapi
+  namespace: efinancials
+spec:
+  selector:
+    matchLabels:
+      app: efinancialsapi
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: efinancialsapi
+    spec:
+      containers:
+        - name: efinancialsapi
+          image: mardanniel/efinancials-api:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: ConnectionStrings__Server
+              value: efinancialsdb
+            - name: ConnectionStrings__DB
+              value: FinanceDB
+            - name: ConnectionStrings__Username
+              value: sa
+            - name: ConnectionStrings__Password
+              value: P@ssword123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efinancialsapi
+  namespace: efinancials
+  labels:
+    app: efinancialsapi
+spec:
+  ports:
+    - name: tcp
+      port: 6001
+      targetPort: 80
+  selector:
+    app: efinancialsapi
+  type: NodePort
+
+# eFinancials - Web Application
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: efinancialsweb
+  namespace: efinancials
+spec:
+  selector:
+    matchLabels:
+      app: efinancialsweb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: efinancialsweb
+    spec:
+      containers:
+        - name: efinancialsweb
+          image: mardanniel/efinancials-web:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: ConnectionStrings__Server
+              value: efinancialsdb
+            - name: ConnectionStrings__DB
+              value: FinanceDB
+            - name: ConnectionStrings__Username
+              value: sa
+            - name: ConnectionStrings__Password
+              value: P@ssword123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efinancialsweb
+  namespace: efinancials
+  labels:
+    app: efinancialsweb
+spec:
+  ports:
+    - name: tcp
+      port: 5001
+      targetPort: 80
+  selector:
+    app: efinancialsweb
+  type: NodePort
