@@ -11,7 +11,7 @@ namespace FinanceNewsPortal.API.Repository.Contracts
         Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus);
         Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize);
         Task CreateNewsArticle(NewsArticle newsArticle);
-        Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleDTO newsArticleDTO);
+        Task UpdateNewsArticle(Guid newsArticleId, UpdateNewsArticleDTO newsArticleDTO);
         Task DeleteNewsArticle(Guid newsArticleId);
         Task UpdateNewsArticleStatus(Guid newsArticleId, NewsStatus status);
         Task<List<NewsArticle>> GetLatestNewsArticles(int count);

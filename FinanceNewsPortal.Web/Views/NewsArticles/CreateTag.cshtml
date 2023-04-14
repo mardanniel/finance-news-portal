@@ -1,0 +1,21 @@
+@model CreateTagViewModel
+
+@{
+    ViewData["Title"] = "Create Tag";
+}
+
+<section class="form-section">
+    <div class="my-5">
+        <a class="btn btn-primary" asp-action="GetAllTags">Back to your News Articles Tags</a>
+    </div>
+    <form asp-controller="NewsArticles" asp-action="CreateTag">
+        <h1 class="h3 mb-3 fw-normal">Create Tag</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
+        <div class="form-floating">
+            <input class="form-control" asp-for="TagName">
+            <label asp-for="TagName" class="form-label">Add Tag Name</label>
+            <span asp-validation-for="TagName" class="text-danger"></span>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Create</button>
+    </form>
+</section>

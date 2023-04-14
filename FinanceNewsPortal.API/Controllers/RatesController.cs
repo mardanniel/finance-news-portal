@@ -1,11 +1,11 @@
 ﻿using FinanceNewsPortal.API.Models;
 using FinanceNewsPortal.API.Repository.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Reflection;
 
 namespace FinanceNewsPortal.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RatesController : ControllerBase
