@@ -144,3 +144,13 @@ body {
     width: auto;
     height: 250px;
 }
+
+.image-file-reminder {
+    background-color: #ff6666;
+    color: #333;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+}

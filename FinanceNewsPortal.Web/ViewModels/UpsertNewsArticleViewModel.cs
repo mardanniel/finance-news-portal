@@ -13,7 +13,7 @@ namespace FinanceNewsPortal.Web.ViewModels
         [Required]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Content is required.")]
         public string Context { get; set; }
 
         public IEnumerable<Guid> Tags { get; set; }
