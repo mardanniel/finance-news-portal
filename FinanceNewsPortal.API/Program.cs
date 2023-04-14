@@ -78,6 +78,10 @@ builder.Services.AddSwaggerGen(opt =>
 builder.Services.AddScoped<FileUpload>();
 builder.Services.AddScoped<INewsArticlesRepository, NewsArticlesRepository>();
 builder.Services.AddScoped<IRatesRepository, RatesAPIRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

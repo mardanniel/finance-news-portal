@@ -7,21 +7,29 @@
 <section class="d-flex flex-column align-items-center">
     <div class="align-self-start d-flex">
         <h3 class="fw-bolder">Daily Finance News</h3>
-        <hr class="flex-grow-1 mx-4">
     </div>
+    <hr class="flex-grow-1 mx-4 w-100">
+    <form class="align-self-end" method="GET" asp-action="Index" asp-controller="NewsArticles">
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <label for="newsArticleTagId" class="control-label fw-bold me-2">Tags</label>
+            <select name="newsArticleTagId" class="form-control me-2" asp-items="ViewBag.NewsArticleTagsList"></select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
+    </form>
     <div class="d-flex justify-content-center align-content-center flex-wrap">
         @if (Model.Any())
         {
             @foreach (var item in Model)
             {
                 <a asp-controller="NewsArticles" asp-action="Details" asp-route-newsArticle="@item.Id"
-                   class="flex-grow card m-2 custom-component-link" style="width: 18rem;">
+                    class="flex-grow card m-2 custom-component-link" style="width: 18rem;">
                     <div class="card-body">
                         <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
-                             class="img-fluid" alt="">
+                            class="img-fluid" alt="">
                         <h4>@item.Title</h4>
                         <div class="d-flex align-items-center">
-                            <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
+                            <img src='~/@(item.Author.ImageFilePath != null ? $"uploads/profile-image/{item.Author.ImageFilePath}" : "img/user.png")'
+                                class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
                             <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
                         </div>
                         @if (item.NewsArticleTypes != null)
@@ -58,18 +66,18 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link btn @prevDisabled" asp-controller="NewsArticles" asp-action="Index"
-                   asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
                         <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticles"
-                   asp-action="Index" asp-route-pageNumber="@pageNum">@pageNum</a>
+                    asp-action="Index" asp-route-pageNumber="@pageNum">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
                     <a class="page-link btn @nextDisabled" asp-controller="NewsArticles" asp-action="Index"
-                   asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
                 </li>
             </ul>
         </nav>

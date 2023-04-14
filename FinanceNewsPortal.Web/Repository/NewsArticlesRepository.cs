@@ -24,6 +24,13 @@ namespace FinanceNewsPortal.Web.Repository
             await this._financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
+        public async Task CreateNewsArticleTag(NewsArticleTag newsArticleTag)
+        {
+            await this._financeNewsPortalDbcontext.NewsArticleTags.AddAsync(newsArticleTag);
+
+            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+        }
+
         public async Task DeleteNewsArticle(Guid newsArticleId)
         {
             var news = await this._financeNewsPortalDbcontext.NewsArticle.FindAsync(newsArticleId);
@@ -31,6 +38,18 @@ namespace FinanceNewsPortal.Web.Repository
             if (news != null)
             {
                 this._financeNewsPortalDbcontext.NewsArticle.Remove(news);
+            }
+
+            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+        }
+
+        public async Task DeleteNewsArticleTag(Guid newsArticleTagId)
+        {
+            var newsArticleTag = await this._financeNewsPortalDbcontext.NewsArticleTags.FindAsync(newsArticleTagId);
+
+            if(newsArticleTag != null)
+            {
+                this._financeNewsPortalDbcontext.NewsArticleTags.Remove(newsArticleTag);
             }
 
             await this._financeNewsPortalDbcontext.SaveChangesAsync();
@@ -57,11 +76,19 @@ namespace FinanceNewsPortal.Web.Repository
             return news;
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize)
+        public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize, Guid? newsArticleTagId)
         {
             var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
+                .Include("NewsArticleTypes.NewsArticleTag")
                 .Where(n => n.Status == newsStatus && n.ApplicationUserId != excludeUserId.ToString());
+
+            if (newsArticleTagId != null && newsArticleTagId != Guid.Empty)
+            {
+                newsArticleQuery = newsArticleQuery
+                    .Where(news => news.NewsArticleTypes
+                        .Where(n => n.NewsArticleTagId == newsArticleTagId).Count() > 0);
+            }
 
             return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
@@ -78,7 +105,7 @@ namespace FinanceNewsPortal.Web.Repository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize)
+        public async Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize, Guid? newsArticleTagId)
         {
             var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
@@ -94,6 +121,13 @@ namespace FinanceNewsPortal.Web.Repository
                     ImageFilePath = news.ImageFilePath,
                     NewsArticleTypes = news.NewsArticleTypes
                 });
+
+            if(newsArticleTagId != null && newsArticleTagId != Guid.Empty)
+            {
+                newsArticleQuery = newsArticleQuery
+                    .Where(news => news.NewsArticleTypes
+                        .Where(n => n.NewsArticleTagId == newsArticleTagId).Count() > 0);
+            }
 
             return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
@@ -120,7 +154,7 @@ namespace FinanceNewsPortal.Web.Repository
                 newsArticleQuery = newsArticleQuery.Where(news => news.Status == newsArticleStatus);
             }
 
-            if (newsArticleTagId != null)
+            if (newsArticleTagId != null && newsArticleTagId != Guid.Empty)
             {
                 newsArticleQuery = newsArticleQuery
                     .Where(news => news.NewsArticleTypes
@@ -132,6 +166,8 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<List<NewsArticleTag>> GetNewsArticleTags()
         {
+            // NOTE: Temporary implementation
+
             return await this._financeNewsPortalDbcontext.NewsArticleTags.ToListAsync();
         }
 

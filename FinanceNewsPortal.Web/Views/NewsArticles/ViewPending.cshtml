@@ -4,15 +4,29 @@
     ViewData["Title"] = Model.Title;
 }
 
-<section>
-    <a asp-action="GetAllPending" class="btn btn-primary mb-4">Back to your News Articles</a>
+<section class="d-flex flex-column align-items-center justify-content-center">
+    <a asp-action="GetAllCreated" class="align-self-start btn btn-primary mb-4">Back to your News Articles</a>
     <h1>@Model.Title</h1>
-    <p>By @($"{Model.Author.FirstName} {Model.Author.LastName}")</p>
+    @if (Model.NewsArticleTypes != null)
+    {
+        <div class="m-2">
+            @foreach (var tag in Model.NewsArticleTypes)
+            {
+                <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+            }
+        </div>
+
+    }
+    <div class="my-2">
+        <img src='~/@(Model.Author.ImageFilePath != null ? $"uploads/profile-image/{Model.Author.ImageFilePath}" : "img/user.png")'
+            class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
+        @($"{Model.Author.FirstName} {Model.Author.LastName}")
+    </div>
     <p>Created at @Model.CreatedAt</p>
-    <hr />
+    <hr class="w-100" />
     <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
-        class="img-fluid" alt="">
-    <div class="container my-4">
+        class="img-fluid" style="height: 300px; width: auto;" alt="">
+    <div class="container my-4 w-50">
         @Html.Raw(Model.Description)
     </div>
     <div class="text-center">
@@ -22,3 +36,4 @@
             class="btn btn-danger mb-4">Decline</a>
     </div>
 </section>
+

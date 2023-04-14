@@ -7,35 +7,52 @@
 <section class="d-flex flex-column align-items-center">
     <div class="align-self-start d-flex">
         <h3 class="fw-bolder">Pending News</h3>
-        <hr class="flex-grow-1 mx-4">
     </div>
+    <hr class="flex-grow-1 mx-4 w-100">
+    <form class="align-self-end" method="GET" asp-action="GetAllPending" asp-controller="NewsArticles">
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <label for="newsArticleTagId" class="control-label fw-bold me-2">Tags</label>
+            <select name="newsArticleTagId" class="form-control me-2" asp-items="ViewBag.NewsArticleTagsList"></select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
+    </form>
     <div class="d-flex justify-content-center align-content-center flex-wrap">
-        @if(Model.Any())
+        @if (Model.Any())
         {
             @foreach (var item in Model)
             {
                 <div class="card m-2" style="width: 18rem;">
                     <div class="card-body">
                         <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
-                             class="img-fluid" alt="">
+                            class="img-fluid" alt="">
                         <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="ViewPending"
-                   asp-route-newsArticle="@item.Id">
+                    asp-route-newsArticle="@item.Id">
                             <h4>@item.Title</h4>
                         </a>
                         <div class="d-flex align-items-center">
-                            <img src="~/img/user.png" class="img-fluid" style="width: 2rem; height: 2rem;" alt="">
+                            <img src='~/@(item.Author.ImageFilePath != null ? $"uploads/profile-image/{item.Author.ImageFilePath}" : "img/user.png")'
+                                class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
                             <div class="ms-2">By @($"{item.Author.FirstName} {item.Author.LastName}")</div>
                         </div>
+                        @if (item.NewsArticleTypes != null)
+                        {
+                            <div class="mt-4">
+                                @foreach (var tag in item.NewsArticleTypes)
+                                {
+                                    <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+                                }
+                            </div>
+                        }
                     </div>
                 </div>
             }
         }
         else
         {
-        <div class="m-4 d-flex flex-column justify-content-center align-items-center">
-            <p>Empty...</p>
-            <img src='~/img/empty-box.png' class="img-fluid" style="width: 150px; height: 150px;" alt="">
-        </div>
+            <div class="m-4 d-flex flex-column justify-content-center align-items-center">
+                <p>Empty...</p>
+                <img src='~/img/empty-box.png' class="img-fluid" style="width: 150px; height: 150px;" alt="">
+            </div>
         }
     </div>
 
