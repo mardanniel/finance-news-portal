@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   efinancialsapi:
-    image: efinancialsapi
+    image: mardanniel/efinancials-api:1.2.1
     build:
       context: .
       dockerfile: FinanceNewsPortal.API/Dockerfile
@@ -17,7 +17,7 @@ services:
       - efinancialsweb
     restart: on-failure
   efinancialsweb:
-    image: efinancialsweb
+    image: mardanniel/efinancials-web:1.2.1
     build:
       context: .
       dockerfile: FinanceNewsPortal.Web/Dockerfile

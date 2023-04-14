@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
         - name: efinancialsapi
-          image: mardanniel/efinancials-api:1.1
+          image: mardanniel/efinancials-api:1.2.1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -116,7 +116,7 @@ spec:
     spec:
       containers:
         - name: efinancialsweb
-          image: mardanniel/efinancials-web:1.1
+          image: mardanniel/efinancials-web:1.2.1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
