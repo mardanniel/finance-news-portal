@@ -22,8 +22,20 @@ This branch is specifically created for docker and kubernetes.
 
 2. Open Docker Desktop to see the images and the container created. On the Containers, find the container containing the images of the Web and API project, as well as the Microsoft SQL Server. You can examine the errors just by looking through the logs.
 
-3. To stop the container from running, click the stop button on Docker Desktop and execute the following:
+3. To stop the container from running, click the stop button on Docker Desktop or execute the following:
 
 ```docker-compose down```
 
-4. Delete the images created on Images list.
+### For Kubernetes
+
+1. Execute the following command:
+
+```kubectl apply -f <kubernetes yaml file>```
+
+2. To get all namespace, execute the following:
+
+```kubectl get all -n <namespace name>```
+
+3. To delete resources, execute the following:
+
+```kubectl delete -f <kubernetes yaml file>```
