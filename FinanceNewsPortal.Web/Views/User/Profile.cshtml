@@ -24,10 +24,6 @@
                 @(Model.Gender == 'M' ? "Male" : "Female")
             </li>
             <li class="list-group-item">
-                <i class="fas fa-id-card"></i>
-                @Html.DisplayFor(model => model.Id)
-            </li>
-            <li class="list-group-item">
                 <i class="fas fa-user-cog"></i>
                 <a class="btn btn-primary" asp-controller="Auth" asp-action="EditUserInfo">Update Info</a>
                 <a class="btn btn-primary" asp-controller="Auth" asp-action="EditPassword">Update Password</a>
