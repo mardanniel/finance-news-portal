@@ -23,7 +23,7 @@
         @($"{Model.Author.FirstName} {Model.Author.LastName}")
     </div>
     <p>Created at @Model.CreatedAt</p>
-    <hr/>
+    <hr class="w-100" />
     <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
         class="img-fluid" style="height: 300px; width: auto;" alt="">
     <div class="container my-4 w-50">
