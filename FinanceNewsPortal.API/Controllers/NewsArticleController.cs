@@ -1,5 +1,4 @@
-﻿using FinanceNewsPortal.API.Data;
-using FinanceNewsPortal.API.DTO;
+﻿using FinanceNewsPortal.API.DTO;
 using FinanceNewsPortal.API.Enums;
 using FinanceNewsPortal.API.Helper;
 using FinanceNewsPortal.API.Models;
@@ -15,12 +14,15 @@ namespace FinanceNewsPortal.API.Controllers
     public class NewsArticleController : ControllerBase
     {
         private readonly INewsArticlesRepository _newsArticlesRepository;
+        private readonly IUserRepository _userRepository;
         private readonly FileUpload _fileUpload;
 
         public NewsArticleController(INewsArticlesRepository newsArticlesRepository,
+                                        IUserRepository userRepository,
                                         FileUpload fileUpload)
         {
             this._newsArticlesRepository = newsArticlesRepository;
+            this._userRepository = userRepository;
             this._fileUpload = fileUpload;
         }
 
@@ -32,26 +34,36 @@ namespace FinanceNewsPortal.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> CreateNewsArticle([FromForm] UpsertNewsArticleDTO newsArticleDTO)
+        public async Task<IActionResult> CreateNewsArticle([FromForm] CreateNewsArticleDTO newsArticleDTO)
         {
             if(!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+
+            ApplicationUser user = await this._userRepository.GetCurrentUser();
 
             NewsArticle newsArticle = new NewsArticle 
             {
+                ApplicationUserId = user.Id,
                 Title = newsArticleDTO.Title,
                 Description = newsArticleDTO.Context,
                 Status = NewsStatus.Pending
             };
+
+            if (newsArticleDTO.Image != null)
+            {
+                string imageName = this._fileUpload.UploadFile(newsArticleDTO.Image, user.Id, "news-image");
+
+                newsArticle.ImageFilePath = imageName;
+            }
 
             await this._newsArticlesRepository.CreateNewsArticle(newsArticle);
 
             return Ok("News Article created successfully.");
         }
 
-        [HttpGet("Get/{newsArticleId:guid}")]
+        [HttpGet("{newsArticleId:guid}")]
         public async Task<IActionResult> GetNewsArticle([FromRoute] Guid? newsArticleId)
         {
             if(newsArticleId == null)
@@ -61,33 +73,31 @@ namespace FinanceNewsPortal.API.Controllers
 
             NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById((Guid)newsArticleId);
 
+            if(news == null)
+            {
+                return NotFound("News article not found.");
+            }
+
             return Ok(news);
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> UpdateNewsArticle([FromForm] UpsertNewsArticleDTO newsArticleDTO)
+        public async Task<IActionResult> UpdateNewsArticle([FromForm] UpdateNewsArticleDTO newsArticleDTO)
         {
             if(!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            Guid tempUserGuid = Guid.NewGuid();
+            ApplicationUser user = await this._userRepository.GetCurrentUser();
 
-            if (newsArticleDTO.Image != null)
+            var newsArticleToUpdate = await this._newsArticlesRepository.GetNewsArticleById((Guid)newsArticleDTO.Id);
+
+            if(newsArticleToUpdate.Author.Id != user.Id)
             {
-                // Find the news article with the image file path
-                NewsArticle newsArticleWithImageFilePath = await this._newsArticlesRepository
-                    .GetNewsArticleImageFilePathById((Guid)newsArticleDTO.Id, tempUserGuid);
-
-                // Delete image file
-                this._fileUpload.DeleteFile(newsArticleWithImageFilePath.ImageFilePath, "news-image");
-
-                // Upload file and take generated filename
-                newsArticleDTO.ImageFilePath = this._fileUpload.UploadFile(newsArticleDTO.Image, tempUserGuid.ToString(), "news-image");
+                return Unauthorized("Update only applies to the news article owner.");
             }
 
-            newsArticleDTO.Author = tempUserGuid;
             await this._newsArticlesRepository.UpdateNewsArticle((Guid)newsArticleDTO.Id, newsArticleDTO);
 
             return Ok("News Article updated successfully.");
