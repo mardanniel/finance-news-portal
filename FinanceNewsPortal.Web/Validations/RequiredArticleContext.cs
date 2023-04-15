@@ -17,8 +17,7 @@ namespace FinanceNewsPortal.Web.Validations
         }
         public string GetErrorMessage()
         {
-            return $"Content is required.";
+            return $"Context must not be empty.";
         }
-
     }
 }
