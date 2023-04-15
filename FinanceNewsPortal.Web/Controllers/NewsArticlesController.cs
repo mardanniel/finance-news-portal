@@ -27,11 +27,22 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Index(int? pageNumber)
+        public async Task<IActionResult> Index(int? pageNumber, Guid? newsArticleTagId)
         {
             int pageSize = 10;
 
-            List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize);
+            List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize, newsArticleTagId);
+
+            List<NewsArticleTag> newsArticleTags = new List<NewsArticleTag>();
+
+            newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
+
+            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
+
+            ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
+                                                            "Id",
+                                                            "TagName",
+                                                            newsArticleTagId ?? Guid.Empty);
 
             return View(newsArticles);
         }
@@ -51,16 +62,20 @@ namespace FinanceNewsPortal.Web.Controllers
             {
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
 
-                string imageName = this._fileUpload.UploadFile(newsArticle.Image, user.Id, "news-image");
-
                 NewsArticle news = new NewsArticle
                 {
                     ApplicationUserId = user.Id,
                     Title = newsArticle.Title,
                     Description = newsArticle.Context,
-                    Status = NewsStatus.Pending,
-                    ImageFilePath = imageName
+                    Status = NewsStatus.Pending
                 };
+
+                if (newsArticle.Image != null)
+                {
+                    string imageName = this._fileUpload.UploadFile(newsArticle.Image, user.Id, "news-image");
+
+                    news.ImageFilePath = imageName;
+                }
 
                 if (newsArticle.Tags != null)
                 {
@@ -120,6 +135,12 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UpsertNewsArticleViewModel newsArticle)
         {
+            /**
+                NOTE:
+                Consider changing the news status, if it is rejected, on update
+                if there are actual changes on the image, title, context
+            */
+
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
@@ -170,13 +191,29 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
-        public async Task<IActionResult> GetAllPending(int? pageNumber)
+        public async Task<IActionResult> GetAllPending(int? pageNumber, Guid? newsArticleTagId)
         {
             int pageSize = 10;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> pendingNewsArticles = await this._newsArticlesRepository
-                .GetNewsArticleByStatus(Guid.Parse(user.Id), NewsStatus.Pending, pageNumber ?? 1, pageSize);
+                .GetNewsArticleByStatus(Guid.Parse(user.Id), NewsStatus.Pending, pageNumber ?? 1, pageSize, newsArticleTagId);
+
+            List<NewsArticleTag> newsArticleTags = new List<NewsArticleTag>();
+
+            newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
+
+            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
+
+            ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
+                                                            "Id",
+                                                            "TagName",
+                                                            newsArticleTagId ?? Guid.Empty);
+
+            if (newsArticleTagId != null)
+            {
+                ViewData["SelectedNewsArticleTag"] = newsArticleTagId;
+            }
 
             return View(pendingNewsArticles);
         }
@@ -198,7 +235,11 @@ namespace FinanceNewsPortal.Web.Controllers
                 new SelectListItem { Value = "103", Text = "Approved" },
             };
 
-            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            List<NewsArticleTag> newsArticleTags = new List<NewsArticleTag>();
+
+            newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
+
+            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
 
             ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
                                                             "Value",
@@ -208,11 +249,11 @@ namespace FinanceNewsPortal.Web.Controllers
             ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
                                                             "Id",
                                                             "TagName",
-                                                            newsArticleStatus);
+                                                            newsArticleTagId ?? Guid.Empty);
 
             ViewData["SelectedNewsArticleStatus"] = newsArticleStatus;
 
-            if(newsArticleTagId != null)
+            if (newsArticleTagId != null)
             {
                 ViewData["SelectedNewsArticleTag"] = newsArticleTagId;
             }
@@ -244,6 +285,52 @@ namespace FinanceNewsPortal.Web.Controllers
             await this._newsArticlesRepository.UpdateNewsArticleStatus(newsArticleId, NewsStatus.Rejected);
             return RedirectToAction("GetAllPending");
         }
-        
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllTags()
+        {
+            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            return View(newsArticleTags);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> CreateTag()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateTag(CreateTagViewModel newTag)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(newTag);
+            }
+
+            NewsArticleTag newsArticleTag = new NewsArticleTag
+            {
+                TagName = newTag.TagName
+            };
+
+            await this._newsArticlesRepository.CreateNewsArticleTag(newsArticleTag);
+
+            return RedirectToAction("GetAllTags");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> DeleteTag(Guid? newsArticleTagId)
+        {
+            if(newsArticleTagId != null)
+            {
+                await this._newsArticlesRepository.DeleteNewsArticleTag((Guid)newsArticleTagId);
+            }
+
+            return RedirectToAction("GetAllTags");
+        }
     }
 }
