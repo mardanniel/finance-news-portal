@@ -1,0 +1,59 @@
+@model List<NewsArticleTag>
+
+@{
+    ViewData["Title"] = "All Tags";
+}
+
+<section class="d-flex flex-column align-items-center">
+    <a asp-controller="NewsArticles" asp-action="CreateTag" class="align-self-start btn btn-primary my-4">Create Tag</a>
+    <table class="table rounded-3">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Tag Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tag in Model)
+            {
+                <tr>
+                    <td>@tag.Id</td>
+                    <td>@tag.TagName</td>
+                    <td>
+                        <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"
+                            class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="my-4">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link btn @prevDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                </li>
+                @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
+                {
+                    <li class="page-item">
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="Administrator"
+                    asp-action="GetAllUsers" asp-route-pageNumber="@pageNum">@pageNum</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link btn @nextDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    } *@
+</section>

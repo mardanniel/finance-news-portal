@@ -11,10 +11,13 @@ namespace FinanceNewsPortal.API.Repository
     public class NewsArticlesRepository : INewsArticlesRepository
     {
         private readonly FinanceNewsPortalDbContext _financeNewsPortalDbcontext;
+        private readonly FileUpload _fileUpload;
 
-        public NewsArticlesRepository(FinanceNewsPortalDbContext financeNewsPortalDbContext)
+        public NewsArticlesRepository(FinanceNewsPortalDbContext financeNewsPortalDbContext,
+                                        FileUpload fileUpload)
         {
             this._financeNewsPortalDbcontext = financeNewsPortalDbContext;
+            this._fileUpload = fileUpload;
         }
 
         public async Task CreateNewsArticle(NewsArticle newsArticle)
@@ -84,12 +87,12 @@ namespace FinanceNewsPortal.API.Repository
             var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
-                .Where(news => news.Status == NewsStatus.Approved)
                 .OrderByDescending(n => n.CreatedAt)
                 .Select(news => new NewsArticle
                 {
                     Id = news.Id,
                     ApplicationUserId = news.ApplicationUserId,
+                    Description = news.Description,
                     Title = news.Title,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath,
@@ -129,31 +132,19 @@ namespace FinanceNewsPortal.API.Repository
             return await this._financeNewsPortalDbcontext.NewsArticleTags.ToListAsync();
         }
 
-        public async Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleDTO newsArticleDTO)
+        public async Task UpdateNewsArticle(Guid newsArticleId, UpdateNewsArticleDTO newsArticleDTO)
         {
             NewsArticle newsArticleToBeUpdated = await this.GetNewsArticleById(newsArticleId);
 
             if (newsArticleToBeUpdated != null)
             {
-                if (newsArticleDTO.ImageFilePath != null)
+                if (newsArticleDTO.Image != null)
                 {
-                    newsArticleToBeUpdated.ImageFilePath = newsArticleDTO.ImageFilePath;
-                }
+                    // Delete image file
+                    this._fileUpload.DeleteFile(newsArticleToBeUpdated.ImageFilePath, "news-image");
 
-                if (newsArticleDTO.Tags != null)
-                {
-                    List<NewsArticleType> newsArticleTypes = new List<NewsArticleType>();
-
-                    foreach (var tag in newsArticleDTO.Tags)
-                    {
-                        newsArticleTypes.Add(
-                            new NewsArticleType
-                            {
-                                NewsArticleTagId = tag
-                            });
-                    }
-
-                    newsArticleToBeUpdated.NewsArticleTypes = newsArticleTypes;
+                    // Upload file and take generated filename
+                    newsArticleToBeUpdated.ImageFilePath = this._fileUpload.UploadFile(newsArticleDTO.Image, newsArticleToBeUpdated.Author.Id, "news-image");
                 }
 
                 newsArticleToBeUpdated.Title = newsArticleDTO.Title;
