@@ -244,5 +244,6 @@ namespace FinanceNewsPortal.Web.Controllers
             await this._newsArticlesRepository.UpdateNewsArticleStatus(newsArticleId, NewsStatus.Rejected);
             return RedirectToAction("GetAllPending");
         }
+        
     }
 }
