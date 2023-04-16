@@ -119,7 +119,8 @@ namespace FinanceNewsPortal.Web.Repository
                     Title = news.Title,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath,
-                    NewsArticleTypes = news.NewsArticleTypes
+                    NewsArticleTypes = news.NewsArticleTypes,
+                    CreatedAt = news.CreatedAt
                 });
 
             if(newsArticleTagId != null && newsArticleTagId != Guid.Empty)
@@ -145,7 +146,8 @@ namespace FinanceNewsPortal.Web.Repository
                     Status = news.Status,
                     Author = news.Author,
                     ImageFilePath = news.ImageFilePath,
-                    NewsArticleTypes = news.NewsArticleTypes
+                    NewsArticleTypes = news.NewsArticleTypes,
+                    CreatedAt = news.CreatedAt
                 })
                 .Where(news => news.ApplicationUserId == userId.ToString());
 
