@@ -1,4 +1,5 @@
-﻿using FinanceNewsPortal.Web.Models;
+﻿using FinanceNewsPortal.Web.Helper;
+using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,8 +21,12 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             Currency? currency = await this._ratesRepository.GetCurrencyExchangeRates(currencyType);
 
-            if(currency.Rates != null)
+            if (currency.Rates != null)
             {
+                DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(currency.LastUpdate);
+                DateTime dateTime = dateTimeOffset.UtcDateTime;
+                currency.LastUpdateDateString = dateTime.ToFullDateString();
+
                 Type modelType = currency.Rates.GetType();
                 PropertyInfo[] props = modelType.GetProperties();
                 List<SelectListItem> currencyNameList = new List<SelectListItem>();
@@ -47,8 +52,14 @@ namespace FinanceNewsPortal.Web.Controllers
 
             stocks = await this._ratesRepository.GetStockExchangeRates();
 
-            if(stocks.Results != null)
+            if (stocks.Results != null)
             {
+                DateTime dateTime;
+                if (DateTime.TryParse(stocks.LastUpdateDateString, out dateTime))
+                {
+                    stocks.LastUpdateDateString = dateTime.ToFullDateString();
+                }
+
                 stocks.Results = stocks.Results.Take(25);
             }
 
