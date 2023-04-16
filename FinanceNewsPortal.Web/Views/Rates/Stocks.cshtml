@@ -9,6 +9,10 @@
         <h3 class="fw-bolder">Stocks</h3>
         <hr class="flex-grow-1 mx-4">
     </div>
+    @if (Model.Results != null)
+    {
+        <p>Last Update: @Model.LastUpdateDateString</p>
+    }
     <table class="table rounded">
         <thead>
             <tr>

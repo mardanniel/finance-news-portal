@@ -27,6 +27,7 @@
                         <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
                             class="img-fluid" alt="">
                         <h4>@item.Title</h4>
+                        <p>@Html.DisplayFor(model => item.CreatedAt)</p>
                         <div class="d-flex align-items-center">
                             <img src='~/@(item.Author.ImageFilePath != null ? $"uploads/profile-image/{item.Author.ImageFilePath}" : "img/user.png")'
                                 class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">

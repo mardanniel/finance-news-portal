@@ -9,7 +9,6 @@
     <table class="table rounded-3">
         <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Tag Name</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -18,7 +17,6 @@
             @foreach (var tag in Model)
             {
                 <tr>
-                    <td>@tag.Id</td>
                     <td>@tag.TagName</td>
                     <td>
                         <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"

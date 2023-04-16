@@ -22,7 +22,7 @@
     }
     @if (Model.Rates != null)
     {
-
+        <p>Last Update: @Model.LastUpdateDateString</p>
         <form method="GET" asp-action="Currency">
             <div class="d-flex justify-content-between align-items-center my-2">
                 <label for="currencyType" class="control-label fw-bold me-2">Base</label>
