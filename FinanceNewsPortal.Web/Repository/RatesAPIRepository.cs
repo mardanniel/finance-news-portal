@@ -1,3 +1,4 @@
+using FinanceNewsPortal.Web.Helper;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
 using System.Text.Json;
@@ -41,15 +42,20 @@ namespace FinanceNewsPortal.Web.Repository
         {
             Stock? stock;
 
+            DateTime currDate = DateTime.Now;
+            string prevDateStr = currDate.GetPreviousDayWithinWeekdays();
+
             try 
             {
-                string path = $"https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-01-04?adjusted=false&apiKey={this._configuration.GetConnectionString("POLYGONAPI_KEY")}";
+                string path = $"https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/{prevDateStr}?adjusted=false&apiKey={this._configuration.GetConnectionString("POLYGONAPI_KEY")}";
 
                 var responseMessage = await this._httpClient.GetAsync(path);
 
                 var contentStream = await responseMessage.Content.ReadAsStreamAsync();
 
                 stock = await JsonSerializer.DeserializeAsync<Stock>(contentStream);
+
+                stock.LastUpdateDateString = prevDateStr;
             }
             catch(Exception e)
             {
