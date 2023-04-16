@@ -24,6 +24,8 @@ namespace FinanceNewsPortal.Web.Models
 
         [JsonPropertyName("count")]
         public int Count { get; set; }
+
+        public string LastUpdateDateString { get; set; }
     }
 
     public class StockValue

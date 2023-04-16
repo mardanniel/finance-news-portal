@@ -12,8 +12,10 @@ namespace FinanceNewsPortal.Web.Models
 
         [JsonPropertyName("rates")]
         public ExchangeRates Rates { get; set; }
+
+        public string LastUpdateDateString { get; set; }
     }
-    
+
     public class ExchangeRates
     {
         [JsonPropertyName("EUR")]
