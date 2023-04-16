@@ -98,6 +98,9 @@ namespace FinanceNewsPortal.Web.Controllers
                 return RedirectToAction("GetAllCreated");
             }
 
+            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            ViewData["NewsArticleTags"] = newsArticleTags;
+
             return View(newsArticle);
         }
 
@@ -135,26 +138,17 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UpsertNewsArticleViewModel newsArticle)
         {
-            /**
-                NOTE:
-                Consider changing the news status, if it is rejected, on update
-                if there are actual changes on the image, title, context
-            */
-
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await this._userRepository.GetCurrentUser();
 
                 if (newsArticle.Image != null)
                 {
-                    // Find the news article with the image file path
                     NewsArticle newsArticleWithImageFilePath = await this._newsArticlesRepository
                         .GetNewsArticleImageFilePathById((Guid)newsArticle.Id, Guid.Parse(user.Id));
 
-                    // Delete image file
                     this._fileUpload.DeleteFile(newsArticleWithImageFilePath.ImageFilePath, "news-image");
 
-                    // Upload file and take generated filename
                     newsArticle.ImageFilePath = this._fileUpload.UploadFile(newsArticle.Image, user.Id, "news-image");
                 }
 

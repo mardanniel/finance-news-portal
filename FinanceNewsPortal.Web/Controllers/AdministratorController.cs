@@ -33,7 +33,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllUsers(int? pageNumber)
         {
-            int pageSize = 10;
+            int pageSize = 4;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<UserWithRoleViewModel> users = await _adminRepository.GetAllUsersExcept(Guid.Parse(user.Id), pageNumber ?? 1, pageSize);
