@@ -29,7 +29,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? pageNumber, Guid? newsArticleTagId)
         {
-            int pageSize = 10;
+            int pageSize = 12;
 
             List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize, newsArticleTagId);
 
@@ -187,7 +187,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPending(int? pageNumber, Guid? newsArticleTagId)
         {
-            int pageSize = 10;
+            int pageSize = 12;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> pendingNewsArticles = await this._newsArticlesRepository
@@ -215,7 +215,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCreated(int? pageNumber, Guid? newsArticleTagId, NewsStatus newsArticleStatus = NewsStatus.NoStatus)
         {
-            int pageSize = 10;
+            int pageSize = 12;
 
             ApplicationUser user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> newsArticles = await this._newsArticlesRepository
