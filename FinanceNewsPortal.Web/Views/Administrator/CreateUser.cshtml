@@ -1,12 +1,12 @@
 @model RegisterUserViewModel
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create User";
 }
 
 <section class="form-section">
-    <form asp-controller="Administrator" asp-action="CreateModerator">
-        <h1 class="h3 mb-3 fw-normal">Create Moderator</h1>
+    <form asp-controller="Administrator" asp-action="CreateUser">
+        <h1 class="h3 mb-3 fw-normal">Create User</h1>
 
         <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
 
@@ -25,6 +25,10 @@
         <div class="form-floating">
             <select asp-for="Gender" class="form-control" asp-items="ViewBag.GenderList"></select>
             <label asp-for="Gender" class="form-label">Gender</label>
+        </div>
+        <div class="form-floating">
+            <select asp-for="Role" class="form-control" asp-items="ViewBag.RoleList"></select>
+            <label asp-for="Role" class="form-label">Role</label>
         </div>
         <div class="form-floating">
             <input type="password" class="form-control" asp-for="Password">
