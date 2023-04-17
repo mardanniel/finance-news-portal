@@ -8,7 +8,7 @@ namespace FinanceNewsPortal.Web.Validations
         {
             if (value is string stringValue)
             {
-                if (!string.IsNullOrWhiteSpace(stringValue))
+                if (string.IsNullOrWhiteSpace(stringValue))
                 {
                     return new ValidationResult(this.GetErrorMessage());
                 }
