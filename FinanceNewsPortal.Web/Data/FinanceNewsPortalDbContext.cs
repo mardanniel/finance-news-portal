@@ -55,7 +55,6 @@ namespace FinanceNewsPortal.Web.Data
 
         public DbSet<NewsArticle> NewsArticle { get; set; }
         public DbSet<NewsArticleType> NewsArticleTypes { get; set; }
-        public DbSet<NewsArticleRating> NewsArticleRatings { get; set; }
         public DbSet<NewsArticleTag> NewsArticleTags { get; set; }
     }
 }

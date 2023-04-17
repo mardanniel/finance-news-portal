@@ -31,8 +31,8 @@ namespace FinanceNewsPortal.Web.Data
                 new IdentityRole
                 {
                     Id = "1a73053f-78c6-41c2-94fc-d897ccc8b33c",
-                    Name = "Registered",
-                    NormalizedName = "REGISTERED"
+                    Name = "Author",
+                    NormalizedName = "Author"
                 },
                 new IdentityRole
                 {
@@ -53,43 +53,43 @@ namespace FinanceNewsPortal.Web.Data
                 new ApplicationUser
                 {
                     Id = "147c0de8-847c-4466-ad04-1fc7b563e0c4",
-                    FirstName = "Admin",
-                    LastName = "One",
+                    FirstName = "David",
+                    LastName = "Acosta",
                     DateOfBirth = DateTime.Now,
                     Gender = 'M',
                     Status = true,
-                    UserName = "adminone@email.com",
-                    Email = "adminone@email.com",
-                    NormalizedUserName = "adminone@email.com".ToUpper(),
-                    NormalizedEmail = "adminone@email.com".ToUpper(),
+                    UserName = "admindavidacosta@email.com",
+                    Email = "admindavidacosta@email.com",
+                    NormalizedUserName = "admindavidacosta@email.com".ToUpper(),
+                    NormalizedEmail = "admindavidacosta@email.com".ToUpper(),
                     PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
                 },
                 new ApplicationUser
                 {
                     Id = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                    FirstName = "Registered",
-                    LastName = "One",
+                    FirstName = "Mike",
+                    LastName = "Burner",
                     DateOfBirth = DateTime.Now,
                     Gender = 'M',
                     Status = true,
-                    UserName = "registeredone@email.com",
-                    Email = "registeredone@email.com",
-                    NormalizedUserName = "registeredone@email.com".ToUpper(),
-                    NormalizedEmail = "registeredone@email.com".ToUpper(),
+                    UserName = "authormikeburner@email.com",
+                    Email = "authormikeburner@email.com",
+                    NormalizedUserName = "authormikeburner@email.com".ToUpper(),
+                    NormalizedEmail = "authormikeburner@email.com".ToUpper(),
                     PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
                 },
                 new ApplicationUser
                 {
                     Id = "8c0b055f-d24d-43be-b842-4393d0b68d61",
-                    FirstName = "Moderator",
-                    LastName = "One",
+                    FirstName = "Jenny",
+                    LastName = "Lenner",
                     DateOfBirth = DateTime.Now,
                     Gender = 'M',
                     Status = true,
-                    UserName = "moderatorone@email.com",
-                    Email = "moderatorone@email.com",
-                    NormalizedUserName = "moderatorone@email.com".ToUpper(),
-                    NormalizedEmail = "moderatorone@email.com".ToUpper(),
+                    UserName = "modjennylenner@email.com",
+                    Email = "modjennylenner@email.com",
+                    NormalizedUserName = "modjennylenner@email.com".ToUpper(),
+                    NormalizedEmail = "modjennylenner@email.com".ToUpper(),
                     PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
                 }
             );
@@ -140,9 +140,17 @@ namespace FinanceNewsPortal.Web.Data
         public static void InvokeNewsArticleSeed(this ModelBuilder modelBuilder)
         {
             List<NewsArticle> articles = new List<NewsArticle>();
-
-            for (int i = 1; i <= 10; i++)
+            List<Guid> newsArticleTypes = new List<Guid>()
             {
+                Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b"),
+                Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593"),
+                Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+            };
+            Random random = new Random();
+
+            for (int i = 1; i <= 14; i++)
+            {
+                // For Approved News Articles
                 Guid approvedGuid = Guid.NewGuid();
 
                 articles.Add(
@@ -150,31 +158,25 @@ namespace FinanceNewsPortal.Web.Data
                     {
                         Id = approvedGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                        Title = $"Some Approved News {i}",
+                        Title = Faker.Company.CatchPhrase(),
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                         Status = NewsStatus.Approved
                     });
 
-                modelBuilder.Entity<NewsArticleType>().HasData(
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = approvedGuid,
-                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = approvedGuid,
-                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = approvedGuid,
-                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                    });
+                int numberOfTagsForApproved = random.Next(1, 4);
 
+                for (int p = 0; p < numberOfTagsForApproved; p++)
+                {
+                    modelBuilder.Entity<NewsArticleType>().HasData(
+                        new NewsArticleType
+                        {
+                            Id = Guid.NewGuid(),
+                            NewsArticleId = approvedGuid,
+                            NewsArticleTagId = newsArticleTypes[p]
+                        });
+                }
+
+                // For Rejected News Articles
                 Guid rejectedGuid = Guid.NewGuid();
 
                 articles.Add(
@@ -182,31 +184,25 @@ namespace FinanceNewsPortal.Web.Data
                     {
                         Id = rejectedGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                        Title = $"Some Rejected News {i}",
+                        Title = Faker.Company.CatchPhrase(),
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                         Status = NewsStatus.Rejected
                     });
 
-                modelBuilder.Entity<NewsArticleType>().HasData(
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = rejectedGuid,
-                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = rejectedGuid,
-                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = rejectedGuid,
-                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                    });
+                int numberOfTagsForRejected = random.Next(1, 4);
 
+                for (int p = 0; p < numberOfTagsForRejected; p++)
+                {
+                    modelBuilder.Entity<NewsArticleType>().HasData(
+                        new NewsArticleType
+                        {
+                            Id = Guid.NewGuid(),
+                            NewsArticleId = rejectedGuid,
+                            NewsArticleTagId = newsArticleTypes[p]
+                        });
+                }
+
+                // For Pending News Articles
                 Guid pendingGuid = Guid.NewGuid();
 
                 articles.Add(
@@ -214,30 +210,23 @@ namespace FinanceNewsPortal.Web.Data
                     {
                         Id = pendingGuid,
                         ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                        Title = $"Some Pending News {i}",
+                        Title = Faker.Company.CatchPhrase(),
                         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                         Status = NewsStatus.Pending
                     });
 
-                modelBuilder.Entity<NewsArticleType>().HasData(
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = pendingGuid,
-                        NewsArticleTagId = Guid.Parse("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = pendingGuid,
-                        NewsArticleTagId = Guid.Parse("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                    },
-                    new NewsArticleType
-                    {
-                        Id = Guid.NewGuid(),
-                        NewsArticleId = pendingGuid,
-                        NewsArticleTagId = Guid.Parse("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                    });
+                int numberOfTagsForPending = random.Next(1, 4);
+
+                for (int p = 0; p < numberOfTagsForPending; p++)
+                {
+                    modelBuilder.Entity<NewsArticleType>().HasData(
+                        new NewsArticleType
+                        {
+                            Id = Guid.NewGuid(),
+                            NewsArticleId = pendingGuid,
+                            NewsArticleTagId = newsArticleTypes[p]
+                        });
+                }
             }
 
             foreach (var article in articles)
