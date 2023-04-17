@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using FinanceNewsPortal.Web.Enums;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Validations;
 
@@ -27,5 +28,9 @@ namespace FinanceNewsPortal.Web.ViewModels
         public IFormFile? Image { get; set; }
 
         public string? ImageFilePath { get; set; }
+
+        public NewsStatus? Status { get; set; }
+        
+        public string? VerdictMessage { get; set; }
     }
 }
