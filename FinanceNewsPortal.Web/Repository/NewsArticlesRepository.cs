@@ -205,6 +205,16 @@ namespace FinanceNewsPortal.Web.Repository
                     newsArticleToBeUpdated.NewsArticleTypes = newsArticleTypes;
                 }
 
+                if(newsArticleViewModel.Status != null)
+                {
+                    newsArticleToBeUpdated.Status = (NewsStatus)newsArticleViewModel.Status;
+                }
+
+                if(newsArticleViewModel.VerdictMessage != null)
+                {
+                    newsArticleToBeUpdated.VerdictMessage = newsArticleViewModel.VerdictMessage;
+                }
+
                 newsArticleToBeUpdated.Title = newsArticleViewModel.Title;
                 newsArticleToBeUpdated.Description = newsArticleViewModel.Context;
 
