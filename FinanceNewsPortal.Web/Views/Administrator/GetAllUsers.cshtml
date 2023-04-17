@@ -5,7 +5,7 @@
 }
 
 <section class="d-flex flex-column align-items-center">
-    <a asp-controller="Administrator" asp-action="CreateModerator" class="align-self-start btn btn-primary my-4">Create Moderator</a>
+    <a asp-controller="Administrator" asp-action="CreateUser" class="align-self-start btn btn-primary my-4">Create User</a>
     <table class="table rounded-3">
         <thead>
             <tr>
@@ -14,6 +14,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Account Status</th>
+                <th scope="col">Role</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                     <td>@user.Email</td>
                     <td>@(user.Gender == 'M' ? "Male" : "Female")</td>
                     <td>@(user.Status ? "Activated" : "Disabled") </td>
+                    <td>@user.Role</td>
                     <td>
                         <a asp-controller="Administrator" asp-action="Details" asp-route-userId="@user.Id"
                             class="btn btn-primary">View</a>
