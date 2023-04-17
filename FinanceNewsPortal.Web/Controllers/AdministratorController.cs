@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
@@ -35,7 +36,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             int pageSize = 4;
 
-            ApplicationUser user = await this._userRepository.GetCurrentUser();
+            UserWithRoleViewModel user = await this._userRepository.GetCurrentUser();
             List<UserWithRoleViewModel> users = await _adminRepository.GetAllUsersExcept(Guid.Parse(user.Id), pageNumber ?? 1, pageSize);
 
             return View(users);
@@ -44,7 +45,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid userId)
         {
-            ApplicationUser user = await this._adminRepository.GetUserById(userId);
+            UserWithRoleViewModel user = await this._adminRepository.GetUserById(userId);
 
             return View(user);
         }
@@ -58,43 +59,54 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateModerator()
+        public async Task<IActionResult> CreateUser()
         {
-            List<object> genderList = new List<object> { new { Id = 'M', Name = "Male" }, new { Id = 'F', Name = "Female" }, };
+            List<object> genderList = new List<object> 
+            { 
+                new { Id = 'M', Name = "Male" }, 
+                new { Id = 'F', Name = "Female" }, 
+            };
+
+            List<IdentityRole> roleList = await this._roleManager.Roles
+                .Where(r => r.Name != UserRole.Administrator)
+                .ToListAsync();
 
             ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
+            ViewData["RoleList"] = new SelectList(roleList, "Id", "");
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateModerator(RegisterUserViewModel moderatorUser)
+        public async Task<IActionResult> CreateUser(RegisterUserViewModel user)
         {
             if (ModelState.IsValid)
             {
                 var userModel = new ApplicationUser
                 {
-                    UserName = moderatorUser.Email,
-                    Email = moderatorUser.Email,
-                    FirstName = moderatorUser.FirstName,
-                    LastName = moderatorUser.LastName,
-                    Gender = moderatorUser.Gender,
+                    UserName = user.Email,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Gender = user.Gender,
                     Status = true
                 };
 
-                var result = await this._userManager.CreateAsync(userModel, moderatorUser.Password);
+                var result = await this._userManager.CreateAsync(userModel, user.Password);
 
                 if (result.Succeeded)
                 {
-                    bool roleExist = await this._roleManager.RoleExistsAsync(UserRole.Moderator);
+                    var role = await this._roleManager.Roles.Where(r => r.Id == user.Role).FirstOrDefaultAsync();
 
-                    if (!roleExist)
+                    if(role == null)
                     {
-                        await this._roleManager.CreateAsync(new IdentityRole(UserRole.Moderator));
+                        ModelState.AddModelError(String.Empty, "Role doesn't exist. Please try again.");
+
+                        return View(user);
                     }
 
-                    var roleResult = await this._userManager.AddToRoleAsync(userModel, UserRole.Moderator);
+                    var roleResult = await this._userManager.AddToRoleAsync(userModel, role.Name);
 
                     if (!roleResult.Succeeded)
                     {
@@ -110,9 +122,20 @@ namespace FinanceNewsPortal.Web.Controllers
                 }
             }
 
-            List<object> genderList = new List<object> { new { Id = 'M', Name = "Male" }, new { Id = 'F', Name = "Female" }, };
+            List<object> genderList = new List<object> 
+            { 
+                new { Id = 'M', Name = "Male" }, 
+                new { Id = 'F', Name = "Female" }, 
+            };
+
+            List<IdentityRole> roleList = await this._roleManager.Roles
+                .Where(r => r.Name != UserRole.Administrator)
+                .ToListAsync();
+
             ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
-            return View(moderatorUser);
+            ViewData["RoleList"] = new SelectList(roleList, "Id", "");
+
+            return View(user);
         }
     }
 }

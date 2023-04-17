@@ -60,7 +60,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await this._userRepository.GetCurrentUser();
+                UserWithRoleViewModel user = await this._userRepository.GetCurrentUser();
 
                 NewsArticle news = new NewsArticle
                 {
@@ -140,7 +140,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await this._userRepository.GetCurrentUser();
+                UserWithRoleViewModel user = await this._userRepository.GetCurrentUser();
 
                 if (newsArticle.Image != null)
                 {
@@ -189,7 +189,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             int pageSize = 12;
 
-            ApplicationUser user = await this._userRepository.GetCurrentUser();
+            UserWithRoleViewModel user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> pendingNewsArticles = await this._newsArticlesRepository
                 .GetNewsArticleByStatus(Guid.Parse(user.Id), NewsStatus.Pending, pageNumber ?? 1, pageSize, newsArticleTagId);
 
@@ -217,7 +217,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             int pageSize = 12;
 
-            ApplicationUser user = await this._userRepository.GetCurrentUser();
+            UserWithRoleViewModel user = await this._userRepository.GetCurrentUser();
             List<NewsArticle> newsArticles = await this._newsArticlesRepository
                 .GetNewsArticlesByUserId(Guid.Parse(user.Id), pageNumber ?? 1, pageSize, newsArticleStatus, newsArticleTagId);
 
