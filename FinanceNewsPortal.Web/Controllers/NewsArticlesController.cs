@@ -67,7 +67,7 @@ namespace FinanceNewsPortal.Web.Controllers
                     ApplicationUserId = user.Id,
                     Title = newsArticle.Title,
                     Description = newsArticle.Context,
-                    Status = NewsStatus.Pending
+                    Status = user.Role == UserRole.Administrator ? NewsStatus.Approved : NewsStatus.Pending,
                 };
 
                 if (newsArticle.Image != null)
@@ -169,6 +169,13 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> ViewCreated(Guid newsArticle)
+        {
+            NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
+            return View(news);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid newsArticle)
         {
             NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
@@ -258,10 +265,77 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [Authorize(Roles = "Moderator, Administrator")]
         [HttpGet]
-        public async Task<IActionResult> ViewPending(Guid newsArticle)
+        public async Task<IActionResult> ManagePending(Guid newsArticle)
         {
             NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
-            return View(news);
+            PendingNewsArticleVerdict pendingNewsArticleVerdict = new PendingNewsArticleVerdict()
+            {
+                Id = news.Id,
+                Title = news.Title,
+                Description = news.Description,
+                Status = news.Status,
+                ImageFilePath = news.ImageFilePath,
+                Author = news.Author,
+                NewsArticleTypes = news.NewsArticleTypes,
+            };
+
+            List<SelectListItem> newsArticleStatusList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "103", Text = "Approved" },
+                new SelectListItem { Value = "102", Text = "Rejected" },
+            };
+
+            ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
+                                                            "Value",
+                                                            "Text");
+
+            return View(pendingNewsArticleVerdict);
+        }
+
+        [Authorize(Roles = "Moderator, Administrator")]
+        [HttpPost]
+        public async Task<IActionResult> ManagePending(PendingNewsArticleVerdict pendingNewsArticleVerdict)
+        {
+            if(!ModelState.IsValid)
+            {
+                NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(pendingNewsArticleVerdict.Id);
+                PendingNewsArticleVerdict newPendingNewsArticleVerdict = new PendingNewsArticleVerdict()
+                {
+                    Id = news.Id,
+                    Title = news.Title,
+                    Description = news.Description,
+                    Status = news.Status,
+                    ImageFilePath = news.ImageFilePath,
+                    Author = news.Author,
+                    NewsArticleTypes = news.NewsArticleTypes,
+                };
+                List<SelectListItem> newsArticleStatusList = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "103", Text = "Approved" },
+                    new SelectListItem { Value = "102", Text = "Rejected" },
+                };
+
+                ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
+                                                                "Value",
+                                                                "Text");
+                return View(newPendingNewsArticleVerdict);
+            }
+
+            NewsArticle newsArticleToBeUpdate = await this._newsArticlesRepository
+                        .GetNewsArticleById(pendingNewsArticleVerdict.Id);
+
+            UpsertNewsArticleViewModel upsertNewsArticleViewModel = new UpsertNewsArticleViewModel()
+            {
+                Id = pendingNewsArticleVerdict.Id,
+                Title = pendingNewsArticleVerdict.Title,
+                Context = pendingNewsArticleVerdict.Description,
+                Status = pendingNewsArticleVerdict.Status,
+                VerdictMessage = pendingNewsArticleVerdict.VerdictMessage,
+            };
+
+            await this._newsArticlesRepository.UpdateNewsArticle(pendingNewsArticleVerdict.Id, upsertNewsArticleViewModel);
+
+            return RedirectToAction("GetAllPending");
         }
 
         [Authorize(Roles = "Moderator, Administrator")]
