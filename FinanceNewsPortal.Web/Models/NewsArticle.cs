@@ -19,6 +19,8 @@ namespace FinanceNewsPortal.Web.Models
 
         public string? ImageFilePath { get; set; }
 
+        public string? VerdictMessage { get; set; }
+
         public string ApplicationUserId { get; set; }
 
         [DataType(DataType.Date)]
@@ -30,8 +32,5 @@ namespace FinanceNewsPortal.Web.Models
 
         [ValidateNever]
         public ICollection<NewsArticleType> NewsArticleTypes { get; set; }
-
-        [ValidateNever]
-        public NewsArticleRating NewsArticleRating { get; set; }
     }
 }
