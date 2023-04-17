@@ -112,64 +112,64 @@ namespace FinanceNewsPortal.Web.Migrations
                         {
                             Id = "147c0de8-847c-4466-ad04-1fc7b563e0c4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1dd3a61-ca14-4d8d-83c7-8d09b843e6fb",
-                            DateOfBirth = new DateTime(2023, 4, 11, 1, 45, 57, 381, DateTimeKind.Local).AddTicks(8917),
-                            Email = "adminone@email.com",
+                            ConcurrencyStamp = "c123d18e-5d4b-44fe-99be-80355045346c",
+                            DateOfBirth = new DateTime(2023, 4, 17, 8, 23, 18, 493, DateTimeKind.Local).AddTicks(5910),
+                            Email = "administrator@email.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             Gender = "M",
-                            LastName = "One",
+                            LastName = "Nistrator",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMINONE@EMAIL.COM",
-                            NormalizedUserName = "ADMINONE@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBkqPupsl81Cc/HF4d44paH77Fsj/GtQ4KwSaok6J1eSxXt/QJwI7QbC6s3ybLU20Q==",
+                            NormalizedEmail = "ADMINISTRATOR@EMAIL.COM",
+                            NormalizedUserName = "ADMINISTRATOR@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAECGzrp497EkaRSqkgQGGGcRq8f1lrkwrODNIT7+v5XeUJ4HpIe5krC6z16BTuyvLWQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "39ca3277-aecc-41e2-a5ad-12596bc75086",
+                            SecurityStamp = "9523a52e-659c-4c10-a907-1315520601ba",
                             Status = true,
                             TwoFactorEnabled = false,
-                            UserName = "adminone@email.com"
+                            UserName = "administrator@email.com"
                         },
                         new
                         {
                             Id = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "238d35ac-0f5f-4105-af49-81d0030c9341",
-                            DateOfBirth = new DateTime(2023, 4, 11, 1, 45, 57, 383, DateTimeKind.Local).AddTicks(3807),
-                            Email = "registeredone@email.com",
+                            ConcurrencyStamp = "a563eda6-aa72-4480-a83e-b48d768f562b",
+                            DateOfBirth = new DateTime(2023, 4, 17, 8, 23, 18, 494, DateTimeKind.Local).AddTicks(9840),
+                            Email = "mikeburner@email.com",
                             EmailConfirmed = false,
-                            FirstName = "Registered",
+                            FirstName = "Mike",
                             Gender = "M",
-                            LastName = "One",
+                            LastName = "Burner",
                             LockoutEnabled = false,
-                            NormalizedEmail = "REGISTEREDONE@EMAIL.COM",
-                            NormalizedUserName = "REGISTEREDONE@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ1lW0Bl7J6lQMZ3eawFYS0rN6LFZZx2Hze87+4yr0N/mGR6WBw2Bl8QSs/lIfbLQA==",
+                            NormalizedEmail = "MIKEBURNER@EMAIL.COM",
+                            NormalizedUserName = "MIKEBURNER@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBvLQCxvkS64dsmUFLWpUhZez5xBPmAjR+T9TkOB00yuYarMaCZYKYRzogV4ZTgrIw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ef424766-1c9c-4f06-aaf2-ec86f3bca367",
+                            SecurityStamp = "8e7470a0-6145-4dc6-b799-998ddc751268",
                             Status = true,
                             TwoFactorEnabled = false,
-                            UserName = "registeredone@email.com"
+                            UserName = "mikeburner@email.com"
                         },
                         new
                         {
                             Id = "8c0b055f-d24d-43be-b842-4393d0b68d61",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c361608-6ab6-4073-86c7-b2a3ecd49722",
-                            DateOfBirth = new DateTime(2023, 4, 11, 1, 45, 57, 384, DateTimeKind.Local).AddTicks(9538),
-                            Email = "moderatorone@email.com",
+                            ConcurrencyStamp = "d6f1df5a-38f8-4759-9ca0-36bc49788540",
+                            DateOfBirth = new DateTime(2023, 4, 17, 8, 23, 18, 496, DateTimeKind.Local).AddTicks(8335),
+                            Email = "moderator@email.com",
                             EmailConfirmed = false,
-                            FirstName = "Moderator",
+                            FirstName = "Mod",
                             Gender = "M",
-                            LastName = "One",
+                            LastName = "Erator",
                             LockoutEnabled = false,
-                            NormalizedEmail = "MODERATORONE@EMAIL.COM",
-                            NormalizedUserName = "MODERATORONE@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFmh0Q6YxaTgVeKyGO+7jv/jLTn20NzxEZDzPo3ASTHvP/45eOiUDmCD+Yhrfg6kKA==",
+                            NormalizedEmail = "MODERATOR@EMAIL.COM",
+                            NormalizedUserName = "MODERATOR@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEExA7oIaJT0iWn6LjAr0DS9M27T4Abnf6ANjGQOMeijoRKhboJkTJ7lOakLnWm1hIg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f014e464-60ad-45d8-b8da-9291ee68c949",
+                            SecurityStamp = "bc25bef7-b447-4999-9487-0dce9e25ee8f",
                             Status = true,
                             TwoFactorEnabled = false,
-                            UserName = "moderatorone@email.com"
+                            UserName = "moderator@email.com"
                         });
                 });
 
@@ -200,6 +200,9 @@ namespace FinanceNewsPortal.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("VerdictMessage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
@@ -209,297 +212,382 @@ namespace FinanceNewsPortal.Web.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b8f45a85-4643-4f46-bac4-ecde904276ad"),
+                            Id = new Guid("d5e82a16-0422-468e-a2fc-9de7eb5d9b87"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3741),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(5112),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 1"
+                            Title = "Vision-oriented heuristic standardization"
                         },
                         new
                         {
-                            Id = new Guid("7418c3a3-79ac-4382-a772-77bfe3108aae"),
+                            Id = new Guid("be33fef1-0757-4f3a-b5bf-3bb8a983750c"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3802),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(5498),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 1"
+                            Title = "Face to face needs-based adapter"
                         },
                         new
                         {
-                            Id = new Guid("096b097d-a966-4ace-aecc-e6c8efff4f6d"),
+                            Id = new Guid("f4a7b6eb-a667-499a-9aea-1411e45466f8"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3834),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(5743),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 1"
+                            Title = "Compatible solution-oriented infrastructure"
                         },
                         new
                         {
-                            Id = new Guid("b3d6e867-8a7f-4074-bd80-13b884245b2a"),
+                            Id = new Guid("21f212d5-34b4-48c0-b4e6-0a2294c2c15f"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3850),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(5915),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 2"
+                            Title = "Cross-platform fresh-thinking analyzer"
                         },
                         new
                         {
-                            Id = new Guid("1a8e1f1b-c641-4e2a-afc8-717bcd8d7a63"),
+                            Id = new Guid("0aa4613d-f187-4044-8625-7c943ecaecd3"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3859),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(6065),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 2"
+                            Title = "Profound bifurcated product"
                         },
                         new
                         {
-                            Id = new Guid("e3694b33-f59b-4178-9c2b-a669e2ad7a58"),
+                            Id = new Guid("b21cac7a-a094-4736-a2a1-1569e8767fb7"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3871),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(6216),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 2"
+                            Title = "Profound uniform matrix"
                         },
                         new
                         {
-                            Id = new Guid("1969ca0f-f95f-43ea-a273-b6bac3d5dc60"),
+                            Id = new Guid("113a7222-6b6f-43dd-8af1-7bcaa64905ff"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3881),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(6535),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 3"
+                            Title = "Customer-focused next generation Graphical User Interface"
                         },
                         new
                         {
-                            Id = new Guid("fa07e4f1-c81f-47e4-9558-1e7b31438236"),
+                            Id = new Guid("b9f69986-ed61-4b4c-8cc3-8509c9c8365d"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3891),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(6737),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 3"
+                            Title = "Horizontal system-worthy archive"
                         },
                         new
                         {
-                            Id = new Guid("911846d2-74f2-4de8-9711-34a168a946ee"),
+                            Id = new Guid("be1ec014-e6ce-43dc-8c41-9de66f18a510"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3900),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(6921),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 3"
+                            Title = "Multi-tiered eco-centric flexibility"
                         },
                         new
                         {
-                            Id = new Guid("9d2a05be-fca2-4e38-ac95-aaf908e4f222"),
+                            Id = new Guid("6fc00a48-2bc5-404d-b48b-214fab79c583"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3912),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7195),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 4"
+                            Title = "Devolved bi-directional contingency"
                         },
                         new
                         {
-                            Id = new Guid("ac0e4810-8a36-4f43-975c-3a6b05b7da41"),
+                            Id = new Guid("bb335c1d-764e-4c07-a913-7cac7b7d32e6"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3920),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7329),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 4"
+                            Title = "Polarised grid-enabled task-force"
                         },
                         new
                         {
-                            Id = new Guid("e915bc10-7820-4566-87dd-2c47304e0de6"),
+                            Id = new Guid("a77b4142-a85e-4ce5-9ee7-8a9d8f1ce9e7"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3960),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7429),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 4"
+                            Title = "Synergized homogeneous moratorium"
                         },
                         new
                         {
-                            Id = new Guid("bcd6c827-44cf-4098-a456-e8264c92917c"),
+                            Id = new Guid("f45ff338-ff67-4ba2-8e37-6a294a1c9c72"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3971),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7531),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 5"
+                            Title = "Ameliorated incremental frame"
                         },
                         new
                         {
-                            Id = new Guid("a25a35b8-7b7a-4c0b-b5be-a9b4642334d3"),
+                            Id = new Guid("e6a92058-e506-4f2e-ab5b-9e5093676ab5"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3982),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7683),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 5"
+                            Title = "Right-sized intangible artificial intelligence"
                         },
                         new
                         {
-                            Id = new Guid("8434be5a-0807-455f-86bb-7c975f217acd"),
+                            Id = new Guid("e725d3e7-f0fe-44a2-bf80-7fb5be41674b"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(3990),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7798),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 5"
+                            Title = "Upgradable maximized open system"
                         },
                         new
                         {
-                            Id = new Guid("52180721-cc44-4c37-a64e-537a06d9dffa"),
+                            Id = new Guid("92bad905-ff0e-47f3-97b0-6fdc07d9b0ae"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4000),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(7899),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 6"
+                            Title = "Stand-alone client-driven monitoring"
                         },
                         new
                         {
-                            Id = new Guid("769c14b5-25cd-4dcf-8cf8-ce16b64afb95"),
+                            Id = new Guid("820b5df6-fd6c-49d4-b591-ad6e8054320d"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4009),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8005),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 6"
+                            Title = "Upgradable modular encryption"
                         },
                         new
                         {
-                            Id = new Guid("25d1235d-70c9-4f6b-8b1c-0589d534f10f"),
+                            Id = new Guid("bfde229a-3a7d-4ab1-80fa-e1665f616c23"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4021),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8139),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 6"
+                            Title = "Re-contextualized system-worthy database"
                         },
                         new
                         {
-                            Id = new Guid("109f328d-fb69-4e9c-978d-c545e2af5cb9"),
+                            Id = new Guid("4fe63fa9-ba06-4404-af9b-ccf7b2e4a2e4"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4030),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8244),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 7"
+                            Title = "Front-line didactic strategy"
                         },
                         new
                         {
-                            Id = new Guid("5da125e8-12f0-49cf-9460-718760be91b7"),
+                            Id = new Guid("928d6b64-29d0-44c5-a2d6-8f88575ced41"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4040),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8339),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 7"
+                            Title = "Horizontal motivating orchestration"
                         },
                         new
                         {
-                            Id = new Guid("a8bdee20-cdaa-47a1-b041-03a1bb8867ce"),
+                            Id = new Guid("717f2459-a5d6-4bc6-9e8a-55b7de2be55a"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4049),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8464),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 7"
+                            Title = "Configurable uniform service-desk"
                         },
                         new
                         {
-                            Id = new Guid("b4539e6e-3348-4675-bcb5-3c5896388c13"),
+                            Id = new Guid("69c77754-1bec-44e9-aef3-097c744e2247"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4059),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8573),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 8"
+                            Title = "Team-oriented cohesive instruction set"
                         },
                         new
                         {
-                            Id = new Guid("f5d44170-b28c-4c19-be11-d51b732c5c0a"),
+                            Id = new Guid("0c021841-6ab6-4fe3-9942-a0c57247251b"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4097),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8677),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 8"
+                            Title = "Triple-buffered multimedia time-frame"
                         },
                         new
                         {
-                            Id = new Guid("2e9782c7-7f46-4ad8-acbd-f0a98bf5c62a"),
+                            Id = new Guid("617f4b4c-2d29-41c5-aa7f-8b893b3dac91"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4109),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(8849),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 8"
+                            Title = "Polarised homogeneous help-desk"
                         },
                         new
                         {
-                            Id = new Guid("4eadf4ed-2efe-4f63-b866-f829ce13a65e"),
+                            Id = new Guid("a4900554-4ed5-4312-b3aa-930d8ab63808"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4118),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(9010),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 9"
+                            Title = "Open-source scalable portal"
                         },
                         new
                         {
-                            Id = new Guid("f6080e34-40ef-4310-b5b9-0d6462850fc3"),
+                            Id = new Guid("50f01697-a1bf-4883-a225-39e4dec66b45"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4128),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(9114),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 9"
+                            Title = "Fundamental zero tolerance moratorium"
                         },
                         new
                         {
-                            Id = new Guid("0e3b7f5d-c051-4a45-8a59-f20d44226a46"),
+                            Id = new Guid("d531d9a9-be87-4667-b6a9-11b38385a084"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4137),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(9243),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 9"
+                            Title = "Managed bottom-line definition"
                         },
                         new
                         {
-                            Id = new Guid("5d657acd-d7d1-4a44-9d3e-205046571056"),
+                            Id = new Guid("c77b13da-1887-4d7e-a150-dd21b465fec6"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4147),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 498, DateTimeKind.Local).AddTicks(9589),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 103,
-                            Title = "Some Approved News 10"
+                            Title = "Self-enabling background encryption"
                         },
                         new
                         {
-                            Id = new Guid("9266c529-2975-49f1-b2ec-847c6db4e0c7"),
+                            Id = new Guid("fe9293f6-8429-4982-926d-44d785516bd4"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4156),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 102,
-                            Title = "Some Rejected News 10"
+                            Title = "Reactive motivating ability"
                         },
                         new
                         {
-                            Id = new Guid("1c3dd41a-95e1-4f73-881c-f439818e39a7"),
+                            Id = new Guid("07ed5cf9-0aaa-403a-859b-d696d51aacf4"),
                             ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
-                            CreatedAt = new DateTime(2023, 4, 11, 1, 45, 57, 386, DateTimeKind.Local).AddTicks(4167),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(191),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
                             Status = 101,
-                            Title = "Some Pending News 10"
+                            Title = "Streamlined tangible paradigm"
+                        },
+                        new
+                        {
+                            Id = new Guid("7d3c300e-c150-4130-a6f1-16d3ad445e93"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(357),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 103,
+                            Title = "Switchable user-facing budgetary management"
+                        },
+                        new
+                        {
+                            Id = new Guid("59c363d1-e5a9-42fb-94e4-81fa27c74f56"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(528),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 102,
+                            Title = "Re-contextualized exuding software"
+                        },
+                        new
+                        {
+                            Id = new Guid("02d45ffc-6e30-4d05-80af-963a7d7e87e1"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(823),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 101,
+                            Title = "Vision-oriented solution-oriented customer loyalty"
+                        },
+                        new
+                        {
+                            Id = new Guid("8151c6c3-7ee8-4990-a04b-99c54b37efe1"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1172),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 103,
+                            Title = "Realigned human-resource circuit"
+                        },
+                        new
+                        {
+                            Id = new Guid("3c3a2caa-f01b-447e-acbd-3181cd47a370"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1337),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 102,
+                            Title = "Diverse exuding migration"
+                        },
+                        new
+                        {
+                            Id = new Guid("4214e211-eef9-4483-841f-24a02e4039a6"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1466),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 101,
+                            Title = "De-engineered non-volatile encoding"
+                        },
+                        new
+                        {
+                            Id = new Guid("6712106e-cdb9-4481-a41d-b4b517a26299"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1588),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 103,
+                            Title = "Managed object-oriented contingency"
+                        },
+                        new
+                        {
+                            Id = new Guid("32a7021c-a924-4ea2-9183-0f80f996a8e0"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1716),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 102,
+                            Title = "Profound value-added software"
+                        },
+                        new
+                        {
+                            Id = new Guid("37d0f214-6391-4f90-a1b9-f795e21ae10c"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(1827),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 101,
+                            Title = "Multi-channelled methodical knowledge base"
+                        },
+                        new
+                        {
+                            Id = new Guid("49cf2685-1344-40b4-bf80-f5ccd7b579f0"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(2051),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 103,
+                            Title = "Cloned non-volatile function"
+                        },
+                        new
+                        {
+                            Id = new Guid("d8a04a36-fc61-49a4-aab0-aa3d459c9871"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(2231),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 102,
+                            Title = "Adaptive directional paradigm"
+                        },
+                        new
+                        {
+                            Id = new Guid("71409c14-261b-4067-90f2-eb7e5ebef32e"),
+                            ApplicationUserId = "cba87ff8-bb15-442f-8a47-0e65a93cab8c",
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 23, 18, 499, DateTimeKind.Local).AddTicks(2527),
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra volutpat iaculis. Praesent ultricies, enim et finibus maximus, nunc enim efficitur neque, eget suscipit erat orci quis dolor. Morbi sed lobortis sapien, at luctus nisl. In non sodales tortor, id elementum nisi. Sed nunc erat, fermentum ut viverra in, pulvinar in lectus. Suspendisse a lorem sem. Nulla tristique non ligula nec consequat. Praesent at viverra felis, nec dapibus turpis. Mauris ac tempor mi, in imperdiet sem. Praesent fermentum libero arcu, a malesuada tellus rhoncus a. Nunc sed dolor nulla. In hac habitasse platea dictumst. Fusce ac suscipit erat. Etiam sed justo sit amet erat pharetra viverra. In porta arcu quis mi cursus consequat. Pellentesque eu odio justo. Vivamus pretium neque velit, ut lobortis sapien dapibus in. Suspendisse blandit odio at convallis mattis. Nam ac felis eu diam bibendum rutrum. Nulla eget libero placerat, facilisis nisl quis, condimentum neque. Mauris laoreet bibendum mi sed tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+                            Status = 101,
+                            Title = "Pre-emptive reciprocal capacity"
                         });
-                });
-
-            modelBuilder.Entity("FinanceNewsPortal.Web.Models.NewsArticleRating", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("NewsArticleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<float>("Rating")
-                        .HasColumnType("real");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NewsArticleId")
-                        .IsUnique();
-
-                    b.ToTable("NewsArticleRatings");
                 });
 
             modelBuilder.Entity("FinanceNewsPortal.Web.Models.NewsArticleTag", b =>
@@ -557,543 +645,513 @@ namespace FinanceNewsPortal.Web.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("214b83fe-c67f-492e-919f-dc6d23e52432"),
-                            NewsArticleId = new Guid("b8f45a85-4643-4f46-bac4-ecde904276ad"),
+                            Id = new Guid("2e87aa0d-38c7-49cd-b642-2f97e507d527"),
+                            NewsArticleId = new Guid("d5e82a16-0422-468e-a2fc-9de7eb5d9b87"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("570aa859-a6df-4b34-b96f-149f3464708f"),
-                            NewsArticleId = new Guid("b8f45a85-4643-4f46-bac4-ecde904276ad"),
+                            Id = new Guid("2d4e818a-fb16-46da-aa17-303ddcf6ef87"),
+                            NewsArticleId = new Guid("d5e82a16-0422-468e-a2fc-9de7eb5d9b87"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("e92c928f-a6c0-4043-b05d-5569a46fcc4d"),
-                            NewsArticleId = new Guid("b8f45a85-4643-4f46-bac4-ecde904276ad"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("2dcf42d3-9fe1-4f30-9302-10318f3bee16"),
-                            NewsArticleId = new Guid("7418c3a3-79ac-4382-a772-77bfe3108aae"),
+                            Id = new Guid("207c7ab7-005b-4e90-8c04-3c6d42704610"),
+                            NewsArticleId = new Guid("be33fef1-0757-4f3a-b5bf-3bb8a983750c"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("513e89ff-17b4-4481-bc0f-95d823f32d83"),
-                            NewsArticleId = new Guid("7418c3a3-79ac-4382-a772-77bfe3108aae"),
+                            Id = new Guid("8a709eba-0a17-46b8-9b5b-3d329f68f6a5"),
+                            NewsArticleId = new Guid("be33fef1-0757-4f3a-b5bf-3bb8a983750c"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("d8738bb1-5954-45f7-9d98-7314d2b49e0a"),
-                            NewsArticleId = new Guid("7418c3a3-79ac-4382-a772-77bfe3108aae"),
+                            Id = new Guid("9b2588b8-8f71-4fda-a885-5473a2049aba"),
+                            NewsArticleId = new Guid("be33fef1-0757-4f3a-b5bf-3bb8a983750c"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("89babd9f-dd12-44c7-84e3-71e7a7968d30"),
-                            NewsArticleId = new Guid("096b097d-a966-4ace-aecc-e6c8efff4f6d"),
+                            Id = new Guid("e4cadf8b-370f-44eb-931e-40081a7ddfd1"),
+                            NewsArticleId = new Guid("f4a7b6eb-a667-499a-9aea-1411e45466f8"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("6c6514f1-5f60-4616-8c14-d255f9704961"),
-                            NewsArticleId = new Guid("096b097d-a966-4ace-aecc-e6c8efff4f6d"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("96679a1b-b7dd-4822-86a3-448631d7ae8b"),
-                            NewsArticleId = new Guid("096b097d-a966-4ace-aecc-e6c8efff4f6d"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("1f89e606-7f3f-4f5b-823f-cedf82dccc86"),
-                            NewsArticleId = new Guid("b3d6e867-8a7f-4074-bd80-13b884245b2a"),
+                            Id = new Guid("b8ef0fd1-3a7f-4431-8fde-f1df05498965"),
+                            NewsArticleId = new Guid("21f212d5-34b4-48c0-b4e6-0a2294c2c15f"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("3c55cc62-266f-4fc5-a64d-d7450c5df9e5"),
-                            NewsArticleId = new Guid("b3d6e867-8a7f-4074-bd80-13b884245b2a"),
+                            Id = new Guid("4b251240-25eb-4a3a-8bdc-c617cead493f"),
+                            NewsArticleId = new Guid("21f212d5-34b4-48c0-b4e6-0a2294c2c15f"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("edb3e4e3-3e7a-4243-90b0-a0243e27466a"),
-                            NewsArticleId = new Guid("b3d6e867-8a7f-4074-bd80-13b884245b2a"),
+                            Id = new Guid("b69e4834-f74b-4fcf-a175-a6d723326dd1"),
+                            NewsArticleId = new Guid("21f212d5-34b4-48c0-b4e6-0a2294c2c15f"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("95800892-c85f-4786-af9f-53167ccf5922"),
-                            NewsArticleId = new Guid("1a8e1f1b-c641-4e2a-afc8-717bcd8d7a63"),
+                            Id = new Guid("0eba59c5-84c1-4418-bfb8-b704a5d2729a"),
+                            NewsArticleId = new Guid("0aa4613d-f187-4044-8625-7c943ecaecd3"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("7a79a1a4-7cd4-4e66-b8a1-dd9bb0552972"),
-                            NewsArticleId = new Guid("1a8e1f1b-c641-4e2a-afc8-717bcd8d7a63"),
+                            Id = new Guid("89db081b-56b7-4813-b588-cb1601810be3"),
+                            NewsArticleId = new Guid("0aa4613d-f187-4044-8625-7c943ecaecd3"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("c89c541a-92fd-4ef1-b11b-3fde5306a33e"),
-                            NewsArticleId = new Guid("1a8e1f1b-c641-4e2a-afc8-717bcd8d7a63"),
+                            Id = new Guid("66a7e32a-b716-4b27-bdd2-1bf0444cbeaa"),
+                            NewsArticleId = new Guid("0aa4613d-f187-4044-8625-7c943ecaecd3"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("941e50f2-4725-4716-8fbe-95a2f0c680f2"),
-                            NewsArticleId = new Guid("e3694b33-f59b-4178-9c2b-a669e2ad7a58"),
+                            Id = new Guid("e97b5fc9-1848-4a1c-a685-6cfeda2758ce"),
+                            NewsArticleId = new Guid("b21cac7a-a094-4736-a2a1-1569e8767fb7"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("b823c64d-c740-4429-86a0-172f9bd1a2a6"),
-                            NewsArticleId = new Guid("e3694b33-f59b-4178-9c2b-a669e2ad7a58"),
+                            Id = new Guid("1fe87145-792d-4216-b3a1-23c1cc69d25b"),
+                            NewsArticleId = new Guid("b21cac7a-a094-4736-a2a1-1569e8767fb7"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("4ab437ce-f74e-4142-b3fb-d7ead7fa1053"),
-                            NewsArticleId = new Guid("e3694b33-f59b-4178-9c2b-a669e2ad7a58"),
+                            Id = new Guid("0458b20e-b598-49a4-8017-4bcfec861d59"),
+                            NewsArticleId = new Guid("b21cac7a-a094-4736-a2a1-1569e8767fb7"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("abc30ed8-a646-43d4-8b3b-1c17a57677b3"),
-                            NewsArticleId = new Guid("1969ca0f-f95f-43ea-a273-b6bac3d5dc60"),
+                            Id = new Guid("e8325fc2-f9cb-4c39-88e9-cba0faf510fd"),
+                            NewsArticleId = new Guid("113a7222-6b6f-43dd-8af1-7bcaa64905ff"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("5aa6fd80-533c-4ac6-a14e-87de65b3f220"),
-                            NewsArticleId = new Guid("1969ca0f-f95f-43ea-a273-b6bac3d5dc60"),
+                            Id = new Guid("dced7700-4d2d-4058-9f96-e43c9b00491c"),
+                            NewsArticleId = new Guid("113a7222-6b6f-43dd-8af1-7bcaa64905ff"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("44153a41-2a11-414f-8a0a-b6767f500d99"),
-                            NewsArticleId = new Guid("1969ca0f-f95f-43ea-a273-b6bac3d5dc60"),
+                            Id = new Guid("cc543919-1955-42f0-8744-c5d0ca5ea1c8"),
+                            NewsArticleId = new Guid("113a7222-6b6f-43dd-8af1-7bcaa64905ff"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("a7f6bae4-eb88-4f4e-b192-171e828d9d6a"),
-                            NewsArticleId = new Guid("fa07e4f1-c81f-47e4-9558-1e7b31438236"),
+                            Id = new Guid("a105c00d-250a-4cb6-941d-d1e6fed72ce0"),
+                            NewsArticleId = new Guid("b9f69986-ed61-4b4c-8cc3-8509c9c8365d"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("091b46e0-d752-4073-9d26-5a0d4a75f2f8"),
-                            NewsArticleId = new Guid("fa07e4f1-c81f-47e4-9558-1e7b31438236"),
+                            Id = new Guid("8aa43597-40b8-4a4c-b925-cf91e8bb60f1"),
+                            NewsArticleId = new Guid("b9f69986-ed61-4b4c-8cc3-8509c9c8365d"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("5d2c279b-a9eb-4f4b-aae0-85dd3ef9fb3f"),
-                            NewsArticleId = new Guid("fa07e4f1-c81f-47e4-9558-1e7b31438236"),
+                            Id = new Guid("ba33b6de-49c4-4bc2-89ce-d19e287477d3"),
+                            NewsArticleId = new Guid("b9f69986-ed61-4b4c-8cc3-8509c9c8365d"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("f25504b9-4607-4fcc-bd7b-741f98e7410b"),
-                            NewsArticleId = new Guid("911846d2-74f2-4de8-9711-34a168a946ee"),
+                            Id = new Guid("f91423d8-904f-48a6-98d9-a230eb7f8506"),
+                            NewsArticleId = new Guid("be1ec014-e6ce-43dc-8c41-9de66f18a510"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("9164a361-5b4e-48a7-ac6b-077111370561"),
-                            NewsArticleId = new Guid("911846d2-74f2-4de8-9711-34a168a946ee"),
+                            Id = new Guid("d2b8cc02-b885-46c8-8ede-25e97d55c930"),
+                            NewsArticleId = new Guid("be1ec014-e6ce-43dc-8c41-9de66f18a510"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("f1c9db4e-5dce-48ff-aeb9-e074a7278861"),
-                            NewsArticleId = new Guid("911846d2-74f2-4de8-9711-34a168a946ee"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("b2063284-ec8a-4893-821c-909dd0235111"),
-                            NewsArticleId = new Guid("9d2a05be-fca2-4e38-ac95-aaf908e4f222"),
+                            Id = new Guid("38836be7-c26a-4462-ac62-d30a96313d72"),
+                            NewsArticleId = new Guid("6fc00a48-2bc5-404d-b48b-214fab79c583"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("8d9f73ad-3ea9-4229-8b86-7d017d5bc52f"),
-                            NewsArticleId = new Guid("9d2a05be-fca2-4e38-ac95-aaf908e4f222"),
+                            Id = new Guid("357a00f0-d2d2-4afe-9c4b-cfa086b0afde"),
+                            NewsArticleId = new Guid("6fc00a48-2bc5-404d-b48b-214fab79c583"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("b36164bc-9af8-498c-ba19-d434bbd11973"),
-                            NewsArticleId = new Guid("9d2a05be-fca2-4e38-ac95-aaf908e4f222"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("f6849470-65da-4e10-8b6d-776206cbb8d0"),
-                            NewsArticleId = new Guid("ac0e4810-8a36-4f43-975c-3a6b05b7da41"),
+                            Id = new Guid("34628631-25fe-4a53-bdd9-1fa778e33c8a"),
+                            NewsArticleId = new Guid("bb335c1d-764e-4c07-a913-7cac7b7d32e6"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("c4a92062-ab58-4ce3-976f-74e77fd25044"),
-                            NewsArticleId = new Guid("ac0e4810-8a36-4f43-975c-3a6b05b7da41"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("75718693-94b6-4ee1-9a07-7d74a4f71e05"),
-                            NewsArticleId = new Guid("ac0e4810-8a36-4f43-975c-3a6b05b7da41"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("23e7fcf5-a8e1-4790-8fd1-8d585644ee61"),
-                            NewsArticleId = new Guid("e915bc10-7820-4566-87dd-2c47304e0de6"),
+                            Id = new Guid("0d761384-bac8-4dc7-b572-91a23158fce8"),
+                            NewsArticleId = new Guid("a77b4142-a85e-4ce5-9ee7-8a9d8f1ce9e7"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("741d6084-3849-40cc-a212-f629a23e8b04"),
-                            NewsArticleId = new Guid("e915bc10-7820-4566-87dd-2c47304e0de6"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("a62eca47-35c3-419d-b1ba-8cb11f602e7f"),
-                            NewsArticleId = new Guid("e915bc10-7820-4566-87dd-2c47304e0de6"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("f56c1070-7505-4eb8-9517-adc4d74f584c"),
-                            NewsArticleId = new Guid("bcd6c827-44cf-4098-a456-e8264c92917c"),
+                            Id = new Guid("a8fb98f1-3007-4376-9a1a-3559d7bab5a6"),
+                            NewsArticleId = new Guid("f45ff338-ff67-4ba2-8e37-6a294a1c9c72"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("3956022b-5b06-4a57-8b00-34d157a2d2d2"),
-                            NewsArticleId = new Guid("bcd6c827-44cf-4098-a456-e8264c92917c"),
+                            Id = new Guid("a2e959e9-73b6-4fbd-82e5-b5aa8dc63c17"),
+                            NewsArticleId = new Guid("f45ff338-ff67-4ba2-8e37-6a294a1c9c72"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("cf5be8b4-3485-4fc0-a73b-07114edd0a7c"),
-                            NewsArticleId = new Guid("bcd6c827-44cf-4098-a456-e8264c92917c"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("5ca2207e-0408-4c6a-807f-0fdedea10755"),
-                            NewsArticleId = new Guid("a25a35b8-7b7a-4c0b-b5be-a9b4642334d3"),
+                            Id = new Guid("082af6ae-2fe9-43b6-88af-1a18dcf2684a"),
+                            NewsArticleId = new Guid("e6a92058-e506-4f2e-ab5b-9e5093676ab5"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("a02a96ba-f0d8-41a3-be0a-043676f5ee18"),
-                            NewsArticleId = new Guid("a25a35b8-7b7a-4c0b-b5be-a9b4642334d3"),
+                            Id = new Guid("cb8d540c-9099-438e-b8b4-d6cc9fda477e"),
+                            NewsArticleId = new Guid("e6a92058-e506-4f2e-ab5b-9e5093676ab5"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("79fb4473-11cf-4663-819c-b397e15620cb"),
-                            NewsArticleId = new Guid("a25a35b8-7b7a-4c0b-b5be-a9b4642334d3"),
+                            Id = new Guid("84b04c2f-6cc5-4272-a27b-a4b568b35430"),
+                            NewsArticleId = new Guid("e6a92058-e506-4f2e-ab5b-9e5093676ab5"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("cd58e700-5c87-4294-b1bd-dc904776813d"),
-                            NewsArticleId = new Guid("8434be5a-0807-455f-86bb-7c975f217acd"),
+                            Id = new Guid("11c02392-8922-4bde-8e2f-3c4046a03984"),
+                            NewsArticleId = new Guid("e725d3e7-f0fe-44a2-bf80-7fb5be41674b"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("dd71a354-dba4-4ce3-aed2-084a8d789a76"),
-                            NewsArticleId = new Guid("8434be5a-0807-455f-86bb-7c975f217acd"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("d9531d8c-94bd-49d6-85ec-9ab2b50e248c"),
-                            NewsArticleId = new Guid("8434be5a-0807-455f-86bb-7c975f217acd"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("217f12d9-85f2-4870-ba13-89fb0bacd8eb"),
-                            NewsArticleId = new Guid("52180721-cc44-4c37-a64e-537a06d9dffa"),
+                            Id = new Guid("13384913-6add-4596-9065-aa7d41822c0d"),
+                            NewsArticleId = new Guid("92bad905-ff0e-47f3-97b0-6fdc07d9b0ae"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("251be589-4e4f-4d38-8a3f-4f046a5e571b"),
-                            NewsArticleId = new Guid("52180721-cc44-4c37-a64e-537a06d9dffa"),
+                            Id = new Guid("2c9e634e-8785-4049-9f31-3bd2a3d1ea64"),
+                            NewsArticleId = new Guid("92bad905-ff0e-47f3-97b0-6fdc07d9b0ae"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("bb542788-2516-4608-a2f8-912bc2282992"),
-                            NewsArticleId = new Guid("52180721-cc44-4c37-a64e-537a06d9dffa"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("8a673f9d-a34c-4205-bab3-9b9b27681b22"),
-                            NewsArticleId = new Guid("769c14b5-25cd-4dcf-8cf8-ce16b64afb95"),
+                            Id = new Guid("40eee108-c4d0-4897-b534-4b6a6b1a2de4"),
+                            NewsArticleId = new Guid("820b5df6-fd6c-49d4-b591-ad6e8054320d"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("7c240f82-0eff-44ba-9517-126bd9cba0a6"),
-                            NewsArticleId = new Guid("769c14b5-25cd-4dcf-8cf8-ce16b64afb95"),
+                            Id = new Guid("2196f266-1f66-4136-b5ba-323b5f3dc095"),
+                            NewsArticleId = new Guid("820b5df6-fd6c-49d4-b591-ad6e8054320d"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("a67c6e74-d429-4dc7-b358-dac482133253"),
-                            NewsArticleId = new Guid("769c14b5-25cd-4dcf-8cf8-ce16b64afb95"),
+                            Id = new Guid("e61d7872-469f-4d50-870e-3695151f85df"),
+                            NewsArticleId = new Guid("820b5df6-fd6c-49d4-b591-ad6e8054320d"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("231b0a70-491c-4944-819d-be30c0bc9786"),
-                            NewsArticleId = new Guid("25d1235d-70c9-4f6b-8b1c-0589d534f10f"),
+                            Id = new Guid("8f919dff-96a4-4594-a833-b2bb8d662962"),
+                            NewsArticleId = new Guid("bfde229a-3a7d-4ab1-80fa-e1665f616c23"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("b8b45190-3bd7-4ce2-a2ed-4d178c444b61"),
-                            NewsArticleId = new Guid("25d1235d-70c9-4f6b-8b1c-0589d534f10f"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("6b4ca30c-8e37-422c-8ccc-f4c6bf7b7ecf"),
-                            NewsArticleId = new Guid("25d1235d-70c9-4f6b-8b1c-0589d534f10f"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("b9338418-40fb-498a-a907-d2ad4356786e"),
-                            NewsArticleId = new Guid("109f328d-fb69-4e9c-978d-c545e2af5cb9"),
+                            Id = new Guid("641456d5-9364-4fa5-81fe-d3958f55062a"),
+                            NewsArticleId = new Guid("4fe63fa9-ba06-4404-af9b-ccf7b2e4a2e4"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("b511b44c-2bab-4940-9c11-f5ea7817d400"),
-                            NewsArticleId = new Guid("109f328d-fb69-4e9c-978d-c545e2af5cb9"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("f032f95f-753a-4926-aabb-69e3e69fb16d"),
-                            NewsArticleId = new Guid("109f328d-fb69-4e9c-978d-c545e2af5cb9"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("0ab48133-0ca8-4233-bb42-3f557a454cf1"),
-                            NewsArticleId = new Guid("5da125e8-12f0-49cf-9460-718760be91b7"),
+                            Id = new Guid("a85603e4-255f-4cba-b2ab-ed647bc4881d"),
+                            NewsArticleId = new Guid("928d6b64-29d0-44c5-a2d6-8f88575ced41"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("f7cbe8e3-2443-40fe-911d-def1a3570b05"),
-                            NewsArticleId = new Guid("5da125e8-12f0-49cf-9460-718760be91b7"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("01b1684f-400f-439b-98b9-fcbf6df3e9d4"),
-                            NewsArticleId = new Guid("5da125e8-12f0-49cf-9460-718760be91b7"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("d48f347a-0fa8-421c-85a0-2f67a493d599"),
-                            NewsArticleId = new Guid("a8bdee20-cdaa-47a1-b041-03a1bb8867ce"),
+                            Id = new Guid("27b67db5-f6af-4329-9166-aba06feedbf3"),
+                            NewsArticleId = new Guid("717f2459-a5d6-4bc6-9e8a-55b7de2be55a"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("73b6359e-77fb-44b5-9374-2b1258915e0a"),
-                            NewsArticleId = new Guid("a8bdee20-cdaa-47a1-b041-03a1bb8867ce"),
+                            Id = new Guid("f4cae4c9-b475-4164-bf6b-23cee7bf20bd"),
+                            NewsArticleId = new Guid("717f2459-a5d6-4bc6-9e8a-55b7de2be55a"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("2278923e-de90-47e1-beb7-01dc4d718d15"),
-                            NewsArticleId = new Guid("a8bdee20-cdaa-47a1-b041-03a1bb8867ce"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("01503d40-d64f-401e-aaae-aaf8a05f8e0a"),
-                            NewsArticleId = new Guid("b4539e6e-3348-4675-bcb5-3c5896388c13"),
+                            Id = new Guid("6b70faba-414e-46bd-a7da-8518225adddd"),
+                            NewsArticleId = new Guid("69c77754-1bec-44e9-aef3-097c744e2247"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("e88c1aab-aed7-4bb1-bf76-a49031a4be17"),
-                            NewsArticleId = new Guid("b4539e6e-3348-4675-bcb5-3c5896388c13"),
+                            Id = new Guid("ce856781-bd01-42f5-abde-1fd43aa83fad"),
+                            NewsArticleId = new Guid("69c77754-1bec-44e9-aef3-097c744e2247"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("fdb934df-9711-4074-b670-c39c626b2e3d"),
-                            NewsArticleId = new Guid("b4539e6e-3348-4675-bcb5-3c5896388c13"),
+                            Id = new Guid("bf289e19-bbf9-4685-ac5b-869f31f9ba09"),
+                            NewsArticleId = new Guid("69c77754-1bec-44e9-aef3-097c744e2247"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("0e0c6520-f5b8-43cb-b8c2-989633cd222a"),
-                            NewsArticleId = new Guid("f5d44170-b28c-4c19-be11-d51b732c5c0a"),
+                            Id = new Guid("947f2820-329b-4eef-9ed2-fddac521412b"),
+                            NewsArticleId = new Guid("0c021841-6ab6-4fe3-9942-a0c57247251b"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("2049e107-6bed-4d99-bf2e-eb180cb9b908"),
-                            NewsArticleId = new Guid("f5d44170-b28c-4c19-be11-d51b732c5c0a"),
+                            Id = new Guid("8b341e6f-7816-4c67-b671-c78ec27155a0"),
+                            NewsArticleId = new Guid("0c021841-6ab6-4fe3-9942-a0c57247251b"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("a7aba120-4d7e-4055-a72b-f439f89dbf1c"),
-                            NewsArticleId = new Guid("f5d44170-b28c-4c19-be11-d51b732c5c0a"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("21475499-701b-4151-b73b-1c4c76dcd86e"),
-                            NewsArticleId = new Guid("2e9782c7-7f46-4ad8-acbd-f0a98bf5c62a"),
+                            Id = new Guid("43b3cee5-264f-41a5-91b9-25c1caa8375f"),
+                            NewsArticleId = new Guid("617f4b4c-2d29-41c5-aa7f-8b893b3dac91"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("d000a2c1-351c-43fe-8e7b-987edea9f242"),
-                            NewsArticleId = new Guid("2e9782c7-7f46-4ad8-acbd-f0a98bf5c62a"),
-                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
-                        },
-                        new
-                        {
-                            Id = new Guid("6a325c5d-f907-4f94-8e0d-780e6f6f2319"),
-                            NewsArticleId = new Guid("2e9782c7-7f46-4ad8-acbd-f0a98bf5c62a"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("5f8def63-554c-4b98-b28c-a3a7109b0c2b"),
-                            NewsArticleId = new Guid("4eadf4ed-2efe-4f63-b866-f829ce13a65e"),
+                            Id = new Guid("1f42b080-2195-4f4c-9fb8-55803f600c46"),
+                            NewsArticleId = new Guid("a4900554-4ed5-4312-b3aa-930d8ab63808"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("07308693-73e1-4752-be97-f9beeb3dab15"),
-                            NewsArticleId = new Guid("4eadf4ed-2efe-4f63-b866-f829ce13a65e"),
+                            Id = new Guid("d76bc9a9-7546-426b-ace6-07ef27737d1a"),
+                            NewsArticleId = new Guid("a4900554-4ed5-4312-b3aa-930d8ab63808"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("2048c913-8770-4fba-9474-2aa5ca55f388"),
-                            NewsArticleId = new Guid("4eadf4ed-2efe-4f63-b866-f829ce13a65e"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("dc083dba-1c50-4e9f-b4e4-a71475a4f89e"),
-                            NewsArticleId = new Guid("f6080e34-40ef-4310-b5b9-0d6462850fc3"),
+                            Id = new Guid("b5c463b3-2ebf-4a35-a6fc-787ddfd6332b"),
+                            NewsArticleId = new Guid("50f01697-a1bf-4883-a225-39e4dec66b45"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("ab16b912-fd3f-4a5f-84d0-bfaa68355827"),
-                            NewsArticleId = new Guid("f6080e34-40ef-4310-b5b9-0d6462850fc3"),
+                            Id = new Guid("2d512ff1-d3a2-4209-8725-15c11eab59df"),
+                            NewsArticleId = new Guid("50f01697-a1bf-4883-a225-39e4dec66b45"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("6252b359-e41f-4235-8ab6-e8897b736785"),
-                            NewsArticleId = new Guid("f6080e34-40ef-4310-b5b9-0d6462850fc3"),
+                            Id = new Guid("924d2c6f-a602-4706-a5d2-75d3b1ba20ac"),
+                            NewsArticleId = new Guid("50f01697-a1bf-4883-a225-39e4dec66b45"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("39e26d6e-fb63-4f43-bd1f-bd9ce41df62c"),
-                            NewsArticleId = new Guid("0e3b7f5d-c051-4a45-8a59-f20d44226a46"),
+                            Id = new Guid("5972b07b-a6ad-4c8f-929b-01a205c7447e"),
+                            NewsArticleId = new Guid("d531d9a9-be87-4667-b6a9-11b38385a084"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("67c55a02-27e8-4c97-8a1e-712e4dd8a747"),
-                            NewsArticleId = new Guid("0e3b7f5d-c051-4a45-8a59-f20d44226a46"),
+                            Id = new Guid("09a7f37a-fc38-4461-a53c-987cb573c921"),
+                            NewsArticleId = new Guid("d531d9a9-be87-4667-b6a9-11b38385a084"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("ad7b648b-0267-40c9-bdb8-fb5ad593da6e"),
-                            NewsArticleId = new Guid("0e3b7f5d-c051-4a45-8a59-f20d44226a46"),
-                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
-                        },
-                        new
-                        {
-                            Id = new Guid("f1f284f4-1466-4407-a705-109e3c477701"),
-                            NewsArticleId = new Guid("5d657acd-d7d1-4a44-9d3e-205046571056"),
+                            Id = new Guid("5516b9c9-f00c-4be7-a24a-246d08e76803"),
+                            NewsArticleId = new Guid("c77b13da-1887-4d7e-a150-dd21b465fec6"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("9f3ea216-2008-44a4-bd2d-05bd294ccc73"),
-                            NewsArticleId = new Guid("5d657acd-d7d1-4a44-9d3e-205046571056"),
+                            Id = new Guid("f3648bc2-2bac-4bab-abe8-15f212773b3d"),
+                            NewsArticleId = new Guid("c77b13da-1887-4d7e-a150-dd21b465fec6"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("c8d5f655-ae90-4035-9d46-19cf2e21f39d"),
-                            NewsArticleId = new Guid("5d657acd-d7d1-4a44-9d3e-205046571056"),
+                            Id = new Guid("228e2559-046f-493f-879c-a9cc3ac6742e"),
+                            NewsArticleId = new Guid("c77b13da-1887-4d7e-a150-dd21b465fec6"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("d0dcd9fb-6cd7-4724-a38c-6a1cc935609e"),
-                            NewsArticleId = new Guid("9266c529-2975-49f1-b2ec-847c6db4e0c7"),
+                            Id = new Guid("999ca944-037e-4c1d-91cc-eb55ef8ccea2"),
+                            NewsArticleId = new Guid("fe9293f6-8429-4982-926d-44d785516bd4"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("4106dc34-6aa4-42e4-87f8-7088dcdb75db"),
-                            NewsArticleId = new Guid("9266c529-2975-49f1-b2ec-847c6db4e0c7"),
+                            Id = new Guid("92583227-3181-4efa-b45d-670af608933a"),
+                            NewsArticleId = new Guid("fe9293f6-8429-4982-926d-44d785516bd4"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("e4ddbdd4-2191-4551-8374-07e73288d274"),
-                            NewsArticleId = new Guid("9266c529-2975-49f1-b2ec-847c6db4e0c7"),
+                            Id = new Guid("eb984249-bb0f-4c36-8c6f-51ec18975738"),
+                            NewsArticleId = new Guid("fe9293f6-8429-4982-926d-44d785516bd4"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
                         },
                         new
                         {
-                            Id = new Guid("b33141a7-2db9-4fe8-af34-168a5ae72bb5"),
-                            NewsArticleId = new Guid("1c3dd41a-95e1-4f73-881c-f439818e39a7"),
+                            Id = new Guid("5610cd63-e720-4782-b7a7-e66cd1beb533"),
+                            NewsArticleId = new Guid("07ed5cf9-0aaa-403a-859b-d696d51aacf4"),
                             NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
                         },
                         new
                         {
-                            Id = new Guid("ab44970f-5bf2-474b-85f3-643599ea01a0"),
-                            NewsArticleId = new Guid("1c3dd41a-95e1-4f73-881c-f439818e39a7"),
+                            Id = new Guid("2c9aad05-730c-441d-9586-0aa248ca4efc"),
+                            NewsArticleId = new Guid("7d3c300e-c150-4130-a6f1-16d3ad445e93"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("5db40b3c-fce4-4df3-89ff-919786fe4b29"),
+                            NewsArticleId = new Guid("59c363d1-e5a9-42fb-94e4-81fa27c74f56"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("355326a6-2860-46d6-a6f6-6cc83f6df395"),
+                            NewsArticleId = new Guid("59c363d1-e5a9-42fb-94e4-81fa27c74f56"),
                             NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         },
                         new
                         {
-                            Id = new Guid("17766d77-8fb5-41bc-a3e4-21eab8b12f93"),
-                            NewsArticleId = new Guid("1c3dd41a-95e1-4f73-881c-f439818e39a7"),
+                            Id = new Guid("6192f151-0044-4a2d-8b90-5afaaa02a37a"),
+                            NewsArticleId = new Guid("59c363d1-e5a9-42fb-94e4-81fa27c74f56"),
                             NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+                        },
+                        new
+                        {
+                            Id = new Guid("89b8ddf1-aca3-4fb0-be96-1c57ebf54bcd"),
+                            NewsArticleId = new Guid("02d45ffc-6e30-4d05-80af-963a7d7e87e1"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("0c6f0c0a-0c29-4f1a-be8b-d596ea5abc22"),
+                            NewsArticleId = new Guid("8151c6c3-7ee8-4990-a04b-99c54b37efe1"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("7272950c-27ab-4a56-8c1a-f2cced9c28af"),
+                            NewsArticleId = new Guid("3c3a2caa-f01b-447e-acbd-3181cd47a370"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("598ef9b9-65d1-442b-88f4-ce922561fd61"),
+                            NewsArticleId = new Guid("3c3a2caa-f01b-447e-acbd-3181cd47a370"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                        },
+                        new
+                        {
+                            Id = new Guid("14cf87de-b6d1-4062-8efd-4c369cd5f144"),
+                            NewsArticleId = new Guid("4214e211-eef9-4483-841f-24a02e4039a6"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("857c4001-9009-40ef-8ca1-dfe327531112"),
+                            NewsArticleId = new Guid("4214e211-eef9-4483-841f-24a02e4039a6"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                        },
+                        new
+                        {
+                            Id = new Guid("eeeac78c-1840-46b7-bfc3-afd7a0e53585"),
+                            NewsArticleId = new Guid("4214e211-eef9-4483-841f-24a02e4039a6"),
+                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+                        },
+                        new
+                        {
+                            Id = new Guid("6a3b4bcc-002c-4b88-9905-13cec2fb5ddb"),
+                            NewsArticleId = new Guid("6712106e-cdb9-4481-a41d-b4b517a26299"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("e1f2f473-8c3f-4bd9-8d76-19f9e258a0dd"),
+                            NewsArticleId = new Guid("6712106e-cdb9-4481-a41d-b4b517a26299"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                        },
+                        new
+                        {
+                            Id = new Guid("910cdf75-0467-431d-8bd3-c1e564a426b2"),
+                            NewsArticleId = new Guid("6712106e-cdb9-4481-a41d-b4b517a26299"),
+                            NewsArticleTagId = new Guid("dea5a0d4-a73f-4bc8-a539-bb989f6d5a30")
+                        },
+                        new
+                        {
+                            Id = new Guid("568a4c5a-f8de-443c-a636-ce0d9ef763b8"),
+                            NewsArticleId = new Guid("32a7021c-a924-4ea2-9183-0f80f996a8e0"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("f9b140f1-5638-4586-8594-b7546fc4b01c"),
+                            NewsArticleId = new Guid("32a7021c-a924-4ea2-9183-0f80f996a8e0"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                        },
+                        new
+                        {
+                            Id = new Guid("59f2a808-850c-44b6-8f3f-31304b4c23a1"),
+                            NewsArticleId = new Guid("37d0f214-6391-4f90-a1b9-f795e21ae10c"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("ecb49b16-e68a-47e6-ba17-0f8fd0111bf4"),
+                            NewsArticleId = new Guid("49cf2685-1344-40b4-bf80-f5ccd7b579f0"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("02a180ca-0126-487c-aa2e-750dae180072"),
+                            NewsArticleId = new Guid("d8a04a36-fc61-49a4-aab0-aa3d459c9871"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("ec5d4f3a-2ce2-4c11-80e4-554a3e32d3c4"),
+                            NewsArticleId = new Guid("d8a04a36-fc61-49a4-aab0-aa3d459c9871"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
+                        },
+                        new
+                        {
+                            Id = new Guid("39edf25f-a99d-40ce-8997-bd8ffbb2f677"),
+                            NewsArticleId = new Guid("71409c14-261b-4067-90f2-eb7e5ebef32e"),
+                            NewsArticleTagId = new Guid("ef670b9d-ab1f-46e7-8fb8-5c021e8a682b")
+                        },
+                        new
+                        {
+                            Id = new Guid("6ea903be-d743-4242-a492-0c761d740dff"),
+                            NewsArticleId = new Guid("71409c14-261b-4067-90f2-eb7e5ebef32e"),
+                            NewsArticleTagId = new Guid("68cd9ec4-de98-4b5e-b374-da0d3affd593")
                         });
                 });
 
@@ -1127,21 +1185,21 @@ namespace FinanceNewsPortal.Web.Migrations
                         new
                         {
                             Id = "705c9705-c8a8-44af-99a3-e33b13856856",
-                            ConcurrencyStamp = "a7761c3f-8fe4-468d-8d8a-7f764dc2f60c",
+                            ConcurrencyStamp = "d75d5ca9-027f-4eaf-81fa-ce1ab1bb9560",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "1a73053f-78c6-41c2-94fc-d897ccc8b33c",
-                            ConcurrencyStamp = "589c78e6-0f51-44b1-abbe-b0951a114780",
-                            Name = "Registered",
-                            NormalizedName = "REGISTERED"
+                            ConcurrencyStamp = "ee472e6b-99a1-4f65-a36b-0c6342e22b92",
+                            Name = "Author",
+                            NormalizedName = "Author"
                         },
                         new
                         {
                             Id = "08715f79-2c99-4a8b-935a-7ff2e37d1518",
-                            ConcurrencyStamp = "85910fce-2691-4ca6-bbf9-644f4021b063",
+                            ConcurrencyStamp = "b29b1468-3a00-4693-ab69-b10aae6101c4",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         });
@@ -1281,17 +1339,6 @@ namespace FinanceNewsPortal.Web.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("FinanceNewsPortal.Web.Models.NewsArticleRating", b =>
-                {
-                    b.HasOne("FinanceNewsPortal.Web.Models.NewsArticle", "NewsArticle")
-                        .WithOne("NewsArticleRating")
-                        .HasForeignKey("FinanceNewsPortal.Web.Models.NewsArticleRating", "NewsArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NewsArticle");
-                });
-
             modelBuilder.Entity("FinanceNewsPortal.Web.Models.NewsArticleType", b =>
                 {
                     b.HasOne("FinanceNewsPortal.Web.Models.NewsArticle", "NewsArticle")
@@ -1369,9 +1416,6 @@ namespace FinanceNewsPortal.Web.Migrations
 
             modelBuilder.Entity("FinanceNewsPortal.Web.Models.NewsArticle", b =>
                 {
-                    b.Navigation("NewsArticleRating")
-                        .IsRequired();
-
                     b.Navigation("NewsArticleTypes");
                 });
 
