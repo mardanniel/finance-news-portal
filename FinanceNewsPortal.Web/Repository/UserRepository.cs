@@ -1,5 +1,6 @@
 ﻿using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.Contracts;
+using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace FinanceNewsPortal.Web.Repository
@@ -15,9 +16,21 @@ namespace FinanceNewsPortal.Web.Repository
             this._signInManager = _signInManager;
         }
 
-        public async Task<ApplicationUser> GetCurrentUser()
+        public async Task<UserWithRoleViewModel> GetCurrentUser()
         {
-            return await this._userManager.GetUserAsync(this._signInManager.Context.User);
+            ApplicationUser user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
+            List<string> roles = (List<string>)await this._userManager.GetRolesAsync(user);
+            UserWithRoleViewModel userWithRole = new UserWithRoleViewModel()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Gender = user.Gender,
+                Status = user.Status,
+                Role = string.Join(", ", roles)
+            };
+            return userWithRole;
         }
     }
 }
