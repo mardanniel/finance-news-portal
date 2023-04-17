@@ -1,4 +1,4 @@
-@model FinanceNewsPortal.Web.Models.NewsArticle
+﻿@model FinanceNewsPortal.Web.Models.NewsArticle
 
 @{
     ViewData["Title"] = Model.Title;
@@ -19,21 +19,22 @@
     }
     <div class="my-2">
         <img src='~/@(Model.Author.ImageFilePath != null ? $"uploads/profile-image/{Model.Author.ImageFilePath}" : "img/user.png")'
-            class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
+             class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
         @($"{Model.Author.FirstName} {Model.Author.LastName}")
     </div>
     <p>Created at @Model.CreatedAt</p>
     <hr class="w-100" />
     <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
-        class="img-fluid" style="height: 300px; width: auto;" alt="">
+         class="img-fluid" style="height: 300px; width: auto;" alt="">
     <div class="container my-4 w-50">
         @Html.Raw(Model.Description)
     </div>
-    <div class="text-center">
-        <a asp-controller="NewsArticles" asp-action="ApproveStatus" asp-route-newsArticleId="@Model.Id"
-            class="btn btn-success mb-4">Approve</a>
-        <a asp-controller="NewsArticles" asp-action="DeclineStatus" asp-route-newsArticleId="@Model.Id"
-            class="btn btn-danger mb-4">Decline</a>
-    </div>
+    <a class="button" asp-controller="NewsArticles" asp-action="Edit" asp-route-newsArticle="@Model.Id">Edit Article</a>
+    @if(Model.VerdictMessage != null)
+    {
+        <div class="my-4 w-50">
+            <h4>Approval/Disapproval Message:</h4>
+            <p class="italic">@Html.Raw(Model.VerdictMessage)</p>
+        </div>        
+    }
 </section>
-

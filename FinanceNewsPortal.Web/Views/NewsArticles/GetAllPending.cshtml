@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <img src='~/@(item.ImageFilePath != null ? $"uploads/news-image/{item.ImageFilePath}" : "img/newspaper.png")'
                             class="img-fluid" alt="">
-                        <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="ViewPending"
+                        <a class="custom-simple-dark-link" asp-controller="NewsArticles" asp-action="ManagePending"
                     asp-route-newsArticle="@item.Id">
                             <h4>@item.Title</h4>
                         </a>

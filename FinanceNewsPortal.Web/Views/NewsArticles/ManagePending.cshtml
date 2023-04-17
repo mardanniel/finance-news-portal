@@ -1,0 +1,66 @@
+@model PendingNewsArticleVerdict
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<form asp-action="ManagePending" asp-asp-controller="NewsArticles" class="d-flex flex-column align-items-center justify-content-center">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <a asp-action="GetAllCreated" class="align-self-start btn btn-primary mb-4">Back to your News Articles</a>
+    <input asp-for="Id" value="@Model.Id" hidden />
+    <input asp-for="Title" value="@Model.Title" hidden />
+    <h1>@Model.Title</h1>
+    @if (Model.NewsArticleTypes != null)
+    {
+        <div class="m-2">
+            @foreach (var tag in Model.NewsArticleTypes)
+            {
+                <span class="badge bg-secondary">@tag.NewsArticleTag.TagName</span>
+            }
+        </div>
+    }
+    <div class="my-2">
+        <img src='~/@(Model.Author.ImageFilePath != null ? $"uploads/profile-image/{Model.Author.ImageFilePath}" : "img/user.png")'
+            class="card-img-top img-fluid rounded-circle" style="width: 2rem; height: 2rem;" alt="">
+        @($"{Model.Author.FirstName} {Model.Author.LastName}")
+    </div>
+    <p>Created at @Model.CreatedAt</p>
+    <hr class="w-100" />
+    <img src='~/@(Model.ImageFilePath != null ? $"uploads/news-image/{Model.ImageFilePath}" : "img/newspaper.png")'
+        class="img-fluid" style="height: 300px; width: auto;" alt="">
+    <div class="form-outline mb-4">
+        <label class="form-label custom-form-label" asp-for="Description">Update Context</label>
+        <div>
+            <textarea asp-for="Description" class="form-control">@Model.Description</textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-floating w-auto">
+        <select asp-for="Status" class="form-control" asp-items="ViewBag.NewsArticleStatusList"></select>
+        <label asp-for="Status" class="form-label">Status</label>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label custom-form-label" asp-for="VerdictMessage">Add Verdict Message</label>
+        <div>
+            <textarea asp-for="VerdictMessage" class="form-control"></textarea>
+            <span asp-validation-for="VerdictMessage" class="text-danger"></span>
+        </div>
+    </div>
+    <input type="Submit" class="btn btn-primary mt-4" value="Submit Verdict" />
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        tinymce.init({
+            selector: 'textarea#Description'
+        });
+
+        tinymce.init({
+            selector: 'textarea#VerdictMessage'
+        });
+    </script>
+    <script src="~/js/imageLoader.js"></script>
+}
