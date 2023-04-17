@@ -29,7 +29,10 @@
     <div class="container my-4 w-50">
         @Html.Raw(Model.Description)
     </div>
-    <a class="button" asp-controller="NewsArticles" asp-action="Edit" asp-route-newsArticle="@Model.Id">Edit Article</a>
+    @if(Model.Status != NewsStatus.Approved)
+    {
+        <a class="button" asp-controller="NewsArticles" asp-action="Edit" asp-route-newsArticle="@Model.Id">Edit Article</a>
+    }
     @if(Model.VerdictMessage != null)
     {
         <div class="my-4 w-50">

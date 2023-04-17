@@ -16,6 +16,10 @@
         </div>
         <div class="mb-3">
             <label asp-for="Image" class="form-label custom-form-label">Add Image</label>
+            <ul>
+                <li>Max File Size: 2mb</li>
+                <li>File Extensions: jpg, jpeg, png</li>
+            </ul>
             <input class="form-control" asp-for="Image" onchange="loadFile(event)"
                 accept="image/png, image/jpg, image/jpeg">
             <span asp-validation-for="Image" class="text-danger"></span>
