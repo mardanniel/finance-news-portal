@@ -28,6 +28,7 @@ namespace FinanceNewsPortal.Web.Repository
                 Email = user.Email,
                 Gender = user.Gender,
                 Status = user.Status,
+                ImageFilePath = user.ImageFilePath,
                 Role = string.Join(", ", roles)
             };
             return userWithRole;
