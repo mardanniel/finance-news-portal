@@ -1,12 +1,11 @@
 ﻿using FinanceNewsPortal.Web.Data;
 using FinanceNewsPortal.Web.Enums;
 using FinanceNewsPortal.Web.Models;
-using FinanceNewsPortal.Web.Repository.Contracts;
 using FinanceNewsPortal.Web.ViewModels;
 using FinanceNewsPortal.Web.Helper;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceNewsPortal.Web.Repository
+namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
 {
     public class NewsArticlesRepository : INewsArticlesRepository
     {
@@ -14,50 +13,50 @@ namespace FinanceNewsPortal.Web.Repository
 
         public NewsArticlesRepository(FinanceNewsPortalDbContext financeNewsPortalDbContext)
         {
-            this._financeNewsPortalDbcontext = financeNewsPortalDbContext;
+            _financeNewsPortalDbcontext = financeNewsPortalDbContext;
         }
 
         public async Task CreateNewsArticle(NewsArticle newsArticle)
         {
-            await this._financeNewsPortalDbcontext.AddAsync<NewsArticle>(newsArticle);
+            await _financeNewsPortalDbcontext.AddAsync<NewsArticle>(newsArticle);
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
         public async Task CreateNewsArticleTag(NewsArticleTag newsArticleTag)
         {
-            await this._financeNewsPortalDbcontext.NewsArticleTags.AddAsync(newsArticleTag);
+            await _financeNewsPortalDbcontext.NewsArticleTags.AddAsync(newsArticleTag);
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
         public async Task DeleteNewsArticle(Guid newsArticleId)
         {
-            var news = await this._financeNewsPortalDbcontext.NewsArticle.FindAsync(newsArticleId);
+            var news = await _financeNewsPortalDbcontext.NewsArticle.FindAsync(newsArticleId);
 
             if (news != null)
             {
-                this._financeNewsPortalDbcontext.NewsArticle.Remove(news);
+                _financeNewsPortalDbcontext.NewsArticle.Remove(news);
             }
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
         public async Task DeleteNewsArticleTag(Guid newsArticleTagId)
         {
-            var newsArticleTag = await this._financeNewsPortalDbcontext.NewsArticleTags.FindAsync(newsArticleTagId);
+            var newsArticleTag = await _financeNewsPortalDbcontext.NewsArticleTags.FindAsync(newsArticleTagId);
 
-            if(newsArticleTag != null)
+            if (newsArticleTag != null)
             {
-                this._financeNewsPortalDbcontext.NewsArticleTags.Remove(newsArticleTag);
+                _financeNewsPortalDbcontext.NewsArticleTags.Remove(newsArticleTag);
             }
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
         public async Task<List<NewsArticle>> GetLatestNewsArticles(int count)
         {
-            return await this._financeNewsPortalDbcontext.NewsArticle
+            return await _financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .Where(n => n.Status == NewsStatus.Approved)
@@ -68,7 +67,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<NewsArticle?> GetNewsArticleById(Guid newsArticleId)
         {
-            NewsArticle news = await this._financeNewsPortalDbcontext.NewsArticle
+            NewsArticle news = await _financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .FirstOrDefaultAsync(n => n.Id == newsArticleId);
@@ -78,7 +77,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize, Guid? newsArticleTagId)
         {
-            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = _financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .Where(n => n.Status == newsStatus && n.ApplicationUserId != excludeUserId.ToString());
@@ -95,7 +94,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<NewsArticle> GetNewsArticleImageFilePathById(Guid newsArticleId, Guid userId)
         {
-            return await this._financeNewsPortalDbcontext.NewsArticle
+            return await _financeNewsPortalDbcontext.NewsArticle
                 .Where(n => n.Id == newsArticleId)
                 .Select(n => new NewsArticle
                 {
@@ -107,7 +106,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize, Guid? newsArticleTagId)
         {
-            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = _financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .Where(news => news.Status == NewsStatus.Approved)
@@ -123,7 +122,7 @@ namespace FinanceNewsPortal.Web.Repository
                     CreatedAt = news.CreatedAt
                 });
 
-            if(newsArticleTagId != null && newsArticleTagId != Guid.Empty)
+            if (newsArticleTagId != null && newsArticleTagId != Guid.Empty)
             {
                 newsArticleQuery = newsArticleQuery
                     .Where(news => news.NewsArticleTypes
@@ -135,7 +134,7 @@ namespace FinanceNewsPortal.Web.Repository
 
         public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus, Guid? newsArticleTagId)
         {
-            var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
+            var newsArticleQuery = _financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .Select(news => new NewsArticle
@@ -170,12 +169,12 @@ namespace FinanceNewsPortal.Web.Repository
         {
             // NOTE: Temporary implementation
 
-            return await this._financeNewsPortalDbcontext.NewsArticleTags.ToListAsync();
+            return await _financeNewsPortalDbcontext.NewsArticleTags.ToListAsync();
         }
 
         public async Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel)
         {
-            NewsArticle newsArticleToBeUpdated = await this.GetNewsArticleById(newsArticleId);
+            NewsArticle newsArticleToBeUpdated = await GetNewsArticleById(newsArticleId);
 
             if (newsArticleToBeUpdated != null)
             {
@@ -186,10 +185,10 @@ namespace FinanceNewsPortal.Web.Repository
 
                 if (newsArticleViewModel.Tags != null)
                 {
-                    List<NewsArticleType> newsArticleTypesToRemove = await this._financeNewsPortalDbcontext.NewsArticleTypes
+                    List<NewsArticleType> newsArticleTypesToRemove = await _financeNewsPortalDbcontext.NewsArticleTypes
                         .Where(n => n.NewsArticleId == newsArticleToBeUpdated.Id).ToListAsync();
 
-                    this._financeNewsPortalDbcontext.NewsArticleTypes.RemoveRange(newsArticleTypesToRemove);
+                    _financeNewsPortalDbcontext.NewsArticleTypes.RemoveRange(newsArticleTypesToRemove);
 
                     List<NewsArticleType> newsArticleTypes = new List<NewsArticleType>();
 
@@ -205,12 +204,12 @@ namespace FinanceNewsPortal.Web.Repository
                     newsArticleToBeUpdated.NewsArticleTypes = newsArticleTypes;
                 }
 
-                if(newsArticleViewModel.Status != null)
+                if (newsArticleViewModel.Status != null)
                 {
                     newsArticleToBeUpdated.Status = (NewsStatus)newsArticleViewModel.Status;
                 }
 
-                if(newsArticleViewModel.VerdictMessage != null)
+                if (newsArticleViewModel.VerdictMessage != null)
                 {
                     newsArticleToBeUpdated.VerdictMessage = newsArticleViewModel.VerdictMessage;
                 }
@@ -218,24 +217,24 @@ namespace FinanceNewsPortal.Web.Repository
                 newsArticleToBeUpdated.Title = newsArticleViewModel.Title;
                 newsArticleToBeUpdated.Description = newsArticleViewModel.Context;
 
-                this._financeNewsPortalDbcontext.Update(newsArticleToBeUpdated);
+                _financeNewsPortalDbcontext.Update(newsArticleToBeUpdated);
             }
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
         public async Task UpdateNewsArticleStatus(Guid newsArticleId, NewsStatus status)
         {
-            NewsArticle newsArticleToBeUpdated = await this.GetNewsArticleById(newsArticleId);
+            NewsArticle newsArticleToBeUpdated = await GetNewsArticleById(newsArticleId);
 
             if (newsArticleToBeUpdated != null)
             {
                 newsArticleToBeUpdated.Status = status;
 
-                this._financeNewsPortalDbcontext.Update(newsArticleToBeUpdated);
+                _financeNewsPortalDbcontext.Update(newsArticleToBeUpdated);
             }
 
-            await this._financeNewsPortalDbcontext.SaveChangesAsync();
+            await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
     }
 }

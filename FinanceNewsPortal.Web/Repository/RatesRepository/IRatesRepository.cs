@@ -1,6 +1,6 @@
 ﻿using FinanceNewsPortal.Web.Models;
 
-namespace FinanceNewsPortal.Web.Repository.Contracts
+namespace FinanceNewsPortal.Web.Repository.RatesRepository
 {
     public interface IRatesRepository
     {

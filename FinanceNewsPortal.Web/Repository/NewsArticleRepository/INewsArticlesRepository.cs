@@ -2,7 +2,7 @@ using FinanceNewsPortal.Web.Enums;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.ViewModels;
 
-namespace FinanceNewsPortal.Web.Repository.Contracts
+namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
 {
     public interface INewsArticlesRepository
     {
