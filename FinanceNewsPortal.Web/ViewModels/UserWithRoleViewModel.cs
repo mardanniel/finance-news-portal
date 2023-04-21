@@ -1,3 +1,4 @@
+using FinanceNewsPortal.Web.Models;
 using System.ComponentModel;
 
 namespace FinanceNewsPortal.Web.ViewModels
@@ -25,5 +26,7 @@ namespace FinanceNewsPortal.Web.ViewModels
         public bool Status { get; set; }
 
         public string Role { get; set; }
+
+        public Company? Company { get; set; }
     }
 }
