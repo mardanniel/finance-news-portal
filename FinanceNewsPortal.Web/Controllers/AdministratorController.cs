@@ -1,5 +1,6 @@
 ﻿using FinanceNewsPortal.Web.Models;
-using FinanceNewsPortal.Web.Repository.Contracts;
+using FinanceNewsPortal.Web.Repository.AdminRepository;
+using FinanceNewsPortal.Web.Repository.UserRepository;
 using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
