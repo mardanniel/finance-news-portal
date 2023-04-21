@@ -12,7 +12,7 @@ namespace FinanceNewsPortal.Web.ViewModels
         public Guid? Author { get; set; }
 
         [Required(ErrorMessage = "Title is required.")]
-        [StringLength(40, ErrorMessage = "Title must be between {2} and {1} characters long.", MinimumLength = 5)]
+        [StringLength(40, ErrorMessage = "Title must be between {2} and {1} characters long.", MinimumLength = 1)]
         public string Title { get; set; }
 
         [RequiredArticleContext]
