@@ -31,14 +31,41 @@ namespace FinanceNewsPortal.Web.Data
                 new IdentityRole
                 {
                     Id = "1a73053f-78c6-41c2-94fc-d897ccc8b33c",
-                    Name = "Author",
-                    NormalizedName = "Author"
+                    Name = "Publisher",
+                    NormalizedName = "PUBLISHER"
                 },
                 new IdentityRole
                 {
                     Id = "08715f79-2c99-4a8b-935a-7ff2e37d1518",
                     Name = "Moderator",
                     NormalizedName = "MODERATOR"
+                }
+            );
+        }
+
+        public static void InvokeCompanySeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id = Guid.Parse("bc41b6d7-981e-4d53-b291-2b1d8d34bc69"),
+                    Name = "JME Network",
+                    Address = "EDSA Cor. Timog Ave., Diliman, Quezon City, Philippines",
+                    FoundedAt = DateTime.Now
+                },
+                new Company
+                {
+                    Id = Guid.Parse("d7bff58e-de3e-4a55-976b-385bc600ac0f"),
+                    Name = "IBS-ZBM Network",
+                    Address = "Sgt. Esguerra Avenue corner Mother Ignacia Street, Brgy. South Triangle, Diliman, Quezon City",
+                    FoundedAt = DateTime.Now
+                },
+                new Company
+                {
+                    Id = Guid.Parse("45e2f212-8d95-4629-8ff2-a01f999139a3"),
+                    Name = "TV8 Network",
+                    Address = "Reliance corner Sheridan Streets, Barangay Buayang Bato, Mandaluyong, Metro Manila, Philippines",
+                    FoundedAt = DateTime.Now
                 }
             );
         }
@@ -76,7 +103,8 @@ namespace FinanceNewsPortal.Web.Data
                     Email = "authormikeburner@email.com",
                     NormalizedUserName = "authormikeburner@email.com".ToUpper(),
                     NormalizedEmail = "authormikeburner@email.com".ToUpper(),
-                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
+                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword),
+                    CompanyId = Guid.Parse("d7bff58e-de3e-4a55-976b-385bc600ac0f")
                 },
                 new ApplicationUser
                 {
@@ -90,7 +118,8 @@ namespace FinanceNewsPortal.Web.Data
                     Email = "modjennylenner@email.com",
                     NormalizedUserName = "modjennylenner@email.com".ToUpper(),
                     NormalizedEmail = "modjennylenner@email.com".ToUpper(),
-                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword)
+                    PasswordHash = passwordHasher.HashPassword(null, defaultPassword),
+                    CompanyId = Guid.Parse("d7bff58e-de3e-4a55-976b-385bc600ac0f")
                 }
             );
         }

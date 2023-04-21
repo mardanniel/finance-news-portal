@@ -1,9 +1,8 @@
 using FinanceNewsPortal.Web.Helper;
 using FinanceNewsPortal.Web.Models;
-using FinanceNewsPortal.Web.Repository.Contracts;
 using System.Text.Json;
 
-namespace FinanceNewsPortal.Web.Repository
+namespace FinanceNewsPortal.Web.Repository.RatesRepository
 {
     public class RatesAPIRepository : IRatesRepository
     {
@@ -12,8 +11,8 @@ namespace FinanceNewsPortal.Web.Repository
 
         public RatesAPIRepository(HttpClient httpClient, IConfiguration configuration)
         {
-            this._httpClient = httpClient;
-            this._configuration = configuration;
+            _httpClient = httpClient;
+            _configuration = configuration;
         }
 
         public async Task<Currency?> GetCurrencyExchangeRates(string baseCurrencyType)
@@ -22,15 +21,15 @@ namespace FinanceNewsPortal.Web.Repository
 
             try
             {
-                string path = $"https://anyapi.io/api/v1/exchange/rates?base={baseCurrencyType}&apiKey={this._configuration.GetConnectionString("ANYAPI_KEY")}";
+                string path = $"https://anyapi.io/api/v1/exchange/rates?base={baseCurrencyType}&apiKey={_configuration.GetConnectionString("ANYAPI_KEY")}";
 
-                var responseMessage = await this._httpClient.GetAsync(path);
+                var responseMessage = await _httpClient.GetAsync(path);
 
                 var contentStream = await responseMessage.Content.ReadAsStreamAsync();
 
                 currency = await JsonSerializer.DeserializeAsync<Currency>(contentStream);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 currency = null;
             }
@@ -45,11 +44,11 @@ namespace FinanceNewsPortal.Web.Repository
             DateTime currDate = DateTime.Now;
             string prevDateStr = currDate.GetPreviousDayWithinWeekdays();
 
-            try 
+            try
             {
-                string path = $"https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/{prevDateStr}?adjusted=false&apiKey={this._configuration.GetConnectionString("POLYGONAPI_KEY")}";
+                string path = $"https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/{prevDateStr}?adjusted=false&apiKey={_configuration.GetConnectionString("POLYGONAPI_KEY")}";
 
-                var responseMessage = await this._httpClient.GetAsync(path);
+                var responseMessage = await _httpClient.GetAsync(path);
 
                 var contentStream = await responseMessage.Content.ReadAsStreamAsync();
 
@@ -57,7 +56,7 @@ namespace FinanceNewsPortal.Web.Repository
 
                 stock.LastUpdateDateString = prevDateStr;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 stock = null;
             }

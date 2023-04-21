@@ -1,6 +1,6 @@
 ﻿using FinanceNewsPortal.Web.Helper;
 using FinanceNewsPortal.Web.Models;
-using FinanceNewsPortal.Web.Repository.Contracts;
+using FinanceNewsPortal.Web.Repository.RatesRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection;

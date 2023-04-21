@@ -8,5 +8,15 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             return Problem();
         }
+
+        public IActionResult NotFound()
+        {
+            return View();
+        }
+
+        public IActionResult Unauthorized()
+        {
+            return View();
+        }
     }
 }

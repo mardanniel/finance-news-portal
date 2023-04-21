@@ -24,5 +24,10 @@ namespace FinanceNewsPortal.Web.Models
 
         [ValidateNever]
         public ICollection<NewsArticle> NewsArticles { get; set; }
+
+        public Guid? CompanyId { get; set; }
+
+        [ValidateNever]
+        public Company? Company { get; set; }
     }
 }

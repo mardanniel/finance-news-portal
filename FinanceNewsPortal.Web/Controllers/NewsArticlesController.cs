@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FinanceNewsPortal.Web.Repository.Contracts;
 using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.ViewModels;
 using FinanceNewsPortal.Web.Enums;
 using Microsoft.AspNetCore.Authorization;
 using FinanceNewsPortal.Web.Helper;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using FinanceNewsPortal.Web.Repository.UserRepository;
+using FinanceNewsPortal.Web.Repository.NewsArticleRepository;
 
 namespace FinanceNewsPortal.Web.Controllers
 {

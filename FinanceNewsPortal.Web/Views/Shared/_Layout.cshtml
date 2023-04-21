@@ -43,7 +43,7 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllCreated">
-                                    My News Articles
+                                    My Articles
                                 </a>
                             </li>
                             @if (User.IsInRole("Administrator"))
@@ -53,8 +53,12 @@
                                 asp-action="GetAllUsers">Users</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllTags">News
-                                        Article Tags</a>
+                                    <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllTags">Manage Article Tags</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Company" asp-action="GetCompanies">
+                                        Company
+                                    </a>
                                 </li>
                             }
                             @if (User.IsInRole("Moderator") || User.IsInRole("Administrator"))
@@ -71,8 +75,8 @@
                         @if (_signInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Profile">Profile
-
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Profile">
+                                    Profile
                                 </a>
                             </li>
                             <li class="nav-item">

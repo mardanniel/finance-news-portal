@@ -44,7 +44,14 @@ namespace FinanceNewsPortal.Web.Data
                 .HasForeignKey(n => n.ApplicationUserId)
                 .HasPrincipalKey(u => u.Id);
 
+            builder.Entity<ApplicationUser>()
+                .HasOne(u => u.Company)
+                .WithMany(c => c.Staffs)
+                .HasForeignKey(c => c.CompanyId)
+                .HasPrincipalKey(u => u.Id);
+
             builder.InvokeIdentityRoleSeed();
+            builder.InvokeCompanySeed();
             builder.InvokeUsersSeed();
             builder.InvokeNewsArticleTags();
             builder.InvokeIdentityUserRoleSeed();
@@ -56,5 +63,6 @@ namespace FinanceNewsPortal.Web.Data
         public DbSet<NewsArticle> NewsArticle { get; set; }
         public DbSet<NewsArticleType> NewsArticleTypes { get; set; }
         public DbSet<NewsArticleTag> NewsArticleTags { get; set; }
+        public DbSet<Company> Company { get; set; }
     }
 }
