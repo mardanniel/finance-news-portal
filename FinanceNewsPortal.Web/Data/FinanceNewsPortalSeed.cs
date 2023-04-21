@@ -100,9 +100,9 @@ namespace FinanceNewsPortal.Web.Data
                     Gender = 'M',
                     Status = true,
                     UserName = "authormikeburner@email.com",
-                    Email = "authormikeburner@email.com",
+                    Email = "pubmikeburner@email.com",
                     NormalizedUserName = "authormikeburner@email.com".ToUpper(),
-                    NormalizedEmail = "authormikeburner@email.com".ToUpper(),
+                    NormalizedEmail = "pubmikeburner@email.com".ToUpper(),
                     PasswordHash = passwordHasher.HashPassword(null, defaultPassword),
                     CompanyId = Guid.Parse("d7bff58e-de3e-4a55-976b-385bc600ac0f")
                 },
