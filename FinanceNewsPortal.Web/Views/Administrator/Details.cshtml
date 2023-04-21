@@ -29,6 +29,13 @@
                 <i class="fa-solid fa-flag"></i>
                 @(Model.Status ? "Activated" : "Disabled")
             </li>
+            @if(Model.Company != null)
+            {
+                <li class="list-group-item">
+                    <i class="fa-solid fa-flag"></i>
+                    @Model.Company.Name
+                </li>
+            }
         </ul>
     </div>
 </section>
