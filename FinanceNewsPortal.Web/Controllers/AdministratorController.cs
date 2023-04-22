@@ -1,5 +1,6 @@
 ﻿using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.AdminRepository;
+using FinanceNewsPortal.Web.Repository.CompanyRepository;
 using FinanceNewsPortal.Web.Repository.UserRepository;
 using FinanceNewsPortal.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -15,18 +16,21 @@ namespace FinanceNewsPortal.Web.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IAdminRepository _adminRepository;
+        private readonly ICompanyRepository _companyRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public AdministratorController(IAdminRepository adminRepository, 
                                         IUserRepository userRepository,
+                                        ICompanyRepository companyRepository,
                                         UserManager<ApplicationUser> userManager,
                                         SignInManager<ApplicationUser> signInManager,
                                         RoleManager<IdentityRole> roleManager)
         {
             this._adminRepository = adminRepository;
             this._userRepository = userRepository;
+            this._companyRepository = companyRepository;
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._roleManager = roleManager;
@@ -52,11 +56,11 @@ namespace FinanceNewsPortal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ToggleAccountStatus(Guid userId)
+        public async Task<IActionResult> ToggleAccountStatus(Guid userId, Guid companyId)
         {
-            await this._adminRepository.ToggleUserAccountStatus(userId);
+            await this._adminRepository.ToggleUserAccountStatus(userId, companyId);
 
-            return RedirectToAction("GetAllUsers");
+            return RedirectToAction("GetStaffs", "Company", new { companyId = companyId });
         }
 
         [HttpGet]
@@ -72,8 +76,11 @@ namespace FinanceNewsPortal.Web.Controllers
                 .Where(r => r.Name != UserRole.Administrator)
                 .ToListAsync();
 
+            List<Company> companies = await this._companyRepository.GetAllCompanies();
+
             ViewData["GenderList"] = new SelectList(genderList, "Id", "Name");
-            ViewData["RoleList"] = new SelectList(roleList, "Id", "");
+            ViewData["RoleList"] = new SelectList(roleList, "Id", "Name");
+            ViewData["CompanyList"] = new SelectList(companies, "Id", "Name");
 
             return View();
         }
@@ -91,7 +98,8 @@ namespace FinanceNewsPortal.Web.Controllers
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Gender = user.Gender,
-                    Status = true
+                    Status = true,
+                    CompanyId = user.Company
                 };
 
                 var result = await this._userManager.CreateAsync(userModel, user.Password);
@@ -114,7 +122,7 @@ namespace FinanceNewsPortal.Web.Controllers
                         ModelState.AddModelError(String.Empty, "User Role cannot be assigned.");
                     }
 
-                    return RedirectToAction("GetAllUsers", "Administrator");
+                    return RedirectToAction("GetStaffs", "Company", new { companyId = user.Company });
                 }
 
                 foreach (var error in result.Errors)
