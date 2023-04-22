@@ -42,13 +42,15 @@ namespace FinanceNewsPortal.Web.Data
                 .HasMany(u => u.NewsArticles)
                 .WithOne(n => n.Author)
                 .HasForeignKey(n => n.ApplicationUserId)
-                .HasPrincipalKey(u => u.Id);
-
-            builder.Entity<ApplicationUser>()
-                .HasOne(u => u.Company)
-                .WithMany(c => c.Staffs)
-                .HasForeignKey(c => c.CompanyId)
-                .HasPrincipalKey(u => u.Id);
+                .HasPrincipalKey(u => u.Id)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.Entity<Company>()
+                .HasMany(c => c.Staffs)
+                .WithOne(u => u.Company)
+                .HasForeignKey(u => u.CompanyId)
+                .HasPrincipalKey(u => u.Id)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.InvokeIdentityRoleSeed();
             builder.InvokeCompanySeed();
