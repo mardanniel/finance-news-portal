@@ -33,5 +33,8 @@ namespace FinanceNewsPortal.Web.ViewModels
 
         [Required]
         public string Role { get; set; }
+
+        [Required]
+        public Guid Company { get; set; }
     }
 }

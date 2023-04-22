@@ -7,6 +7,7 @@ using FinanceNewsPortal.Web.Helper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FinanceNewsPortal.Web.Repository.UserRepository;
 using FinanceNewsPortal.Web.Repository.NewsArticleRepository;
+using FinanceNewsPortal.Web.Repository.NewsArticleTagsRepository;
 
 namespace FinanceNewsPortal.Web.Controllers
 {
@@ -15,13 +16,16 @@ namespace FinanceNewsPortal.Web.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly INewsArticlesRepository _newsArticlesRepository;
+        private readonly INewsArticleTagsRepository _newsArticleTagsRepository;
         private readonly FileUpload _fileUpload;
 
         public NewsArticlesController(IUserRepository userRepository,
                                         INewsArticlesRepository newsArticlesRepository,
+                                        INewsArticleTagsRepository newsArticleTagsRepository,
                                         FileUpload fileUpload)
         {
             this._newsArticlesRepository = newsArticlesRepository;
+            this._newsArticleTagsRepository = newsArticleTagsRepository;
             this._userRepository = userRepository;
             this._fileUpload = fileUpload;
         }
@@ -38,7 +42,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
             newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
 
-            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
+            newsArticleTags.AddRange(await this._newsArticleTagsRepository.GetNewsArticleTags());
 
             ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
                                                             "Id",
@@ -51,7 +55,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            List<NewsArticleTag> newsArticleTags = await this._newsArticleTagsRepository.GetNewsArticleTags();
             ViewData["NewsArticleTags"] = newsArticleTags;
             return View();
         }
@@ -99,7 +103,7 @@ namespace FinanceNewsPortal.Web.Controllers
                 return RedirectToAction("GetAllCreated");
             }
 
-            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            List<NewsArticleTag> newsArticleTags = await this._newsArticleTagsRepository.GetNewsArticleTags();
             ViewData["NewsArticleTags"] = newsArticleTags;
 
             return View(newsArticle);
@@ -110,7 +114,7 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             NewsArticle news = await this._newsArticlesRepository.GetNewsArticleById(newsArticle);
 
-            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
+            List<NewsArticleTag> newsArticleTags = await this._newsArticleTagsRepository.GetNewsArticleTags();
             ViewData["NewsArticleTags"] = newsArticleTags;
 
             UpsertNewsArticleViewModel newsArticleVM = new UpsertNewsArticleViewModel
@@ -205,7 +209,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
             newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
 
-            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
+            newsArticleTags.AddRange(await this._newsArticleTagsRepository.GetNewsArticleTags());
 
             ViewData["NewsArticleTagsList"] = new SelectList(newsArticleTags,
                                                             "Id",
@@ -241,7 +245,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
             newsArticleTags.Add(new NewsArticleTag { Id = Guid.Empty, TagName = "All" });
 
-            newsArticleTags.AddRange(await this._newsArticlesRepository.GetNewsArticleTags());
+            newsArticleTags.AddRange(await this._newsArticleTagsRepository.GetNewsArticleTags());
 
             ViewData["NewsArticleStatusList"] = new SelectList(newsArticleStatusList,
                                                             "Value",
@@ -353,53 +357,6 @@ namespace FinanceNewsPortal.Web.Controllers
         {
             await this._newsArticlesRepository.UpdateNewsArticleStatus(newsArticleId, NewsStatus.Rejected);
             return RedirectToAction("GetAllPending");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpGet]
-        public async Task<IActionResult> GetAllTags()
-        {
-            List<NewsArticleTag> newsArticleTags = await this._newsArticlesRepository.GetNewsArticleTags();
-            return View(newsArticleTags);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpGet]
-        public async Task<IActionResult> CreateTag()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTag(CreateTagViewModel newTag)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(newTag);
-            }
-
-            NewsArticleTag newsArticleTag = new NewsArticleTag
-            {
-                TagName = newTag.TagName
-            };
-
-            await this._newsArticlesRepository.CreateNewsArticleTag(newsArticleTag);
-
-            return RedirectToAction("GetAllTags");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpGet]
-        public async Task<IActionResult> DeleteTag(Guid? newsArticleTagId)
-        {
-            if(newsArticleTagId != null)
-            {
-                await this._newsArticlesRepository.DeleteNewsArticleTag((Guid)newsArticleTagId);
-            }
-
-            return RedirectToAction("GetAllTags");
         }
     }
 }

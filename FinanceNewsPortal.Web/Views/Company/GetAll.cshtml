@@ -1,0 +1,72 @@
+﻿@model PaginatedList<Company>
+
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<section class="d-flex flex-column align-items-center">
+    <div class="align-self-start d-flex">
+        <h3 class="fw-bolder">Companies</h3>
+    </div>
+    <hr class="flex-grow-1 mx-4 w-100">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <a asp-controller="Company" asp-action="Create" class="mb-4 custom-button-link p-2 rounded">
+            <img src="~/img/add-company.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
+            <div class="text-center">Create</div>
+        </a>
+    </div>
+    <table class="table rounded-3">
+        <thead>
+            <tr>
+                <th scope="col">Company Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date Founded</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var company in Model)
+            {
+                <tr>
+                    <th>@Html.DisplayFor(model => company.Name)</th>
+                    <th class="w-50">@Html.DisplayFor(model => company.Address)</th>
+                    <th>@Html.DisplayFor(model => company.FoundedAt)</th>
+                    <th>
+                        <a asp-controller="Company" asp-action="Details" asp-route-companyId="@company.Id" class="btn btn-primary">View</a>
+                        <a asp-controller="Company" asp-action="Edit" asp-route-companyId="@company.Id" class="btn btn-primary">Edit</a>
+                        <a asp-controller="Company" asp-action="GetStaffs" asp-route-companyId="@company.Id" class="btn btn-primary">Staffs</a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="my-4">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link btn @prevDisabled" asp-controller="Company" asp-action="GetAll"
+                    asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
+                </li>
+                @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
+                {
+                    <li class="page-item">
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="Company"
+                    asp-action="GetAll"
+                    asp-route-pageNumber="@pageNum">@pageNum</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link btn @nextDisabled" asp-controller="Company" asp-action="GetAll"
+                    asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</section>

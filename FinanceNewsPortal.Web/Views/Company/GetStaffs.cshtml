@@ -1,0 +1,106 @@
+﻿@model StaffListViewModel
+
+@{
+    ViewData["Title"] = $"{Model.CompanyName} Staffs";
+}
+
+<section class="d-flex flex-column align-items-center">
+    <div class="align-self-start d-flex">
+        <h3 class="fw-bolder">@(Model.CompanyName) Staffs</h3>
+    </div>
+    <hr class="flex-grow-1 mx-4 w-100">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <a asp-controller="Administrator" asp-action="CreateUser" class="mb-4 custom-button-link p-2 rounded">
+            <img src="~/img/add-user.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
+            <div class="text-center">Create</div>
+        </a>
+    </div>
+    @if (Model.Staffs.Any())
+    {
+        <table class="table rounded-3">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Account Status</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Staffs)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@(user.Gender == 'M' ? "Male" : "Female")</td>
+                        <td>@(user.Status ? "Activated" : "Disabled") </td>
+                        <td>@user.Role</td>
+                        <td>
+                            <a asp-controller="Administrator" asp-action="Details" asp-route-userId="@user.Id"
+                               class="btn btn-primary">View</a>
+                            @if (@user.Status)
+                            {
+                                <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id" asp-route-companyId="@user.Company.Id"
+                                   class="btn btn-danger">Disable</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Administrator" asp-action="ToggleAccountStatus" asp-route-userId="@user.Id" asp-route-companyId="@user.Company.Id"
+                                   class="btn btn-success">Enable</a>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="m-4 d-flex flex-column justify-content-center align-items-center">
+            <p>Empty...</p>
+            <img src='~/img/empty-box.png' class="img-fluid" style="width: 150px; height: 150px;" alt="">
+        </div>
+    }
+
+    @{
+        var prevDisabled = !Model.Staffs.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Staffs.HasNextPage ? "disabled" : "";
+    }
+
+    @if (Model.Staffs.TotalPages > 1)
+    {
+        <nav class="my-4">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link btn @prevDisabled" 
+                        asp-controller="Company" 
+                        asp-action="GetStaffs" 
+                        asp-route-companyId="@ViewBag.CompanyId"
+                        asp-route-pageNumber="@(Model.Staffs.PageIndex - 1)">Previous</a>
+                </li>
+                @for (int pageNum = 1; pageNum <= Model.Staffs.TotalPages; pageNum++)
+                {
+                    <li class="page-item">
+                        <a class='page-link btn @(Model.Staffs.PageIndex == pageNum ? "disabled" : "")' 
+                            asp-controller="Company" 
+                            asp-action="GetStaffs"
+                   asp-route-companyId="@ViewBag.CompanyId"
+                            asp-route-pageNumber="@pageNum">@pageNum</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link btn @nextDisabled" 
+                        asp-controller="Company" 
+                        asp-action="GetStaffs"
+                        asp-route-companyId="@ViewBag.CompanyId"
+                        asp-route-pageNumber="@(Model.Staffs.PageIndex + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</section>

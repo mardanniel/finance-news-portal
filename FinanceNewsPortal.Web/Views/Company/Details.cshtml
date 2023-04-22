@@ -1,0 +1,35 @@
+﻿@model CompanyDetailsViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<a asp-controller="Company" asp-action="GetAll" class="btn btn-primary">Go Back to List</a>
+<section class="container d-flex justify-content-center">
+    
+    <div class="card" style="width: 24rem;">
+        <div class="d-flex flex-column align-items-center justify-content-center my-4">
+            <img src='~/@(Model.ImageFilePath != null ? $"uploads/profile-image/{Model.ImageFilePath}" : "img/news-company.png")'
+                class="card-img-top img-fluid" style="width: 10rem; height: 10rem;" alt="">
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="fa-regular fa-building"></i>
+                @Html.DisplayFor(model => model.Name)
+            </li>
+            <li class="list-group-item">
+                <i class="fa-solid fa-location-dot"></i>
+                @Html.DisplayFor(model => model.Address)
+            </li>
+            <li class="list-group-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                @Html.DisplayFor(model => model.FoundedAt)
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-user-cog"></i>
+                <a asp-controller="Company" asp-action="Edit" asp-route-companyId="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="Company" asp-action="GetStaffs" asp-route-companyId="@Model.Id" class="btn btn-primary">Staffs</a>
+            </li>
+        </ul>
+    </div>
+</section>
