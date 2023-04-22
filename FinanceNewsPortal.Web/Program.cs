@@ -4,6 +4,7 @@ using FinanceNewsPortal.Web.Models;
 using FinanceNewsPortal.Web.Repository.AdminRepository;
 using FinanceNewsPortal.Web.Repository.CompanyRepository;
 using FinanceNewsPortal.Web.Repository.NewsArticleRepository;
+using FinanceNewsPortal.Web.Repository.NewsArticleTagsRepository;
 using FinanceNewsPortal.Web.Repository.RatesRepository;
 using FinanceNewsPortal.Web.Repository.UserRepository;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddDbContext<FinanceNewsPortalDbContext>();
 
 builder.Services.AddScoped<INewsArticlesRepository, NewsArticlesRepository>();
+builder.Services.AddScoped<INewsArticleTagsRepository, NewsArticleTagsRepository>();
 builder.Services.AddScoped<IRatesRepository, RatesAPIRepository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
