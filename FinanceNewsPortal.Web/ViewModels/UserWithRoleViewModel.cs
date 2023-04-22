@@ -27,6 +27,8 @@ namespace FinanceNewsPortal.Web.ViewModels
 
         public string Role { get; set; }
 
+        public Guid CompanyId { get; set; }
+
         public Company? Company { get; set; }
     }
 }
