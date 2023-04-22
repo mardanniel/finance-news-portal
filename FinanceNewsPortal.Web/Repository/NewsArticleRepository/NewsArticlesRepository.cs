@@ -23,13 +23,6 @@ namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
             await _financeNewsPortalDbcontext.SaveChangesAsync();
         }
 
-        public async Task CreateNewsArticleTag(NewsArticleTag newsArticleTag)
-        {
-            await _financeNewsPortalDbcontext.NewsArticleTags.AddAsync(newsArticleTag);
-
-            await _financeNewsPortalDbcontext.SaveChangesAsync();
-        }
-
         public async Task DeleteNewsArticle(Guid newsArticleId)
         {
             var news = await _financeNewsPortalDbcontext.NewsArticle.FindAsync(newsArticleId);
@@ -37,18 +30,6 @@ namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
             if (news != null)
             {
                 _financeNewsPortalDbcontext.NewsArticle.Remove(news);
-            }
-
-            await _financeNewsPortalDbcontext.SaveChangesAsync();
-        }
-
-        public async Task DeleteNewsArticleTag(Guid newsArticleTagId)
-        {
-            var newsArticleTag = await _financeNewsPortalDbcontext.NewsArticleTags.FindAsync(newsArticleTagId);
-
-            if (newsArticleTag != null)
-            {
-                _financeNewsPortalDbcontext.NewsArticleTags.Remove(newsArticleTag);
             }
 
             await _financeNewsPortalDbcontext.SaveChangesAsync();
@@ -163,13 +144,6 @@ namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
             }
 
             return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
-        }
-
-        public async Task<List<NewsArticleTag>> GetNewsArticleTags()
-        {
-            // NOTE: Temporary implementation
-
-            return await _financeNewsPortalDbcontext.NewsArticleTags.ToListAsync();
         }
 
         public async Task UpdateNewsArticle(Guid newsArticleId, UpsertNewsArticleViewModel newsArticleViewModel)

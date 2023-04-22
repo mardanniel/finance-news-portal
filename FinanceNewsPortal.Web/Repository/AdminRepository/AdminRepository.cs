@@ -66,9 +66,9 @@ namespace FinanceNewsPortal.Web.Repository.AdminRepository
             return userWithRole;
         }
 
-        public async Task<bool> ToggleUserAccountStatus(Guid userId)
+        public async Task<bool> ToggleUserAccountStatus(Guid userId, Guid companyId)
         {
-            ApplicationUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId.ToString());
+            ApplicationUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId.ToString() && u.CompanyId == companyId);
 
             user.Status = !user.Status;
 

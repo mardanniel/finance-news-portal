@@ -7,7 +7,7 @@ namespace FinanceNewsPortal.Web.Repository.AdminRepository
     {
         Task<List<ApplicationUser>> GetAllUsers();
         Task<UserWithRoleViewModel> GetUserById(Guid userId);
-        Task<bool> ToggleUserAccountStatus(Guid userId);
+        Task<bool> ToggleUserAccountStatus(Guid userId, Guid companyId);
         Task<List<UserWithRoleViewModel>> GetAllUsersExcept(Guid excludedUserId, int pageNumber, int pageSize);
     }
 }
