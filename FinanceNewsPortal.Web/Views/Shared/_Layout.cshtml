@@ -49,14 +49,12 @@
                             @if (User.IsInRole("Administrator"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Administrator"
-                                asp-action="GetAllUsers">Users</a>
+                                    <a class="nav-link" asp-area="" asp-controller="NewsArticleTags" asp-action="GetAllTags">
+                                        Manage Article Tags
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="NewsArticles" asp-action="GetAllTags">Manage Article Tags</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Company" asp-action="GetCompanies">
+                                    <a class="nav-link" asp-area="" asp-controller="Company" asp-action="GetAll">
                                         Company
                                     </a>
                                 </li>

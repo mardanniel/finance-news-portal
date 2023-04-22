@@ -6,7 +6,7 @@
 
 <section class="form-section">
     <form asp-controller="Administrator" asp-action="CreateUser">
-        <h1 class="h3 mb-3 fw-normal">Create User</h1>
+        <h1 class="h3 mb-3 fw-normal">Create Staff</h1>
 
         <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
 
@@ -29,6 +29,10 @@
         <div class="form-floating">
             <select asp-for="Role" class="form-control" asp-items="ViewBag.RoleList"></select>
             <label asp-for="Role" class="form-label">Role</label>
+        </div>
+        <div class="form-floating">
+            <select asp-for="Company" class="form-control" asp-items="ViewBag.CompanyList"></select>
+            <label asp-for="Company" class="form-label">Company</label>
         </div>
         <div class="form-floating">
             <input type="password" class="form-control" asp-for="Password">

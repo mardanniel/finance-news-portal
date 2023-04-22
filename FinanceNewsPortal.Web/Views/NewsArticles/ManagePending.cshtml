@@ -6,7 +6,7 @@
 
 <form asp-action="ManagePending" asp-asp-controller="NewsArticles" class="d-flex flex-column align-items-center justify-content-center">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <a asp-action="GetAllCreated" class="align-self-start btn btn-primary mb-4">Back to your News Articles</a>
+    <a asp-action="GetAllPending" class="align-self-start btn btn-primary mb-4">Back to your List</a>
     <input asp-for="Id" value="@Model.Id" hidden />
     <input asp-for="Title" value="@Model.Title" hidden />
     <h1>@Model.Title</h1>

@@ -1,11 +1,20 @@
-@model List<NewsArticleTag>
+@model PaginatedList<NewsArticleTag>
 
 @{
     ViewData["Title"] = "All Tags";
 }
 
 <section class="d-flex flex-column align-items-center">
-    <a asp-controller="NewsArticles" asp-action="CreateTag" class="align-self-start btn btn-primary my-4">Create Tag</a>
+    <div class="align-self-start d-flex">
+        <h3 class="fw-bolder">News Article Tags</h3>
+    </div>
+    <hr class="flex-grow-1 mx-4 w-100">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <a asp-controller="NewsArticleTags" asp-action="CreateTag" class="mb-4 custom-button-link p-2 rounded">
+            <img src="~/img/add-tag.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
+            <div class="text-center">Create</div>
+        </a>
+    </div>
     <table class="table rounded-3">
         <thead>
             <tr>
@@ -20,6 +29,8 @@
                     <td>@tag.TagName</td>
                     <td>
                         <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"
+                            class="btn btn-primary">Edit</a>
+                        <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"
                             class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
@@ -27,7 +38,7 @@
         </tbody>
     </table>
 
-    @* @{
+     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
@@ -37,21 +48,21 @@
         <nav class="my-4">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link btn @prevDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticleTags" asp-action="GetAllTags"
                     asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
-                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="Administrator"
-                    asp-action="GetAllUsers" asp-route-pageNumber="@pageNum">@pageNum</a>
+                        <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticleTags"
+                   asp-action="GetAllTags" asp-route-pageNumber="@pageNum">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
-                    <a class="page-link btn @nextDisabled" asp-controller="Administrator" asp-action="GetAllUsers"
+                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticleTags" asp-action="GetAllTags"
                     asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
                 </li>
             </ul>
         </nav>
-    } *@
+    } 
 </section>
