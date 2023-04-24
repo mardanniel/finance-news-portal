@@ -10,7 +10,7 @@
     </div>
     <hr class="flex-grow-1 mx-4 w-100">
     <div class="d-flex flex-column justify-content-center align-items-center mt-4">
-        <a asp-controller="NewsArticleTags" asp-action="CreateTag" class="mb-4 custom-button-link p-2 rounded">
+        <a asp-controller="NewsArticleTags" asp-action="Create" class="mb-4 custom-button-link p-2 rounded">
             <img src="~/img/add-tag.png" class="img-fluid" style="width: 4rem; height: 4rem;" alt="">
             <div class="text-center">Create</div>
         </a>
@@ -28,9 +28,9 @@
                 <tr>
                     <td>@tag.TagName</td>
                     <td>
-                        <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"
+                        <a asp-controller="NewsArticleTags" asp-action="Edit" asp-route-newsArticleTagId="@tag.Id"
                             class="btn btn-primary">Edit</a>
-                        <a asp-controller="NewsArticles" asp-action="DeleteTag" asp-route-newsArticleTagId="@tag.Id"
+                        <a asp-controller="NewsArticleTags" asp-action="Delete" asp-route-newsArticleTagId="@tag.Id"
                             class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
@@ -48,18 +48,18 @@
         <nav class="my-4">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticleTags" asp-action="GetAllTags"
+                    <a class="page-link btn @prevDisabled" asp-controller="NewsArticleTags" asp-action="GetAll"
                     asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
                 </li>
                 @for (int pageNum = 1; pageNum <= Model.TotalPages; pageNum++)
                 {
                     <li class="page-item">
                         <a class='page-link btn @(Model.PageIndex == pageNum ? "disabled" : "")' asp-controller="NewsArticleTags"
-                   asp-action="GetAllTags" asp-route-pageNumber="@pageNum">@pageNum</a>
+                   asp-action="GetAll" asp-route-pageNumber="@pageNum">@pageNum</a>
                     </li>
                 }
                 <li class="page-item">
-                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticleTags" asp-action="GetAllTags"
+                    <a class="page-link btn @nextDisabled" asp-controller="NewsArticleTags" asp-action="GetAll"
                     asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
                 </li>
             </ul>

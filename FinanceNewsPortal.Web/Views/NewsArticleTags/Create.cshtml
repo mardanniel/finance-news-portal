@@ -6,9 +6,9 @@
 
 <section class="form-section">
     <div class="my-5">
-        <a class="btn btn-primary" asp-action="GetAllTags">Back to List</a>
+        <a class="btn btn-primary" asp-action="GetAll" asp-controller="NewsArticleTags">Back to List</a>
     </div>
-    <form asp-controller="NewsArticles" asp-action="CreateTag">
+    <form asp-controller="NewsArticleTags" asp-action="Create">
         <h1 class="h3 mb-3 fw-normal">Create Tag</h1>
         <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
         <div class="form-floating">
