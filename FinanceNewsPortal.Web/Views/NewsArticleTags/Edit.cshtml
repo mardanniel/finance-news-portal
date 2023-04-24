@@ -1,0 +1,22 @@
+@model UpdateNewsArticleTagViewModel
+
+@{
+    ViewData["Title"] = "Edit Tag";
+}
+
+<section class="form-section">
+    <div class="my-5">
+        <a class="btn btn-primary" asp-action="GetAll" asp-controller="NewsArticleTags">Back to List</a>
+    </div>
+    <form asp-controller="NewsArticleTags" asp-action="Edit">
+        <h1 class="h3 mb-3 fw-normal">Update Tag</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
+        <input asp-for="Id" value="@Model.Id" hidden>
+        <div class="form-floating">
+            <input class="form-control" asp-for="TagName" value="@Model.TagName">
+            <label asp-for="TagName" class="form-label">Update Tag Name</label>
+            <span asp-validation-for="TagName" class="text-danger"></span>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Update</button>
+    </form>
+</section>

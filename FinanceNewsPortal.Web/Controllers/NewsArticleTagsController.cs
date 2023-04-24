@@ -19,7 +19,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
-        public async Task<IActionResult> GetAllTags(int? pageNumber)
+        public async Task<IActionResult> GetAll(int? pageNumber)
         {
             int pageSize = 12;
 
@@ -31,7 +31,7 @@ namespace FinanceNewsPortal.Web.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
-        public async Task<IActionResult> CreateTag()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
@@ -39,7 +39,7 @@ namespace FinanceNewsPortal.Web.Controllers
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTag(CreateTagViewModel newTag)
+        public async Task<IActionResult> Create(CreateTagViewModel newTag)
         {
             if (!ModelState.IsValid)
             {
@@ -53,19 +53,49 @@ namespace FinanceNewsPortal.Web.Controllers
 
             await this._newsArticleTagsRepository.CreateNewsArticleTag(newsArticleTag);
 
-            return RedirectToAction("GetAllTags");
+            return RedirectToAction("GetAll");
         }
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
-        public async Task<IActionResult> DeleteTag(Guid? newsArticleTagId)
+        public async Task<IActionResult> Edit(Guid newsArticleTagId)
+        {
+            NewsArticleTag newsArticleTag = await this._newsArticleTagsRepository.GetNewsArticleTagById(newsArticleTagId);
+
+            UpdateNewsArticleTagViewModel newsArticleTagViewModel = new UpdateNewsArticleTagViewModel
+            {
+                Id = newsArticleTag.Id,
+                TagName = newsArticleTag.TagName
+            };
+
+            return View(newsArticleTagViewModel);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdateNewsArticleTagViewModel newTag)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(newTag);
+            }
+
+            await this._newsArticleTagsRepository.UpdateNewsArticleTag(newTag.Id, newTag);
+
+            return RedirectToAction("GetAll");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid? newsArticleTagId)
         {
             if (newsArticleTagId != null)
             {
                 await this._newsArticleTagsRepository.DeleteNewsArticleTag((Guid)newsArticleTagId);
             }
 
-            return RedirectToAction("GetAllTags");
+            return RedirectToAction("GetAll");
         }
     }
 }
