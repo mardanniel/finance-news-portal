@@ -16,7 +16,7 @@ var audience = builder.Configuration["JWT:Audience"];
 var key = builder.Configuration["JWT:Key"];
 
 builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 ;
 builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
@@ -85,7 +85,6 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

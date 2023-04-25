@@ -6,7 +6,7 @@ namespace FinanceNewsPortal.API.Repository.Contracts
 {
     public interface INewsArticlesRepository
     {
-        Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize);
+        Task<List<NewsArticleWithAuthorDTO>> GetNewsArticles(int pageNumber, int pageSize);
         Task<NewsArticle> GetNewsArticleById(Guid newsArticleId);
         Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus);
         Task<List<NewsArticle>> GetNewsArticleByStatus(Guid? excludeUserId, NewsStatus newsStatus, int pageNumber, int pageSize);

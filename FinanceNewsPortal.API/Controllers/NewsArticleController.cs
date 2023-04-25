@@ -29,7 +29,7 @@ namespace FinanceNewsPortal.API.Controllers
         [HttpGet("All")]
         public async Task<IActionResult> GetNewsArticles([FromQuery] int? pageNumber, [FromQuery] int? pageSize)
         {
-            List<NewsArticle> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize ?? 10);
+            List<NewsArticleWithAuthorDTO> newsArticles = await this._newsArticlesRepository.GetNewsArticles(pageNumber ?? 1, pageSize ?? 10);
             return Ok(newsArticles);
         }
 

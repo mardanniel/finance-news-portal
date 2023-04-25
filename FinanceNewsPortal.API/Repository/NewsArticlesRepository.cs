@@ -82,24 +82,22 @@ namespace FinanceNewsPortal.API.Repository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<List<NewsArticle>> GetNewsArticles(int pageNumber, int pageSize)
+        public async Task<List<NewsArticleWithAuthorDTO>> GetNewsArticles(int pageNumber, int pageSize)
         {
             var newsArticleQuery = this._financeNewsPortalDbcontext.NewsArticle
                 .Include(n => n.Author)
                 .Include("NewsArticleTypes.NewsArticleTag")
                 .OrderByDescending(n => n.CreatedAt)
-                .Select(news => new NewsArticle
+                .Select(news => new NewsArticleWithAuthorDTO
                 {
                     Id = news.Id,
-                    ApplicationUserId = news.ApplicationUserId,
-                    Description = news.Description,
                     Title = news.Title,
-                    Author = news.Author,
-                    ImageFilePath = news.ImageFilePath,
+                    Context = news.Description,
+                    Author = $"{news.Author.FirstName} {news.Author.LastName}",
                     NewsArticleTypes = news.NewsArticleTypes
                 });
 
-            return await PaginatedList<NewsArticle>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
+            return await PaginatedList<NewsArticleWithAuthorDTO>.CreateAsync(newsArticleQuery, pageNumber, pageSize);
         }
 
         public async Task<List<NewsArticle>> GetNewsArticlesByUserId(Guid userId, int pageNumber, int pageSize, NewsStatus newsArticleStatus)
