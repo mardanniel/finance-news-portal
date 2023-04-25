@@ -42,8 +42,6 @@ namespace FinanceNewsPortal.Web.Repository.CompanyRepository
 
         public async Task<Company?> GetCompanyById(Guid companyId)
         {
-            if (companyId == null) return null;
-
             return await this._financeNewsPortalDbContext.Company
                 .Where(c => c.Id == companyId)
                 .FirstOrDefaultAsync();

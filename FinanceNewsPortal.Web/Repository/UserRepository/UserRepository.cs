@@ -17,6 +17,7 @@ namespace FinanceNewsPortal.Web.Repository.UserRepository
         {
             this._userManager = _userManager;
             this._signInManager = _signInManager;
+            this._companyRepository = _companyRepository;
         }
 
         public async Task<UserWithRoleViewModel> GetCurrentUser()
@@ -28,7 +29,7 @@ namespace FinanceNewsPortal.Web.Repository.UserRepository
 
             if(user.CompanyId != null)
             {
-                await _companyRepository.GetCompanyById((Guid)user.CompanyId);
+                userCompany = await _companyRepository.GetCompanyById((Guid)user.CompanyId);
             }
 
             UserWithRoleViewModel userWithRole = new UserWithRoleViewModel()

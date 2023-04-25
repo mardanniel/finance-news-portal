@@ -152,6 +152,11 @@ namespace FinanceNewsPortal.Web.Repository.NewsArticleRepository
 
             if (newsArticleToBeUpdated != null)
             {
+                if(newsArticleToBeUpdated.Status == NewsStatus.Rejected)
+                {
+                    newsArticleToBeUpdated.Status = NewsStatus.Pending;
+                }
+
                 if (newsArticleViewModel.ImageFilePath != null)
                 {
                     newsArticleToBeUpdated.ImageFilePath = newsArticleViewModel.ImageFilePath;

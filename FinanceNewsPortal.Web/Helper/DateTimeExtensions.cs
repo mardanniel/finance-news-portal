@@ -51,6 +51,12 @@ namespace FinanceNewsPortal.Web.Helper
                     resultDate = resultDate.Subtract(oneDay);
                 }
             }
+            else
+            {
+                TimeSpan oneDay = new TimeSpan(24, 0, 0);
+                resultDate = resultDate.Subtract(oneDay);
+
+            }
 
             int year = resultDate.Year;
             string month = resultDate.Month.ToString("00");
